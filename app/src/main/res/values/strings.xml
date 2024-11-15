@@ -1,21 +1,24 @@
 <resources>
-    <string name="app_name">CartHub</string>
+    <string name="app_name" translatable="false">CartHub</string>
 
     <!--    Main Activity-->
     <string name="main_login">Log In</string>
     <string name="main_register">Register</string>
 
-    <!--    Login Activity-->
-    <string name="login_username">Username</string>
-    <string name="login_password">Password</string>
-    <string name="login_submit">Log In</string>
+    <!--  Authentication Activities  -->
+    <string name="auth_username">Username</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_phonenumber">Phone Number</string>
+    <string name="auth_address">Address</string>
 
-    <!--    Register Activity-->
-    <string name="register_username">Username</string>
-    <string name="register_password">Password</string>
-    <string name="register_email">Email</string>
-    <string name="register_phonenumber">Phone Number</string>
-    <string name="register_address">Address</string>
+    <string name="auth_username_placeholder">username</string>
+    <string name="auth_password_placeholder" translatable="false">••••••••</string>
+    <string name="auth_email_placeholder" translatable="false">email@email.com</string>
+    <string name="auth_phonenumber_placeholder" translatable="false">0812345678910</string>
+    <string name="auth_address_placeholder">Address</string>
+
+    <string name="login_submit">Log In</string>
     <string name="register_submit">Register</string>
 
     <!--    Home Activity-->

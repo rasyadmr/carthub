@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        initial();
+        this.initial();
 
         mainLoginBtn.setOnClickListener(this::onClick);
         mainRegisterBtn.setOnClickListener(this::onClick);
