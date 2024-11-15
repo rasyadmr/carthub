@@ -2,6 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CartHub" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/darkPrimaryColor</item>
+        <item name="colorPrimaryVariant">@color/darkBorderColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/darkSecondaryText</item>
+        <item name="colorSecondaryVariant">@color/darkBorderColor</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/darkBackgroundColor</item>
+        <item name="android:textColorPrimary">@color/darkPrimaryText</item>
+        <item name="android:textColorSecondary">@color/darkSecondaryText</item>
     </style>
 </resources>

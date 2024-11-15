@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--  Light Mode  -->
+    <color name="primaryColor">#F79817</color>
+    <color name="borderColor">#FFC682</color>
+    <color name="backgroundColor">#FDFDFD</color>
+    <color name="primaryText">#4E351A</color>
+    <color name="secondaryText">#B36200</color>
+
+    <!--  Dark Mode  -->
+    <color name="darkPrimaryColor">#EB8D00</color> <!--Pair with white text -->
+    <color name="darkBorderColor">#7A490B</color> <!--Pair with background -->
+    <color name="darkBackgroundColor">#111111</color> <!--Pair with text colors -->
+    <color name="darkPrimaryText">#FFE0C2</color> <!--Pair with background -->
+    <color name="darkSecondaryText">#FFA42E</color> <!--Pair with background -->
 </resources>

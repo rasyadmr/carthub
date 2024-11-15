@@ -2,7 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.CartHub" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/borderColor</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/secondaryText</item>
+        <item name="colorSecondaryVariant">@color/borderColor</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
+        <item name="android:textColorPrimary">@color/primaryText</item>
+        <item name="android:textColorSecondary">@color/secondaryText</item>
     </style>
 
     <style name="Theme.CartHub" parent="Base.Theme.CartHub" />

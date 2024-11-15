@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         mainRegisterBtn = findViewById(R.id.mainRegisterBtn);
     }
 
-    private void interaction() {
-
-    }
-
     private void onClick(View view) {
         if (view == mainLoginBtn) {
             Intent loginPage = new Intent(this, LoginActivity.class);
