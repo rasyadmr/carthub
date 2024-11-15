@@ -21,8 +21,10 @@
     <string name="login_submit">Log In</string>
     <string name="register_submit">Register</string>
 
-    <!--    Home Activity-->
-
+    <!--  Menu  -->
+    <string name="menu_home">Home</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_profile">Profile</string>
 
     <!--    Item Activity-->
 
@@ -30,8 +32,9 @@
     <!--    Checkout Activity-->
 
 
-    <!--    User Activity-->
-
+    <!--    Profile Activity-->
+    <string name="profile_save">Save</string>
+    <string name="profile_cancel">Cancel</string>
 
     <!--    History Activity-->
 

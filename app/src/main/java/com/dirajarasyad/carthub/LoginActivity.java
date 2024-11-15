@@ -1,6 +1,8 @@
 package com.dirajarasyad.carthub;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         this.initial();
+        loginSubmitBtn.setOnClickListener(this::onClick);
     }
 
     private void initial() {
@@ -39,5 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         loginPasswordET = findViewById(R.id.loginPasswordET);
 
         loginSubmitBtn = findViewById(R.id.loginSubmitBtn);
+    }
+
+    private void onClick(View view) {
+        // TODO Database Validation
+
+        Intent homepage = new Intent(this, HomeActivity.class);
+        startActivity(homepage);
+        finishAffinity();
     }
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/profileTitleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_profile"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileUsernameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_username" />
+
+        <EditText
+            android:id="@+id/profileUsernameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/auth_username_placeholder"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/profilePasswordTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_password" />
+
+        <EditText
+            android:id="@+id/profilePasswordET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/auth_password_placeholder"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/profileEmailTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_email" />
+
+        <EditText
+            android:id="@+id/profileEmailET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/auth_email_placeholder"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/profilePhoneTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_phonenumber" />
+
+        <EditText
+            android:id="@+id/profilePhoneET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/auth_phonenumber_placeholder"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/profileAddressTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/auth_address" />
+
+        <EditText
+            android:id="@+id/profileAddressET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/auth_address_placeholder"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/profileSaveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/profileCancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+    </LinearLayout>
+</FrameLayout>
