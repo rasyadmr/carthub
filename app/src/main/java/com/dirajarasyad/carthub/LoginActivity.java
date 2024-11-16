@@ -18,9 +18,9 @@ import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView loginUsernameTV, loginPasswordTV, loginErrorTV;
-    EditText loginUsernameET, loginPasswordET;
-    Button loginSubmitBtn;
+    private TextView loginUsernameTV, loginPasswordTV, loginErrorTV;
+    private EditText loginUsernameET, loginPasswordET;
+    private Button loginSubmitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

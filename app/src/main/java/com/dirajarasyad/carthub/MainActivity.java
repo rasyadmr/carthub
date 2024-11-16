@@ -18,8 +18,8 @@ import com.dirajarasyad.carthub.database.seeder.DBItemSeeder;
 import com.dirajarasyad.carthub.database.seeder.DBUserSeeder;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView mainLogoIV;
-    Button mainLoginBtn, mainRegisterBtn;
+    private ImageView mainLogoIV;
+    private Button mainLoginBtn, mainRegisterBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

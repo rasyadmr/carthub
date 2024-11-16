@@ -14,9 +14,9 @@ import android.widget.TextView;
 import com.dirajarasyad.carthub.R;
 
 public class CartFragment extends Fragment {
-    TextView cartTitleTV;
-    RecyclerView cartItemRV;
-    Button cartCheckoutBtn;
+    private TextView cartTitleTV;
+    private RecyclerView cartItemRV;
+    private Button cartCheckoutBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

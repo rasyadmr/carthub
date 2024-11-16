@@ -20,9 +20,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeActivity extends AppCompatActivity {
-    ImageView homeLogoIV;
-    BottomNavigationView bottom_navigation;
-    FrameLayout homeContainerFL;
+    private ImageView homeLogoIV;
+    private BottomNavigationView bottom_navigation;
+    private FrameLayout homeContainerFL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

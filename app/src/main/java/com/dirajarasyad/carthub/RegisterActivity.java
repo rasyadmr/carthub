@@ -20,9 +20,9 @@ import com.dirajarasyad.carthub.model.User;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-    TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
-    EditText registerUsernameET, registerPasswordET, registerEmailET, registerPhoneET, registerAddressET;
-    Button registerSubmitBtn;
+    private TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
+    private EditText registerUsernameET, registerPasswordET, registerEmailET, registerPhoneET, registerAddressET;
+    private Button registerSubmitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,10 +20,10 @@ import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class ProfileFragment extends Fragment {
-    TextView profileTitleTV, profileUsernameTV, profileUsernameShowTV, profileEmailTV, profileEmailShowTV
+    private TextView profileTitleTV, profileUsernameTV, profileUsernameShowTV, profileEmailTV, profileEmailShowTV
             , profilePhoneTV, profilePhoneShowTV, profileAddressTV, profileAddressShowTV;
-    Button profileEditBtn, profileLogoutBtn;
-    SessionManager sessionManager;
+    private Button profileEditBtn, profileLogoutBtn;
+    private SessionManager sessionManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -13,8 +13,8 @@ import android.widget.TextView;
 import com.dirajarasyad.carthub.R;
 
 public class HomeFragment extends Fragment {
-    TextView homeTitleTV;
-    RecyclerView homeItemRV;
+    private TextView homeTitleTV;
+    private RecyclerView homeItemRV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
