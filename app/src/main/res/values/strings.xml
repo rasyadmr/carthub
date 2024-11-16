@@ -36,15 +36,20 @@
     <string name="menu_cart">Cart</string>
     <string name="menu_profile">Profile</string>
 
+    <!--  Cart Fragment  -->
+    <string name="cart_checkout">Check Out</string>
+
+    <!--    Profile Activity-->
+    <string name="profile_edit">Edit Profile</string>
+    <string name="profile_logout">Log Out</string>
+
     <!--    Item Activity-->
 
 
     <!--    Checkout Activity-->
 
 
-    <!--    Profile Activity-->
-    <string name="profile_save">Save</string>
-    <string name="profile_cancel">Cancel</string>
+
 
     <!--    History Activity-->
 
