@@ -1,18 +1,21 @@
 package com.dirajarasyad.carthub;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.database.seeder.DBItemSeeder;
+import com.dirajarasyad.carthub.database.seeder.DBUserSeeder;
 
 public class MainActivity extends AppCompatActivity {
     ImageView mainLogoIV;
@@ -32,15 +35,15 @@ public class MainActivity extends AppCompatActivity {
         this.checkAuthPref();
         this.initial();
 
+        mainLogoIV.setOnClickListener(this::onClick);
         mainLoginBtn.setOnClickListener(this::onClick);
         mainRegisterBtn.setOnClickListener(this::onClick);
     }
 
     private void checkAuthPref() {
-        SharedPreferences authPrefData = getSharedPreferences("auth_preference", Context.MODE_PRIVATE);
-        String userId = authPrefData.getString("user_id", "");
+        SessionManager sessionManager = new SessionManager(this);
 
-        if (!userId.isEmpty()) {
+        if (sessionManager.getStatus()) {
             Intent homepage = new Intent(this, HomeActivity.class);
             startActivity(homepage);
             finish();
@@ -54,7 +57,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onClick(View view) {
-        if (view == mainLoginBtn) {
+        if (view == mainLogoIV) {
+            new DBUserSeeder(this);
+            new DBItemSeeder(this);
+
+            Toast.makeText(this, "Seeding successfully", Toast.LENGTH_LONG).show();
+        } else if (view == mainLoginBtn) {
             Intent loginPage = new Intent(this, LoginActivity.class);
             startActivity(loginPage);
         } else if (view == mainRegisterBtn) {
