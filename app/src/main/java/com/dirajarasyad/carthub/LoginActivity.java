@@ -1,6 +1,8 @@
 package com.dirajarasyad.carthub;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +15,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.database.manager.DBUserManager;
+import com.dirajarasyad.carthub.model.User;
+
 public class LoginActivity extends AppCompatActivity {
     TextView loginUsernameTV, loginPasswordTV, loginErrorTV;
     EditText loginUsernameET, loginPasswordET;
     Button loginSubmitBtn;
+    SharedPreferences authPrefData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +52,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private void onClick(View view) {
         // TODO Database Validation
+        String username = loginUsernameET.getText().toString();
+        String password = loginPasswordET.getText().toString();
 
-        Intent homepage = new Intent(this, HomeActivity.class);
-        startActivity(homepage);
-        finishAffinity();
+        DBUserManager userManager = new DBUserManager(this);
+        userManager.open();
+        User user = userManager.getUserByUsername(username);
+        userManager.close();
+
+        if (user == null) {
+            loginErrorTV.setText(R.string.auth_credential_error);
+        } else if (!password.equals(user.getPassword())) {
+            loginErrorTV.setText(R.string.auth_credential_error);
+        } else {
+            authPrefData = getSharedPreferences("auth_preference", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = authPrefData.edit();
+            editor.putString("user_id", user.getId());
+            editor.apply();
+
+            Intent homepage = new Intent(this, HomeActivity.class);
+            startActivity(homepage);
+            finishAffinity();
+        }
     }
 }

@@ -18,6 +18,16 @@
     <string name="auth_phonenumber_placeholder" translatable="false">0812345678910</string>
     <string name="auth_address_placeholder">Address</string>
 
+    <string name="auth_username_error_length">Username length must be 4 – 20 characters!</string>
+    <string name="auth_username_error_unique">Username already used!</string>
+    <string name="auth_username_error_regex">Username must be alphabets and numerics only!</string>
+    <string name="auth_password_error_length">Password length must be 8 – 50 characters!</string>
+    <string name="auth_password_error_regex">Password must be alphabets and numerics only!</string>
+    <string name="auth_email_error_regex">Email is invalid!</string>
+    <string name="auth_phone_error_start">Phone number starts with 0</string>
+    <string name="auth_phone_error_length">Phone number only have 10 – 13 numbers!</string>
+    <string name="auth_credential_error">Credential is invalid!</string>
+
     <string name="login_submit">Log In</string>
     <string name="register_submit">Register</string>
 
