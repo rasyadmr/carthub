@@ -52,7 +52,8 @@ public class DBItemManager {
         List<Item> itemList = new ArrayList<>();
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM;
 
-        DBUserManager userManager = new DBUserManager(context); // TODO Try not using open and close
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
 
         Cursor cursor = database.rawQuery(rawQuery, null);
 
@@ -71,6 +72,9 @@ public class DBItemManager {
             }
         }
 
+        cursor.close();
+        userManager.close();
+
         Log.i("DATABASE", "Fetched Item List");
         return itemList;
     }
@@ -86,7 +90,7 @@ public class DBItemManager {
         int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{id});
 
         Log.i("DATABASE", "Item Updated");
-        return updateItem > 0; // true -> Success, false -> Fail
+        return updateItem > 0;
     }
 
     public boolean deleteItem(String id) {
@@ -103,6 +107,7 @@ public class DBItemManager {
         Cursor cursor = database.rawQuery(rawQuery, new String[]{id});
 
         DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -118,6 +123,7 @@ public class DBItemManager {
         }
 
         cursor.close();
+        userManager.close();
 
         Log.i("DATABASE", "Fetched Item by ID");
         return item;

@@ -1,8 +1,6 @@
 package com.dirajarasyad.carthub;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,14 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView loginUsernameTV, loginPasswordTV, loginErrorTV;
-    EditText loginUsernameET, loginPasswordET;
-    Button loginSubmitBtn;
-    SharedPreferences authPrefData;
+    private TextView loginUsernameTV, loginPasswordTV, loginErrorTV;
+    private EditText loginUsernameET, loginPasswordET;
+    private Button loginSubmitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onClick(View view) {
-        // TODO Database Validation
         String username = loginUsernameET.getText().toString();
         String password = loginPasswordET.getText().toString();
 
@@ -65,10 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!password.equals(user.getPassword())) {
             loginErrorTV.setText(R.string.auth_credential_error);
         } else {
-            authPrefData = getSharedPreferences("auth_preference", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = authPrefData.edit();
-            editor.putString("user_id", user.getId());
-            editor.apply();
+            SessionManager sessionManager = new SessionManager(this);
+            sessionManager.createSession(user);
 
             Intent homepage = new Intent(this, HomeActivity.class);
             startActivity(homepage);

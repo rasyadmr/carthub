@@ -51,8 +51,10 @@ public class DBCartManager {
         List<Cart> cartList = new ArrayList<>();
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_CART;
 
-        DBUserManager userManager = new DBUserManager(context); // TODO Try not using open and close
-        DBItemManager itemManager = new DBItemManager(context); // TODO Try not using open and close
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
 
         Cursor cursor = database.rawQuery(rawQuery, null);
 
@@ -68,6 +70,10 @@ public class DBCartManager {
                 } while (cursor.moveToNext());
             }
         }
+
+        cursor.close();
+        userManager.close();
+        itemManager.close();
 
         Log.i("DATABASE", "Fetched Cart List");
         return cartList;
@@ -99,7 +105,9 @@ public class DBCartManager {
         Cursor cursor = database.rawQuery(rawQuery, new String[]{id});
 
         DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
         DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -113,6 +121,8 @@ public class DBCartManager {
         }
 
         cursor.close();
+        userManager.close();
+        itemManager.close();
 
         Log.i("DATABASE", "Fetched Cart by ID");
         return cart;

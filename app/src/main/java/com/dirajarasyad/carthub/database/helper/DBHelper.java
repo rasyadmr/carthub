@@ -3,9 +3,10 @@ package com.dirajarasyad.carthub.database.helper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "carthub";
 
     // TABLE USER
@@ -78,25 +79,38 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_USER);
+        Log.i("DATABASE", "Created User Table");
         sqLiteDatabase.execSQL(CREATE_TABLE_ITEM);
+        Log.i("DATABASE", "Created Item Table");
         sqLiteDatabase.execSQL(CREATE_TABLE_CART);
+        Log.i("DATABASE", "Created Cart Table");
         sqLiteDatabase.execSQL(CREATE_TABLE_TRANSACTION);
+        Log.i("DATABASE", "Created Transaction Table");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        Log.i("DATABASE", "Deleted User Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
+        Log.i("DATABASE", "Deleted Item Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
+        Log.i("DATABASE", "Deleted Cart Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
+        Log.i("DATABASE", "Deleted Transaction Table");
+        this.onCreate(sqLiteDatabase);
     }
 
     @Override
     public void onDowngrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        super.onDowngrade(sqLiteDatabase, oldVersion, newVersion);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        Log.i("DATABASE", "Deleted User Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
+        Log.i("DATABASE", "Deleted Item Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
+        Log.i("DATABASE", "Deleted Cart Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
+        Log.i("DATABASE", "Deleted Transaction Table");
+        this.onCreate(sqLiteDatabase);
     }
 }

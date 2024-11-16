@@ -68,6 +68,7 @@ public class DBUserManager {
             }
         }
 
+        cursor.close();
 
         Log.i("DATABASE", "Fetched User List");
         return userList;

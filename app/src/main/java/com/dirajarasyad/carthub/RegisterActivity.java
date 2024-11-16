@@ -1,8 +1,6 @@
 package com.dirajarasyad.carthub;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,16 +13,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-    TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
-    EditText registerUsernameET, registerPasswordET, registerEmailET, registerPhoneET, registerAddressET;
-    Button registerSubmitBtn;
-    SharedPreferences authPrefData;
+    private TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
+    private EditText registerUsernameET, registerPasswordET, registerEmailET, registerPhoneET, registerAddressET;
+    private Button registerSubmitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,10 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
             User newUser = userManager.getUserByUsername(username);
             userManager.close();
 
-            authPrefData = getSharedPreferences("auth_preference", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = authPrefData.edit();
-            editor.putString("user_id", newUser.getId());
-            editor.apply();
+            SessionManager sessionManager = new SessionManager(this);
+            sessionManager.createSession(newUser);
 
             Intent homepage = new Intent(this, HomeActivity.class);
             startActivity(homepage);
