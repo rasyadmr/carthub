@@ -14,9 +14,15 @@ public class DBUserSeeder {
 
     private void seed() {
         userManager.open();
+
+        // Admin
         userManager.addUser("rasyadmr", "admin123", "rasyadmr@carthub.com", "081234567890", "Rawa Belong");
         userManager.addUser("diraja", "admin123", "diraja@carthub.com", "080987654321", "Tanah Abang");
+
+        // Seller
         userManager.addUser("seller", "seller123", "seller@carthub.com", "081029384756", "Kebon Jeruk");
+
+        // Guest
         userManager.addUser("guest", "guest123", "guest@carthub.com", "085647382910", "Syahdan");
         userManager.close();
     }

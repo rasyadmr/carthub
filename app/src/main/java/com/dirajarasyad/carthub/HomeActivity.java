@@ -1,5 +1,6 @@
 package com.dirajarasyad.carthub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -13,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.fragment.CartFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
@@ -23,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView homeLogoIV;
     private BottomNavigationView bottom_navigation;
     private FrameLayout homeContainerFL;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        initial();
+        this.initial();
 
         getSupportFragmentManager().beginTransaction().replace(homeContainerFL.getId(), new HomeFragment()).commit();
         bottom_navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -64,5 +67,14 @@ public class HomeActivity extends AppCompatActivity {
         homeLogoIV = findViewById(R.id.homeLogoIV);
         bottom_navigation = findViewById(R.id.bottom_navigation);
         homeContainerFL = findViewById(R.id.homeContainerFL);
+
+        sessionManager = new SessionManager(this);
+
+        if (sessionManager.getUser() == null) {
+            sessionManager.destroySession();
+            Intent main = new Intent(this, MainActivity.class);
+            startActivity(main);
+            finish();
+        }
     }
 }

@@ -5,15 +5,17 @@ import java.io.Serializable;
 public class Item implements Serializable {
     private String id, name, description;
     private Integer price, stock;
-    private User seller;
+    private User user;
+    private Category category;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, User seller) {
+    public Item(String id, String name, String description, Integer price, Integer stock, User user, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
-        this.seller = seller;
+        this.user = user;
+        this.category = category;
     }
 
     public String getId() {
@@ -56,11 +58,19 @@ public class Item implements Serializable {
         this.stock = stock;
     }
 
-    public User getSeller() {
-        return seller;
+    public User getUser() {
+        return user;
     }
 
-    public void setSeller(User seller) {
-        this.seller = seller;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
