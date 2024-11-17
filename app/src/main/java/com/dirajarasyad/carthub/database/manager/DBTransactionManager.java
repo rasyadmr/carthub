@@ -35,12 +35,12 @@ public class DBTransactionManager {
         dbHelper.close();
     }
 
-    public void addTransaction(String status, User user, Item item, Integer quantity) {
+    public void addTransaction(Transaction.Status status, User user, Item item, Integer quantity) {
         String id = "TRX-" + UUID.randomUUID().toString();
 
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_TRANSACTION_ID, id);
-        values.put(DBHelper.FIELD_TRANSACTION_STATUS, status);
+        values.put(DBHelper.FIELD_TRANSACTION_STATUS, status.value());
         values.put(DBHelper.FIELD_TRANSACTION_USER, user.getId());
         values.put(DBHelper.FIELD_TRANSACTION_ITEM, item.getId());
         values.put(DBHelper.FIELD_CART_QUANTITY, quantity);
@@ -64,7 +64,7 @@ public class DBTransactionManager {
             if (cursor.moveToFirst()) {
                 do {
                     String id = cursor.getString(0);
-                    String status = cursor.getString(1);
+                    Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
                     User user = userManager.getUserById(cursor.getString(2));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
@@ -82,9 +82,9 @@ public class DBTransactionManager {
         return transactionList;
     }
 
-    public boolean updateTransaction(String id, String status, User user, Item item, Integer quantity) {
+    public boolean updateTransaction(String id, Transaction.Status status, User user, Item item, Integer quantity) {
         ContentValues values = new ContentValues();
-        values.put(DBHelper.FIELD_TRANSACTION_STATUS, status);
+        values.put(DBHelper.FIELD_TRANSACTION_STATUS, status.value());
         values.put(DBHelper.FIELD_TRANSACTION_USER, user.getId());
         values.put(DBHelper.FIELD_TRANSACTION_ITEM, item.getId());
         values.put(DBHelper.FIELD_TRANSACTION_QUANTITY, quantity);
@@ -116,7 +116,7 @@ public class DBTransactionManager {
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 String transactionId = cursor.getString(0);
-                String status = cursor.getString(1);
+                Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
                 User user = userManager.getUserById(cursor.getString(2));
                 Item item = itemManager.getItemById(cursor.getString(3));
                 Integer quantity = cursor.getInt(4);
@@ -152,7 +152,7 @@ public class DBTransactionManager {
             if (cursor.moveToFirst()) {
                 do {
                     String id = cursor.getString(0);
-                    String status = cursor.getString(1);
+                    Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
                     User user = userManager.getUserById(cursor.getString(2));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
