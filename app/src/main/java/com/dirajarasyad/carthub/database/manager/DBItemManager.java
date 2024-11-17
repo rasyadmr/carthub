@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.dirajarasyad.carthub.database.helper.DBHelper;
+import com.dirajarasyad.carthub.model.Category;
 import com.dirajarasyad.carthub.model.Item;
 import com.dirajarasyad.carthub.model.User;
 
@@ -33,7 +34,7 @@ public class DBItemManager {
         dbHelper.close();
     }
 
-    public void addItem(String name, String description, Integer price, Integer stock, User user) {
+    public void addItem(String name, String description, Integer price, Integer stock, User user, Category category) {
         String id = "ITEM-" + UUID.randomUUID().toString();
 
         ContentValues values = new ContentValues();
@@ -43,6 +44,7 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_PRICE, price);
         values.put(DBHelper.FIELD_ITEM_STOCK, stock);
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
+        values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
 
         database.insert(DBHelper.TABLE_ITEM, null, values);
         Log.i("DATABASE", "Item Created");
@@ -54,6 +56,8 @@ public class DBItemManager {
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
 
         Cursor cursor = database.rawQuery(rawQuery, null);
 
@@ -65,9 +69,10 @@ public class DBItemManager {
                     String description = cursor.getString(2);
                     Integer price = cursor.getInt(3);
                     Integer stock = cursor.getInt(4);
-                    User seller = userManager.getUserById(cursor.getString(5));
+                    User user = userManager.getUserById(cursor.getString(5));
+                    Category category = categoryManager.getCategoryById(cursor.getString(6));
 
-                    itemList.add(new Item(id, name, description, price, stock, seller));
+                    itemList.add(new Item(id, name, description, price, stock, user, category));
                 } while (cursor.moveToNext());
             }
         }
@@ -79,13 +84,14 @@ public class DBItemManager {
         return itemList;
     }
 
-    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, User user) {
+    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, User user, Category category) {
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_ITEM_NAME, name);
         values.put(DBHelper.FIELD_ITEM_DESCRIPTION, description);
         values.put(DBHelper.FIELD_ITEM_PRICE, price);
         values.put(DBHelper.FIELD_ITEM_STOCK, stock);
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
+        values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
 
         int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{id});
 
@@ -108,6 +114,8 @@ public class DBItemManager {
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -116,9 +124,10 @@ public class DBItemManager {
                 String description = cursor.getString(2);
                 Integer price = cursor.getInt(3);
                 Integer stock = cursor.getInt(4);
-                User seller = userManager.getUserById(cursor.getString(5));
+                User user = userManager.getUserById(cursor.getString(5));
+                Category category = categoryManager.getCategoryById(cursor.getString(6));
 
-                item = new Item(itemId, name, description, price, stock, seller);
+                item = new Item(itemId, name, description, price, stock, user, category);
             }
         }
 
