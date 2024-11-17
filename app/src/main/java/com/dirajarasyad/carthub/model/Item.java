@@ -4,16 +4,17 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
     private String id, name, description;
-    private Integer price, stock;
+    private Integer price, stock, rating;
     private User user;
     private Category category;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, User user, Category category) {
+    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, User user, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
+        this.rating = rating;
         this.user = user;
         this.category = category;
     }
@@ -56,6 +57,14 @@ public class Item implements Serializable {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public User getUser() {

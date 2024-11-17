@@ -34,7 +34,7 @@ public class DBItemManager {
         dbHelper.close();
     }
 
-    public void addItem(String name, String description, Integer price, Integer stock, User user, Category category) {
+    public void addItem(String name, String description, Integer price, Integer stock, Integer rating, User user, Category category) {
         String id = "ITEM-" + UUID.randomUUID().toString();
 
         ContentValues values = new ContentValues();
@@ -43,6 +43,7 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_DESCRIPTION, description);
         values.put(DBHelper.FIELD_ITEM_PRICE, price);
         values.put(DBHelper.FIELD_ITEM_STOCK, stock);
+        values.put(DBHelper.FIELD_ITEM_RATING, rating);
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
 
@@ -69,10 +70,11 @@ public class DBItemManager {
                     String description = cursor.getString(2);
                     Integer price = cursor.getInt(3);
                     Integer stock = cursor.getInt(4);
-                    User user = userManager.getUserById(cursor.getString(5));
-                    Category category = categoryManager.getCategoryById(cursor.getString(6));
+                    Integer rating = cursor.getInt(5);
+                    User user = userManager.getUserById(cursor.getString(6));
+                    Category category = categoryManager.getCategoryById(cursor.getString(7));
 
-                    itemList.add(new Item(id, name, description, price, stock, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, user, category));
                 } while (cursor.moveToNext());
             }
         }
@@ -84,12 +86,13 @@ public class DBItemManager {
         return itemList;
     }
 
-    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, User user, Category category) {
+    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, Integer rating, User user, Category category) {
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_ITEM_NAME, name);
         values.put(DBHelper.FIELD_ITEM_DESCRIPTION, description);
         values.put(DBHelper.FIELD_ITEM_PRICE, price);
         values.put(DBHelper.FIELD_ITEM_STOCK, stock);
+        values.put(DBHelper.FIELD_ITEM_RATING, rating);
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
 
@@ -124,10 +127,11 @@ public class DBItemManager {
                 String description = cursor.getString(2);
                 Integer price = cursor.getInt(3);
                 Integer stock = cursor.getInt(4);
-                User user = userManager.getUserById(cursor.getString(5));
-                Category category = categoryManager.getCategoryById(cursor.getString(6));
+                Integer rating = cursor.getInt(5);
+                User user = userManager.getUserById(cursor.getString(6));
+                Category category = categoryManager.getCategoryById(cursor.getString(7));
 
-                item = new Item(itemId, name, description, price, stock, user, category);
+                item = new Item(itemId, name, description, price, stock, rating, user, category);
             }
         }
 
