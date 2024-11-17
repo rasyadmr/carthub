@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class DBCartManager {
     private DBHelper dbHelper;
-    private Context context;
+    private final Context context;
     private SQLiteDatabase database;
 
     public DBCartManager(Context context) {

@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
 
     private void onClick(View view) {
         if (view == profileEditBtn) {
-
+            // TODO Edit Activity
         } else if (view == profileLogoutBtn) {
             sessionManager.destroySession();
             Intent mainpage = new Intent(requireContext(), MainActivity.class);

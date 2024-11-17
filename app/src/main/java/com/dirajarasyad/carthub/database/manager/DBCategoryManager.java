@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class DBCategoryManager {
     private DBHelper dbHelper;
-    private Context context;
+    private final Context context;
     private SQLiteDatabase database;
 
     public DBCategoryManager(Context context) {

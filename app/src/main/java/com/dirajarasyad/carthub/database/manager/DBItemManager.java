@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public class DBItemManager {
     private DBHelper dbHelper;
-    private Context context;
+    private final Context context;
     private SQLiteDatabase database;
 
     public DBItemManager(Context context) {

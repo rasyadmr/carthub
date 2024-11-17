@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.dirajarasyad.carthub.database.helper.DBHelper;
-import com.dirajarasyad.carthub.model.Cart;
 import com.dirajarasyad.carthub.model.Item;
 import com.dirajarasyad.carthub.model.Transaction;
 import com.dirajarasyad.carthub.model.User;
@@ -18,7 +17,7 @@ import java.util.UUID;
 
 public class DBTransactionManager {
     private DBHelper dbHelper;
-    private Context context;
+    private final Context context;
     private SQLiteDatabase database;
 
     public DBTransactionManager(Context context) {
@@ -141,10 +140,13 @@ public class DBTransactionManager {
                 + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID
                 + " JOIN " + DBHelper.TABLE_USER + " ON "
                 + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID + " = "
-                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID;
+                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
+                + " WHERE " + DBHelper.FIELD_USER_ID + " = " + userId;
 
-        DBUserManager userManager = new DBUserManager(context); // TODO Try not using open and close
-        DBItemManager itemManager = new DBItemManager(context); // TODO Try not using open and close
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
 
         Cursor cursor = database.rawQuery(rawQuery, null);
 
