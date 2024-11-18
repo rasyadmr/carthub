@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "carthub";
 
     // TABLE USER
@@ -25,6 +25,14 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_USER_PHONE + " TEXT NOT NULL,"
             + FIELD_USER_ADDRESS + " TEXT NOT NULL)";
 
+    // TABLE CATEGORY
+    public static final String TABLE_CATEGORY = "categories";
+    public static final String FIELD_CATEGORY_ID = "id";
+    public static final String FIELD_CATEGORY_NAME = "name";
+    public static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + "("
+            + FIELD_CATEGORY_ID + " TEXT PRIMARY KEY,"
+            + FIELD_CATEGORY_NAME + " TEXT NOT NULL UNIQUE)";
+
     // TABLE ITEM
     public static final String TABLE_ITEM = "items";
     public static final String FIELD_ITEM_ID = "id";
@@ -32,15 +40,20 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_ITEM_DESCRIPTION = "description";
     public static final String FIELD_ITEM_PRICE = "price";
     public static final String FIELD_ITEM_STOCK = "stock";
+    public static final String FIELD_ITEM_RATING = "rating";
     public static final String FIELD_ITEM_USER = "userId";
+    public static final String FIELD_ITEM_CATEGORY = "categoryId";
     public static final String CREATE_TABLE_ITEM = "CREATE TABLE " + TABLE_ITEM + "("
             + FIELD_ITEM_ID + " TEXT PRIMARY KEY,"
             + FIELD_ITEM_NAME + " TEXT NOT NULL,"
             + FIELD_ITEM_DESCRIPTION + " TEXT,"
             + FIELD_ITEM_PRICE + " INTEGER NOT NULL,"
             + FIELD_ITEM_STOCK + " INTEGER NOT NULL,"
+            + FIELD_ITEM_RATING + " INTEGER NOT NULL,"
             + FIELD_ITEM_USER + " TEXT NOT NULL,"
-            + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "))";
+            + FIELD_ITEM_CATEGORY + " TEXT NOT NULL,"
+            + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"
+            + "FOREIGN KEY (" + FIELD_ITEM_CATEGORY + ") REFERENCES " + TABLE_CATEGORY + "(" + FIELD_CATEGORY_ID + "))";
 
     // TABLE CART
     public static final String TABLE_CART = "carts";
@@ -80,6 +93,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_USER);
         Log.i("DATABASE", "Created User Table");
+        sqLiteDatabase.execSQL(CREATE_TABLE_CATEGORY);
+        Log.i("DATABASE", "Created Category Table");
         sqLiteDatabase.execSQL(CREATE_TABLE_ITEM);
         Log.i("DATABASE", "Created Item Table");
         sqLiteDatabase.execSQL(CREATE_TABLE_CART);
@@ -92,6 +107,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         Log.i("DATABASE", "Deleted User Table");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORY);
+        Log.i("DATABASE", "Deleted Category Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
         Log.i("DATABASE", "Deleted Item Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
@@ -105,6 +122,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         Log.i("DATABASE", "Deleted User Table");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORY);
+        Log.i("DATABASE", "Deleted Category Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM);
         Log.i("DATABASE", "Deleted Item Table");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
