@@ -1,6 +1,7 @@
 package com.dirajarasyad.carthub.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,61 +14,45 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.R;
+import com.dirajarasyad.carthub.holder.CategoryHolder;
 import com.dirajarasyad.carthub.model.Category;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder>{
     Context context;
-    List<Category> listCategory;
+    List<Category> categoryList;
 
     public CategoryAdapter(List<Category> listCategory) {
-        this.listCategory = listCategory;
+        this.categoryList = listCategory;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_categories, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        View view = inflater.inflate(R.layout.holder_category, parent, false);
+
+        return new CategoryHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int image = listCategory.get(position).getImage();
-        String name = listCategory.get(position).getName();
+    public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
+        Drawable image = categoryList.get(position).getImage();
+        String name = categoryList.get(position).getName();
 
-        holder.homecategoryIV.setImageResource(image);
+        holder.homeCategoryIV.setImageDrawable(image);
         holder.homeCategoryTV.setText(name);
 
         holder.homeCategoryCardView.setOnClickListener(v -> {
+            // TODO Category Detail Activity
             Toast.makeText(context, "Berhasil", Toast.LENGTH_SHORT).show();
         });
-
-
-
     }
 
     @Override
     public int getItemCount() {
-        return listCategory.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView homecategoryIV;
-        TextView homeCategoryTV;
-        CardView homeCategoryCardView;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            homecategoryIV = itemView.findViewById(R.id.homecategoryIV);
-            homeCategoryTV = itemView.findViewById(R.id.homeCategoryTV);
-            homeCategoryCardView = itemView.findViewById(R.id.homeCategoryCardView);
-
-        }
+        return categoryList.size();
     }
 }
