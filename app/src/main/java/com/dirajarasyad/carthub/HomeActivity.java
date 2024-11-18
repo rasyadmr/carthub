@@ -12,12 +12,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
+
 import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.fragment.CartFragment;
 import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
+import com.dirajarasyad.carthub.model.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView homeLogoIV;
@@ -58,6 +62,8 @@ public class HomeActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(homeContainerFL.getId(), selectedFragment).commit();
             return true;
         });
+
+
     }
 
     private void initial() {
