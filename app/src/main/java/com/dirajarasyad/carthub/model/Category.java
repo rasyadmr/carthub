@@ -1,11 +1,15 @@
 package com.dirajarasyad.carthub.model;
 
+import android.graphics.drawable.Drawable;
+
 public class Category {
     private String id, name;
+    private Drawable image;
 
-    public Category(String id, String name) {
+    public Category(String id, String name, Drawable image) {
         this.id = id;
         this.name = name;
+        this.image = image;
     }
 
     public String getId() {
@@ -22,5 +26,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Drawable getImage() {
+        return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
     }
 }

@@ -29,9 +29,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_CATEGORY = "categories";
     public static final String FIELD_CATEGORY_ID = "id";
     public static final String FIELD_CATEGORY_NAME = "name";
+    public static final String FIELD_CATEGORY_IMAGE = "image";
     public static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + "("
             + FIELD_CATEGORY_ID + " TEXT PRIMARY KEY,"
-            + FIELD_CATEGORY_NAME + " TEXT NOT NULL UNIQUE)";
+            + FIELD_CATEGORY_NAME + " TEXT NOT NULL UNIQUE,"
+            + FIELD_CATEGORY_IMAGE + " BLOB)";
 
     // TABLE ITEM
     public static final String TABLE_ITEM = "items";
