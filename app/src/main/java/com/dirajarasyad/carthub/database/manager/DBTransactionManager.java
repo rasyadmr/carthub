@@ -132,7 +132,7 @@ public class DBTransactionManager {
         return transaction;
     }
 
-    public List<Transaction> getSellerTransactionList(String userId) {
+    public List<Transaction> getUserTransactionList(String userId) {
         List<Transaction> transactionList = new ArrayList<>();
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_TRANSACTION
                 + " JOIN " + DBHelper.TABLE_ITEM + " ON "
@@ -141,7 +141,8 @@ public class DBTransactionManager {
                 + " JOIN " + DBHelper.TABLE_USER + " ON "
                 + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID + " = "
                 + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
-                + " WHERE " + DBHelper.FIELD_USER_ID + " = " + userId;
+                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
+                + " = '" + userId + "'";
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
@@ -168,7 +169,7 @@ public class DBTransactionManager {
         userManager.close();
         itemManager.close();
 
-        Log.i("DATABASE", "Fetched Transaction by Seller");
+        Log.i("DATABASE", "Fetched Transaction by User");
         return transactionList;
     }
 }

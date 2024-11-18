@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.dirajarasyad.carthub.auth.SessionManager;
 import com.dirajarasyad.carthub.fragment.CartFragment;
+import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -46,6 +47,8 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragment = new HomeFragment();
             } else if (itemId == R.id.navCart) {
                 selectedFragment = new CartFragment();
+            } else if (itemId == R.id.navHistory) {
+                selectedFragment = new HistoryFragment();
             } else if (itemId == R.id.navProfile) {
                 selectedFragment = new ProfileFragment();
             } else {

@@ -35,20 +35,28 @@
     <string name="menu_home">Home</string>
     <string name="menu_cart">Cart</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_history">History</string>
+
+    <!--  Home Fragment  -->
 
     <!--  Cart Fragment  -->
     <string name="cart_checkout">Check Out</string>
 
-    <!--    Profile Activity-->
+    <!--  Profile Fragment  -->
     <string name="profile_edit">Edit Profile</string>
     <string name="profile_logout">Log Out</string>
+
+    <!--  History Fragment  -->
+    <string name="history_item">Item</string>
+    <string name="history_status">Status</string>
+    <string name="history_item_header">Item</string>
+    <string name="history_price_header">Price</string>
+    <string name="history_status_header">Status</string>
 
     <!--    Item Activity-->
 
 
     <!--    Checkout Activity-->
-
-
 
 
     <!--    History Activity-->
