@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.database.seeder.DBCategorySeeder;
 import com.dirajarasyad.carthub.database.seeder.DBItemSeeder;
 import com.dirajarasyad.carthub.database.seeder.DBUserSeeder;
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void onClick(View view) {
         if (view == mainLogoIV) {
             new DBUserSeeder(this);
+            new DBCategorySeeder(this);
             new DBItemSeeder(this);
 
             Toast.makeText(this, "Seeding successfully", Toast.LENGTH_LONG).show();

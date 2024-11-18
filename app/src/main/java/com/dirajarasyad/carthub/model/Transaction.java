@@ -3,14 +3,49 @@ package com.dirajarasyad.carthub.model;
 import java.io.Serializable;
 
 public class Transaction implements Serializable {
-    private String id, status;
+    private String id;
+    private Status status;
     private User user;
     private Item item;
     private Integer quantity;
 
-    public Transaction(String id, String status, User user, Item item, Integer quantity) {
+    public enum Status {
+        PENDING("Pending"),
+        ON_PROGRESS("On Progress"),
+        COMPLETED("Completed"),
+        CANCELLED("Cancelled");
+
+        private final String status;
+
+        Status(String status) {
+            this.status = status;
+        }
+
+        public String value() {
+            return status;
+        }
+
+        public static Status fromString(String status) {
+            for (Status s : Status.values()) {
+                if (s.value().equalsIgnoreCase(status)) {
+                    return s;
+                }
+            }
+            throw new Error("No status found with text: " + status);
+        }
+    }
+
+    public Transaction(String id, Status status, User user, Item item, Integer quantity) {
         this.id = id;
         this.status = status;
+        this.user = user;
+        this.item = item;
+        this.quantity = quantity;
+    }
+
+    public Transaction(String id, User user, Item item, Integer quantity) {
+        this.id = id;
+        this.status = Status.PENDING;
         this.user = user;
         this.item = item;
         this.quantity = quantity;
@@ -24,11 +59,15 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public String getStatusName() {
+        return status.name();
+    }
+
+    public void setStatus(Status status) {
         this.status = status;
     }
 
