@@ -31,7 +31,7 @@ public class Image {
     }
 
     public byte[] getByteArray() {
-        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        Bitmap bitmap = this.getBitmap(image);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);  // PNG format
 

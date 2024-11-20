@@ -20,12 +20,14 @@ public class DBCategorySeeder {
 
     private void seed() {
         categoryManager.open();
-        categoryManager.addCategory("Electronics", AppCompatResources.getDrawable(context, R.drawable.baseline_home_24));
-        categoryManager.addCategory("Clothes", AppCompatResources.getDrawable(context, R.drawable.carthub_logo_only));
-        categoryManager.addCategory("Foods", AppCompatResources.getDrawable(context, R.drawable.carthub_logo_only));
-        categoryManager.addCategory("Healths", AppCompatResources.getDrawable(context, R.drawable.carthub_logo_only));
-        categoryManager.addCategory("Sports", AppCompatResources.getDrawable(context, R.drawable.carthub_logo_only));
-        categoryManager.addCategory("Books", AppCompatResources.getDrawable(context, R.drawable.carthub_logo_only));
+        categoryManager.addCategory("Electronics", AppCompatResources.getDrawable(context, R.drawable.electronic_icon));
+        categoryManager.addCategory("Clothes", AppCompatResources.getDrawable(context, R.drawable.clothe_icon));
+        categoryManager.addCategory("Foods", AppCompatResources.getDrawable(context, R.drawable.food_icon));
+        categoryManager.addCategory("Healths", AppCompatResources.getDrawable(context, R.drawable.health_icon));
+        categoryManager.addCategory("Sports", AppCompatResources.getDrawable(context, R.drawable.sport_icon));
+        categoryManager.addCategory("Books", AppCompatResources.getDrawable(context, R.drawable.book_icon));
+        categoryManager.addCategory("Furniture", AppCompatResources.getDrawable(context, R.drawable.furniture_icon));
+        categoryManager.addCategory("Toys & Games", AppCompatResources.getDrawable(context, R.drawable.games_icon));
         categoryManager.close();
     }
 }
