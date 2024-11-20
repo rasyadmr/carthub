@@ -3,8 +3,10 @@ package com.dirajarasyad.carthub.utilities;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.VectorDrawable;
 
 import java.io.ByteArrayOutputStream;
 
@@ -35,4 +37,18 @@ public class Image {
 
         return byteArrayOutputStream.toByteArray();
     }
+
+    private Bitmap getBitmap(Drawable drawable) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        } else if (drawable instanceof VectorDrawable) {
+            Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            drawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
+            drawable.draw(new Canvas(bitmap));
+            return bitmap;
+        } else {
+            throw new IllegalArgumentException("Unsupported drawable type");
+        }
+    }
+
 }
