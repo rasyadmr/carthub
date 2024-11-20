@@ -17,15 +17,15 @@ import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.CategoryAdapter;
 import com.dirajarasyad.carthub.adapter.ImageSliderAdapter;
 import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
-import com.dirajarasyad.carthub.model.Category;
+import com.dirajarasyad.carthub.adapter.TopAdapter;
+import com.dirajarasyad.carthub.database.manager.DBItemManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
     private TextView homeTitleTV, homeCategoryTV;
-    private RecyclerView homeItemRV, homeImgsliderRV;
+    private RecyclerView homeItemRV, homeImgsliderRV, homeTopRV;
 
     private ImageSliderAdapter SliderAdapter;
     private Handler handler = new Handler();
@@ -62,12 +62,19 @@ public class HomeFragment extends Fragment {
         homeItemRV.setLayoutManager(gridLayoutManager);
         homeItemRV.setAdapter(adapter);
 
+        DBItemManager itemManager = new DBItemManager(requireContext());
+        itemManager.open();
+        homeTopRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        homeTopRV.setAdapter(new TopAdapter(itemManager.getAllItems()));
+        itemManager.close();
+
         return view;
     }
 
     private void initial(View view) {
         homeTitleTV = view.findViewById(R.id.homeTitleTV);
         homeItemRV = view.findViewById(R.id.homeItemRV);
+        homeTopRV = view.findViewById(R.id.homeTopRV);
         homeCategoryTV = view.findViewById(R.id.homeCategoryTV);
         homeImgsliderRV = view.findViewById(R.id.homeImgsliderRV);
 

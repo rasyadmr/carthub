@@ -50,5 +50,4 @@ public class Image {
             throw new IllegalArgumentException("Unsupported drawable type");
         }
     }
-
 }

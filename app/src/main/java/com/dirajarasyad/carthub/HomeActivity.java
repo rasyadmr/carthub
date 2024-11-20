@@ -18,7 +18,6 @@ import com.dirajarasyad.carthub.fragment.CartFragment;
 import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
-import com.dirajarasyad.carthub.model.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
