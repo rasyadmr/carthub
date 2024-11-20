@@ -13,15 +13,13 @@ import android.widget.TextView;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.CategoryAdapter;
-import com.dirajarasyad.carthub.model.Category;
-
-import java.util.ArrayList;
+import com.dirajarasyad.carthub.adapter.TopAdapter;
+import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
+import com.dirajarasyad.carthub.database.manager.DBItemManager;
 
 public class HomeFragment extends Fragment {
     private TextView homeTitleTV, homeCategoryTV;
-    private RecyclerView homeItemRV;
-
-    ArrayList<Category> Categories = new ArrayList<>();
+    private RecyclerView homeItemRV, homeTopRV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,28 +27,27 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         this.initial(view);
-        CategoryData();
-        CategoryAdapter adapter = new CategoryAdapter(Categories);
-        homeItemRV.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+
+        DBCategoryManager categoryManager = new DBCategoryManager(requireContext());
+        categoryManager.open();
+        CategoryAdapter adapter = new CategoryAdapter(categoryManager.getAllCategories());
+        categoryManager.close();
+        homeItemRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         homeItemRV.setAdapter(adapter);
 
+        DBItemManager itemManager = new DBItemManager(requireContext());
+        itemManager.open();
+        homeTopRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        homeTopRV.setAdapter(new TopAdapter(itemManager.getAllItems()));
+        itemManager.close();
 
         return view;
     }
 
-
     private void initial(View view) {
         homeTitleTV = view.findViewById(R.id.homeTitleTV);
         homeItemRV = view.findViewById(R.id.homeItemRV);
+        homeTopRV = view.findViewById(R.id.homeTopRV);
         homeCategoryTV = view.findViewById(R.id.homeCategoryTV);
-    }
-
-    private void CategoryData(){
-        Categories.add(new Category(R.drawable.baseline_electronic_other_24, "Electronics"));
-        Categories.add(new Category(R.drawable.category_clotheicon, "Clothing"));
-        Categories.add(new Category(R.drawable.baseline_food_24, "Food"));
-        Categories.add(new Category(R.drawable.category_beautyicon, "Beauty"));
-        Categories.add(new Category(R.drawable.category_bookicon, "Books"));
-
     }
 }
