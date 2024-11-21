@@ -54,7 +54,9 @@
     <string name="history_status_header">Status</string>
 
     <!--    Item Activity-->
-
+    <string name="item_rating">Rating: </string>
+    <string name="item_stock">Stock: </string>
+    <string name="item_add">Add to Cart</string>
 
     <!--    Checkout Activity-->
 

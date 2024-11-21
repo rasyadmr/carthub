@@ -88,7 +88,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -107,7 +107,7 @@
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="@color/backgroundColor"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/itemPlusIV"
@@ -137,7 +137,7 @@
             android:layout_weight="2"
             android:backgroundTint="#FFFFFF"
             android:gravity="center"
-            android:text="Button"
+            android:text="@string/item_add"
             android:textColor="@color/primaryColor" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
