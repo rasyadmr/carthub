@@ -40,9 +40,11 @@ public class TopAdapter extends RecyclerView.Adapter<TopHolder> {
     public void onBindViewHolder(@NonNull TopHolder holder, int position) {
         String name = itemList.get(position).getName();
         Integer price = itemList.get(position).getPrice();
+        String rating = itemList.get(position).getRating().toString();
 
         holder.topNameTV.setText(name);
         holder.topPriceTV.setText(String.format("Rp %d", price));
+        holder.topRatingTV.setText(rating);
         holder.topContainerLL.setOnClickListener(view -> {
             Intent itempage = new Intent(context, ItemActivity.class);
             itempage.putExtra("item_id", itemList.get(position).getId());

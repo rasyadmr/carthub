@@ -58,13 +58,13 @@ public class HomeFragment extends Fragment {
         categoryManager.open();
         CategoryAdapter adapter = new CategoryAdapter(categoryManager.getAllCategories());
         categoryManager.close();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         homeItemRV.setLayoutManager(gridLayoutManager);
         homeItemRV.setAdapter(adapter);
 
         DBItemManager itemManager = new DBItemManager(requireContext());
         itemManager.open();
-        homeTopRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        homeTopRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         homeTopRV.setAdapter(new TopAdapter(itemManager.getAllItems()));
         itemManager.close();
 
