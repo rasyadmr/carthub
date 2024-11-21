@@ -141,4 +141,42 @@ public class DBItemManager {
         Log.i("DATABASE", "Fetched Item by ID");
         return item;
     }
+
+    public List<Item> getTop(Integer top, Boolean ascending) {
+        List<Item> itemList = new ArrayList<>();
+        String ORDER = ascending? "ASC" : "DESC";
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
+                + " ORDER BY " + DBHelper.FIELD_ITEM_RATING + " " + ORDER
+                + " LIMIT " + top;
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, null);
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String description = cursor.getString(2);
+                    Integer price = cursor.getInt(3);
+                    Integer stock = cursor.getInt(4);
+                    Integer rating = cursor.getInt(5);
+                    User user = userManager.getUserById(cursor.getString(6));
+                    Category category = categoryManager.getCategoryById(cursor.getString(7));
+
+                    itemList.add(new Item(id, name, description, price, stock, rating, user, category));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+
+        Log.i("DATABASE", "Fetched Top Item List by Rating");
+        return itemList;
+    }
 }

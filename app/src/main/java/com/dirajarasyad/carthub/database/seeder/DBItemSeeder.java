@@ -39,7 +39,7 @@ public class DBItemSeeder {
 
         // Foods
         itemManager.addItem("Rice", "Premium rice 5kg", 150000, 500, 4, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));
-        itemManager.addItem("Instant Noodles", "Pack of 40 instant noodles", 100000, 3, 1000, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));
+        itemManager.addItem("Instant Noodles", "Pack of 40 instant noodles", 100000, 1000, 4, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));
         itemManager.addItem("Cooking Oil", "Vegetable cooking oil 2L", 50000, 300, 1, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));
         itemManager.addItem("Snack Pack", "Assorted snacks bundle", 75000, 400, 3, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));
         itemManager.addItem("Coffee Beans", "Premium coffee beans 1kg", 200000, 250, 4, userManager.getUserByUsername("seller"), categoryManager.getCategoryByName("Foods"));

@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         DBItemManager itemManager = new DBItemManager(requireContext());
         itemManager.open();
         homeTopRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
-        homeTopRV.setAdapter(new TopAdapter(itemManager.getAllItems()));
+        homeTopRV.setAdapter(new TopAdapter(itemManager.getTop(5, false)));
         itemManager.close();
 
         return view;
