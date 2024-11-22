@@ -13,14 +13,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.fragment.CartFragment;
 import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView homeLogoIV;

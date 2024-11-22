@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.CartAdapter;
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBCartManager;
 import com.dirajarasyad.carthub.model.Cart;
 

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.HistoryAdapter;
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
 
 public class HistoryFragment extends Fragment {

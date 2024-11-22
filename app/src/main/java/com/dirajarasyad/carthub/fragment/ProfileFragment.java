@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 import com.dirajarasyad.carthub.MainActivity;
 import com.dirajarasyad.carthub.R;
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class ProfileFragment extends Fragment {
@@ -66,7 +67,10 @@ public class ProfileFragment extends Fragment {
 
     private void onClick(View view) {
         if (view == profileEditBtn) {
-            // TODO Edit Activity
+            FragmentManager fragmentManager = getParentFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.homeContainerFL, new ProfileEditFragment())
+                    .addToBackStack(null)
+                    .commit();
         } else if (view == profileLogoutBtn) {
             sessionManager.destroySession();
             Intent mainpage = new Intent(requireContext(), MainActivity.class);

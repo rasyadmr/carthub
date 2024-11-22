@@ -11,6 +11,7 @@
     <string name="auth_email">Email</string>
     <string name="auth_phonenumber">Phone Number</string>
     <string name="auth_address">Address</string>
+    <string name="auth_picture">Profile Picture</string>
 
     <string name="auth_username_placeholder">username</string>
     <string name="auth_password_placeholder" translatable="false">••••••••</string>
@@ -46,6 +47,10 @@
     <string name="profile_edit">Edit Profile</string>
     <string name="profile_logout">Log Out</string>
 
+    <!--  Edit Profile Fragment  -->
+    <string name="auth_edit_confirm">Password doesn\'t match with current password!</string>
+    <string name="auth_edit_save">Save changes</string>
+
     <!--  History Fragment  -->
     <string name="history_item">Item</string>
     <string name="history_status">Status</string>
@@ -57,6 +62,8 @@
     <string name="item_rating">Rating: </string>
     <string name="item_stock">Stock: </string>
     <string name="item_add">Add to Cart</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    Checkout Activity-->
 

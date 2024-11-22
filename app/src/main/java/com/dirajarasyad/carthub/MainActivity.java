@@ -13,7 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.seeder.DBCategorySeeder;
 import com.dirajarasyad.carthub.database.seeder.DBItemSeeder;
 import com.dirajarasyad.carthub.database.seeder.DBUserSeeder;

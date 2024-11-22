@@ -1,4 +1,4 @@
-package com.dirajarasyad.carthub.auth;
+package com.dirajarasyad.carthub.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

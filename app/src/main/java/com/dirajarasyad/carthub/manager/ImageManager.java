@@ -1,4 +1,4 @@
-package com.dirajarasyad.carthub.utilities;
+package com.dirajarasyad.carthub.manager;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,14 +10,14 @@ import android.graphics.drawable.VectorDrawable;
 
 import java.io.ByteArrayOutputStream;
 
-public class Image {
+public class ImageManager {
     private Drawable image;
 
-    public Image(Drawable image) {
+    public ImageManager(Drawable image) {
         this.image = image;
     }
 
-    public Image(byte[] bytes, Context context) {
+    public ImageManager(byte[] bytes, Context context) {
         Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         this.image = new BitmapDrawable(context.getResources(), bitmap);
     }
