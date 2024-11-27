@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "carthub";
 
     // TABLE USER
@@ -17,13 +17,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_USER_EMAIL = "email";
     public static final String FIELD_USER_PHONE = "phonenumber";
     public static final String FIELD_USER_ADDRESS = "address";
+    public static final String FIELD_USER_IMAGE = "image";
     public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "("
             + FIELD_USER_ID + " TEXT PRIMARY KEY,"
             + FIELD_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
             + FIELD_USER_PASSWORD + " TEXT NOT NULL,"
             + FIELD_USER_EMAIL + " TEXT NOT NULL UNIQUE,"
             + FIELD_USER_PHONE + " TEXT NOT NULL,"
-            + FIELD_USER_ADDRESS + " TEXT NOT NULL)";
+            + FIELD_USER_ADDRESS + " TEXT NOT NULL,"
+            + FIELD_USER_IMAGE + " BLOB NOT NULL)";
 
     // TABLE CATEGORY
     public static final String TABLE_CATEGORY = "categories";

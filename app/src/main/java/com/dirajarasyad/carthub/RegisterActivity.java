@@ -1,18 +1,27 @@
 package com.dirajarasyad.carthub;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.manager.ImageManager;
+import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
@@ -20,9 +29,12 @@ import com.dirajarasyad.carthub.model.User;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
+    private TextView registerUsernameTV, registerPasswordTV, registerEmailTV, registerPhoneTV, registerAddressTV, registerImageTV, registerUsernameErrorTV, registerPasswordErrorTV, registerEmailErrorTV, registerPhoneErrorTV, registerAddressErrorTV;
     private EditText registerUsernameET, registerPasswordET, registerEmailET, registerPhoneET, registerAddressET;
+    private ImageView registerImageIV;
     private Button registerSubmitBtn;
+    private ActivityResultLauncher<PickVisualMediaRequest> pickLauncher;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         this.initial();
         registerSubmitBtn.setOnClickListener(this::onClick);
+        registerImageIV.setOnClickListener(this::onClick);
     }
 
     private void initial() {
@@ -45,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerEmailTV = findViewById(R.id.registerEmailTV);
         registerPhoneTV = findViewById(R.id.registerPhoneTV);
         registerAddressTV = findViewById(R.id.registerAddressTV);
+        registerImageTV = findViewById(R.id.registerImageTV);
 
         registerUsernameET = findViewById(R.id.registerUsernameET);
         registerPasswordET = findViewById(R.id.registerPasswordET);
@@ -58,29 +72,52 @@ public class RegisterActivity extends AppCompatActivity {
         registerPhoneErrorTV = findViewById(R.id.registerPhoneErrorTV);
         registerAddressErrorTV = findViewById(R.id.registerAddressErrorTV);
 
+        registerImageIV = findViewById(R.id.registerImageIV);
         registerSubmitBtn = findViewById(R.id.registerSubmitBtn);
+
+        pickLauncher = registerForActivityResult(
+            new ActivityResultContracts.PickVisualMedia(),
+            uri -> {
+                this.uri = uri;
+                if (uri != null) {
+                    registerImageIV.setImageURI(uri);
+                }
+            }
+        );
     }
 
     private void onClick(View view) {
-        String username = registerUsernameET.getText().toString();
-        String password = registerPasswordET.getText().toString();
-        String email = registerEmailET.getText().toString();
-        String phone = registerPhoneET.getText().toString();
-        String address = registerAddressET.getText().toString();
+        if (view == registerImageIV) {
+            PickerManager pickerManager = new PickerManager(pickLauncher);
+            pickerManager.pickImageOnly();
+        } else if (view == registerSubmitBtn) {
+            String username = registerUsernameET.getText().toString();
+            String password = registerPasswordET.getText().toString();
+            String email = registerEmailET.getText().toString();
+            String phone = registerPhoneET.getText().toString();
+            String address = registerAddressET.getText().toString();
+            Drawable image;
 
-        if (this.validateInput(username, password, email, phone)) {
-            DBUserManager userManager = new DBUserManager(this);
-            userManager.open();
-            userManager.addUser(username, password, email, phone, address);
-            User newUser = userManager.getUserByUsername(username);
-            userManager.close();
+            if (uri == null) {
+                image = AppCompatResources.getDrawable(this, R.drawable.baseline_person_24);
+            } else {
+                image = new ImageManager(this.uri, this).getImage();
+            }
 
-            SessionManager sessionManager = new SessionManager(this);
-            sessionManager.createSession(newUser);
+            if (this.validateInput(username, password, email, phone)) {
+                DBUserManager userManager = new DBUserManager(this);
+                userManager.open();
+                userManager.addUser(username, password, email, phone, address, image);
+                User newUser = userManager.getUserByUsername(username);
+                userManager.close();
 
-            Intent homepage = new Intent(this, HomeActivity.class);
-            startActivity(homepage);
-            finishAffinity();
+                SessionManager sessionManager = new SessionManager(this);
+                sessionManager.createSession(newUser);
+
+                Intent homepage = new Intent(this, HomeActivity.class);
+                startActivity(homepage);
+                finishAffinity();
+            }
         }
     }
 

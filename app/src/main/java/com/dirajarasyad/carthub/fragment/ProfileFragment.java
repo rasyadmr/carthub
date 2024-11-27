@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dirajarasyad.carthub.MainActivity;
@@ -18,9 +19,9 @@ import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class ProfileFragment extends Fragment {
-    private TextView profileTitleTV, profileUsernameTV, profileUsernameShowTV, profileEmailTV, profileEmailShowTV
-            , profilePhoneTV, profilePhoneShowTV, profileAddressTV, profileAddressShowTV;
+    private TextView profileUsernameShowTV, profileEmailShowTV, profilePhoneShowTV, profileAddressShowTV;
     private Button profileEditBtn, profileLogoutBtn;
+    private ImageView profilePictureIV;
     private SessionManager sessionManager;
 
     @Override
@@ -38,18 +39,13 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initial(View view) {
-        profileTitleTV = view.findViewById(R.id.profileTitleTV);
-
-        profileUsernameTV = view.findViewById(R.id.profileUsernameTV);
-        profileEmailTV = view.findViewById(R.id.profileEmailTV);
-        profilePhoneTV = view.findViewById(R.id.profilePhoneTV);
-        profileAddressTV = view.findViewById(R.id.profileAddressTV);
 
         profileUsernameShowTV = view.findViewById(R.id.profileUsernameShowTV);
         profileEmailShowTV = view.findViewById(R.id.profileEmailShowTV);
         profilePhoneShowTV = view.findViewById(R.id.profilePhoneShowTV);
         profileAddressShowTV = view.findViewById(R.id.profileAddressShowTV);
 
+        profilePictureIV = view.findViewById(R.id.profilePictureIV);
         profileEditBtn = view.findViewById(R.id.profileEditBtn);
         profileLogoutBtn = view.findViewById(R.id.profileLogoutBtn);
 
@@ -59,6 +55,7 @@ public class ProfileFragment extends Fragment {
     private void applyData() {
         User user = sessionManager.getUser();
 
+        profilePictureIV.setImageDrawable(sessionManager.getUser().getImage());
         profileUsernameShowTV.setText(user.getUsername());
         profileEmailShowTV.setText(user.getEmail());
         profilePhoneShowTV.setText(user.getPhone());

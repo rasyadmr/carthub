@@ -1,17 +1,21 @@
 package com.dirajarasyad.carthub.model;
 
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
     private String id, username, password, email, phone, address;
+    private Drawable image;
 
-    public User(String id, String username, String password, String email, String phone, String address) {
+    public User(String id, String username, String password, String email, String phone, String address, Drawable image) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.image = image;
     }
 
     public String getId() {
@@ -60,5 +64,13 @@ public class User implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Drawable getImage() {
+        return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
     }
 }

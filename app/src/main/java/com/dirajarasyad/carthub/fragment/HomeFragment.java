@@ -20,7 +20,7 @@ import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
 import com.dirajarasyad.carthub.adapter.TopAdapter;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView homeItemRV, homeImgsliderRV, homeTopRV;
 
     private ImageSliderAdapter SliderAdapter;
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
 
 
     private Integer currentPosition = 0;
@@ -41,18 +41,15 @@ public class HomeFragment extends Fragment {
         this.initial(view);
 
         // Image slider
-        List<Integer> images = Arrays.asList(
-                R.drawable.promoimage1,
-                R.drawable.promoimage2,
-                R.drawable.promoimage3
-        );
-
+        List<Integer> images = new ArrayList<>();
+        images.add(R.drawable.promoimage1);
+        images.add(R.drawable.promoimage2);
+        images.add(R.drawable.promoimage3);
 
         SliderAdapter = new ImageSliderAdapter(images);
         homeImgsliderRV.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         homeImgsliderRV.setAdapter(SliderAdapter);
         startAutoScroll();
-
 
         DBCategoryManager categoryManager = new DBCategoryManager(requireContext());
         categoryManager.open();

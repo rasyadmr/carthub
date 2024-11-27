@@ -1,13 +1,15 @@
 package com.dirajarasyad.carthub.fragment;
 
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
+import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.User;
@@ -31,6 +34,7 @@ public class ProfileEditFragment extends Fragment {
     private Button profile_editSaveBtn;
     private User user;
     private ActivityResultLauncher<PickVisualMediaRequest> pickLauncher;
+    private Uri uri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,10 +85,10 @@ public class ProfileEditFragment extends Fragment {
         pickLauncher = registerForActivityResult(
                 new ActivityResultContracts.PickVisualMedia(),
                 uri -> {
+                    this.uri = uri;
+
                     if (uri != null) {
-                        Log.d("Picker", "Selected URI: " + uri);
-                    } else {
-                        Log.d("Picker", "No media selected");
+                        profile_editProfileIV.setImageURI(uri);
                     }
                 }
         );
@@ -101,7 +105,6 @@ public class ProfileEditFragment extends Fragment {
     private void onClick(View view) {
         if (view == profile_editSaveBtn) {
             this.clearError();
-            // TODO Profile Picture
 
             String username = profile_editUsernameET.getText().toString();
             String password = profile_editPasswordET.getText().toString();
@@ -109,11 +112,18 @@ public class ProfileEditFragment extends Fragment {
             String phone = profile_editPhoneET.getText().toString();
             String address = profile_editAddressET.getText().toString();
             String confirm = profile_editConfirmET.getText().toString();
+            Drawable image;
+
+            if (uri == null) {
+                image = AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_person_24);
+            } else {
+                image = new ImageManager(this.uri, requireContext()).getImage();
+            }
 
             if (validateInput(username, password, email, phone, confirm)) {
                 DBUserManager userManager = new DBUserManager(requireContext());
                 userManager.open();
-                userManager.updateUser(user.getId(), username, password, email, phone, address);
+                userManager.updateUser(user.getId(), username, password, email, phone, address, image);
                 userManager.close();
 
                 requireActivity().getSupportFragmentManager().popBackStack();

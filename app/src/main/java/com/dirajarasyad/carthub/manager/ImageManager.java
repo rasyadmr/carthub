@@ -7,14 +7,21 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.net.Uri;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ImageManager {
     private Drawable image;
 
     public ImageManager(Drawable image) {
         this.image = image;
+    }
+
+    public ImageManager(Uri uri, Context context) {
+        this.image = this.getDrawableFromUri(uri, context);
     }
 
     public ImageManager(byte[] bytes, Context context) {
@@ -48,6 +55,16 @@ public class ImageManager {
             return bitmap;
         } else {
             throw new IllegalArgumentException("Unsupported drawable type");
+        }
+    }
+
+    private Drawable getDrawableFromUri(Uri uri, Context context) {
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            return new BitmapDrawable(context.getResources(), bitmap);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 }

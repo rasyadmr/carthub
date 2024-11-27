@@ -32,6 +32,7 @@
             android:id="@+id/profilePictureIV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxWidth="100dp"
             android:maxHeight="200dp"
             tools:src="@tools:sample/avatars" />
 
