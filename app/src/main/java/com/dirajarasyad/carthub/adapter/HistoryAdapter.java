@@ -1,5 +1,6 @@
 package com.dirajarasyad.carthub.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryHolder> {
     private Context context;
-    private List<Transaction> transactionList;
+    private final List<Transaction> transactionList;
 
     public HistoryAdapter(List<Transaction> transactionList) {
         this.transactionList = transactionList;
@@ -35,7 +36,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryHolder> {
     @Override
     public void onBindViewHolder(@NonNull HistoryHolder holder, int position) {
         String item = transactionList.get(position).getItem().getName();
-        String price = String.format("Rp %d", transactionList.get(position).getItem().getPrice() * transactionList.get(position).getQuantity());
+        @SuppressLint("DefaultLocale") String price = String.format("Rp %d", transactionList.get(position).getItem().getPrice() * transactionList.get(position).getQuantity());
         String status = transactionList.get(position).getStatusName();
 
         holder.historyItemDataTV.setText(item);
@@ -48,6 +49,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return transactionList.size();
     }
 }
