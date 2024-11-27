@@ -12,6 +12,7 @@
     <string name="auth_phonenumber">Phone Number</string>
     <string name="auth_address">Address</string>
     <string name="auth_picture">Profile Picture</string>
+    <string name="auth_role">Account Role</string>
 
     <string name="auth_username_placeholder">username</string>
     <string name="auth_password_placeholder" translatable="false">••••••••</string>
@@ -49,6 +50,7 @@
 
     <!--  Edit Profile Fragment  -->
     <string name="auth_edit_confirm">Password doesn\'t match with current password!</string>
+    <string name="auth_edit_request">Request Seller Role</string>
     <string name="auth_edit_save">Save changes</string>
 
     <!--  History Fragment  -->

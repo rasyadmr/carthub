@@ -19,7 +19,7 @@ import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class ProfileFragment extends Fragment {
-    private TextView profileUsernameShowTV, profileEmailShowTV, profilePhoneShowTV, profileAddressShowTV;
+    private TextView profileUsernameShowTV, profileEmailShowTV, profilePhoneShowTV, profileAddressShowTV, profileRoleShowTV;
     private Button profileEditBtn, profileLogoutBtn;
     private ImageView profilePictureIV;
     private SessionManager sessionManager;
@@ -39,11 +39,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void initial(View view) {
-
         profileUsernameShowTV = view.findViewById(R.id.profileUsernameShowTV);
         profileEmailShowTV = view.findViewById(R.id.profileEmailShowTV);
         profilePhoneShowTV = view.findViewById(R.id.profilePhoneShowTV);
         profileAddressShowTV = view.findViewById(R.id.profileAddressShowTV);
+        profileRoleShowTV = view.findViewById(R.id.profileRoleShowTV);
 
         profilePictureIV = view.findViewById(R.id.profilePictureIV);
         profileEditBtn = view.findViewById(R.id.profileEditBtn);
@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment {
         profileEmailShowTV.setText(user.getEmail());
         profilePhoneShowTV.setText(user.getPhone());
         profileAddressShowTV.setText(user.getAddress());
+        profileRoleShowTV.setText(user.getRole().value());
     }
 
     private void onClick(View view) {

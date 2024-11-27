@@ -175,11 +175,18 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/profile_editSaveBtn"
+                    android:id="@+id/profile_editRequestBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="Save" />
+                    android:text="@string/auth_edit_request" />
+
+                <Button
+                    android:id="@+id/profile_editSaveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/auth_edit_save" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

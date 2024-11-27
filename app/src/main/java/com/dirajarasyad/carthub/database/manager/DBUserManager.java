@@ -34,7 +34,7 @@ public class DBUserManager {
         dbHelper.close();
     }
 
-    public void addUser(String username, String password, String email, String phone, String address, Drawable image) {
+    public void addUser(String username, String password, String email, String phone, String address, Drawable image, User.Role role) {
         String id = "USER-" + UUID.randomUUID().toString();
         ImageManager imageManager = new ImageManager(image);
 
@@ -46,6 +46,7 @@ public class DBUserManager {
         values.put(DBHelper.FIELD_USER_PHONE, phone);
         values.put(DBHelper.FIELD_USER_ADDRESS, address);
         values.put(DBHelper.FIELD_USER_IMAGE, imageManager.getByteArray());
+        values.put(DBHelper.FIELD_USER_ROLE, role.value());
 
         database.insert(DBHelper.TABLE_USER, null, values);
         Log.i("DATABASE", "User Created");
@@ -67,8 +68,9 @@ public class DBUserManager {
                     String phone = cursor.getString(4);
                     String address = cursor.getString(5);
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+                    User.Role role = User.Role.fromString(cursor.getString(7));
 
-                    userList.add(new User(id, username, password, email, phone, address, image));
+                    userList.add(new User(id, username, password, email, phone, address, image, role));
                 } while (cursor.moveToNext());
             }
         }
@@ -79,7 +81,7 @@ public class DBUserManager {
         return userList;
     }
 
-    public boolean updateUser(String id, String username, String password, String email, String phone, String address, Drawable image) {
+    public boolean updateUser(String id, String username, String password, String email, String phone, String address, Drawable image, User.Role role) {
         ImageManager imageManager = new ImageManager(image);
 
         ContentValues values = new ContentValues();
@@ -89,6 +91,7 @@ public class DBUserManager {
         values.put(DBHelper.FIELD_USER_PHONE, phone);
         values.put(DBHelper.FIELD_USER_ADDRESS, address);
         values.put(DBHelper.FIELD_USER_IMAGE, imageManager.getByteArray());
+        values.put(DBHelper.FIELD_USER_ROLE, role.value());
 
         int updateUser = database.update(DBHelper.TABLE_USER, values, DBHelper.FIELD_USER_ID + " = ?", new String[]{id});
 
@@ -117,8 +120,9 @@ public class DBUserManager {
                 String phone = cursor.getString(4);
                 String address = cursor.getString(5);
                 Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+                User.Role role = User.Role.fromString(cursor.getString(7));
 
-                user = new User(id, username, password, email, phone, address, image);
+                user = new User(id, username, password, email, phone, address, image, role);
             }
         }
 
@@ -142,8 +146,9 @@ public class DBUserManager {
                 String phone = cursor.getString(4);
                 String address = cursor.getString(5);
                 Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+                User.Role role = User.Role.fromString(cursor.getString(7));
 
-                user = new User(id, username, password, email, phone, address, image);
+                user = new User(id, username, password, email, phone, address, image, role);
             }
         }
 

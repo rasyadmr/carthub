@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_USER_PHONE = "phonenumber";
     public static final String FIELD_USER_ADDRESS = "address";
     public static final String FIELD_USER_IMAGE = "image";
+    public static final String FIELD_USER_ROLE = "role";
     public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "("
             + FIELD_USER_ID + " TEXT PRIMARY KEY,"
             + FIELD_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
@@ -25,7 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_USER_EMAIL + " TEXT NOT NULL UNIQUE,"
             + FIELD_USER_PHONE + " TEXT NOT NULL,"
             + FIELD_USER_ADDRESS + " TEXT NOT NULL,"
-            + FIELD_USER_IMAGE + " BLOB NOT NULL)";
+            + FIELD_USER_IMAGE + " BLOB NOT NULL,"
+            + FIELD_USER_ROLE + " TEXT NOT NULL)";
 
     // TABLE CATEGORY
     public static final String TABLE_CATEGORY = "categories";

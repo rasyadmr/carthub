@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
@@ -31,10 +32,11 @@ public class ProfileEditFragment extends Fragment {
     private TextView profile_editTitleTV, profile_editProfileTV, profile_editUsernameTV, profile_editPasswordTV, profile_editEmailTV, profile_editPhoneTV, profile_editAddressTV, profile_editConfirmTV, profile_editProfileErrorTV, profile_editUsernameErrorTV, profile_editPasswordErrorTV, profile_editEmailErrorTV, profile_editPhoneErrorTV, profile_editAddressErrorTV, profile_editConfirmErrorTV;
     private ImageView profile_editProfileIV;
     private EditText profile_editUsernameET, profile_editPasswordET, profile_editEmailET, profile_editPhoneET, profile_editAddressET, profile_editConfirmET;
-    private Button profile_editSaveBtn;
+    private Button profile_editSaveBtn, profile_editRequestBtn;
     private User user;
     private ActivityResultLauncher<PickVisualMediaRequest> pickLauncher;
     private Uri uri;
+    private Boolean requested = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +47,7 @@ public class ProfileEditFragment extends Fragment {
         this.onBind();
 
         profile_editProfileIV.setOnClickListener(this::onClick);
+        profile_editRequestBtn.setOnClickListener(this::onClick);
         profile_editSaveBtn.setOnClickListener(this::onClick);
 
         return view;
@@ -77,6 +80,7 @@ public class ProfileEditFragment extends Fragment {
 
         profile_editProfileIV = view.findViewById(R.id.profile_editProfileIV);
 
+        profile_editRequestBtn = view.findViewById(R.id.profile_editRequestBtn);
         profile_editSaveBtn = view.findViewById(R.id.profile_editSaveBtn);
 
         SessionManager sessionManager = new SessionManager(requireContext());
@@ -100,6 +104,10 @@ public class ProfileEditFragment extends Fragment {
         profile_editEmailET.setText(user.getEmail());
         profile_editPhoneET.setText(user.getPhone());
         profile_editAddressET.setText(user.getAddress());
+
+        if (user.getRole() != User.Role.NORMAL) {
+            profile_editRequestBtn.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void onClick(View view) {
@@ -120,13 +128,21 @@ public class ProfileEditFragment extends Fragment {
                 image = new ImageManager(this.uri, requireContext()).getImage();
             }
 
+            User.Role role = (requested) ? User.Role.REQUESTED : user.getRole();
+
             if (validateInput(username, password, email, phone, confirm)) {
                 DBUserManager userManager = new DBUserManager(requireContext());
                 userManager.open();
-                userManager.updateUser(user.getId(), username, password, email, phone, address, image);
+                userManager.updateUser(user.getId(), username, password, email, phone, address, image, role);
                 userManager.close();
 
                 requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        } else if (view == profile_editRequestBtn) {
+            if (this.requested) {
+                Toast.makeText(requireContext(), "Already requested, please save changes!", Toast.LENGTH_SHORT).show();
+            } else {
+                this.requested = true;
             }
         } else if (view == profile_editProfileIV) {
             PickerManager pickerManager = new PickerManager(pickLauncher);
