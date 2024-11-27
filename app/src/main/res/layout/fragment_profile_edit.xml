@@ -21,6 +21,7 @@
                 android:id="@+id/profile_editTitleTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="@string/profile_edit"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -29,14 +30,14 @@
                 android:id="@+id/profile_editProfileTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/auth_picture"
                 android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/profile_editProfileIV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:maxHeight="200dp"
                 android:minHeight="100dp"
                 tools:src="@drawable/baseline_person_24" />

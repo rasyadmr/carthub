@@ -99,6 +99,7 @@ public class ProfileEditFragment extends Fragment {
     }
 
     private void onBind() {
+        profile_editProfileIV.setImageDrawable(user.getImage());
         profile_editUsernameET.setText(user.getUsername());
         profile_editPasswordET.setText(user.getPassword());
         profile_editEmailET.setText(user.getEmail());

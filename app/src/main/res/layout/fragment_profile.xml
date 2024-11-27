@@ -25,15 +25,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Profile Picture"
+            android:text="@string/auth_picture"
             android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/profilePictureIV"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxWidth="100dp"
-            android:maxHeight="200dp"
+            android:layout_height="150dp"
             tools:src="@tools:sample/avatars" />
 
         <TextView
