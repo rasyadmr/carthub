@@ -19,7 +19,7 @@ import java.util.List;
 public class CartAdapter extends RecyclerView.Adapter<CartHolder> {
     private Context context;
     private final List<Cart> cartList;
-    private OnCartEmptyListener onCartEmptyListener;
+    private final OnCartEmptyListener onCartEmptyListener;
 
     public CartAdapter(List<Cart> cartList, OnCartEmptyListener onCartEmptyListener) {
         this.cartList = cartList;

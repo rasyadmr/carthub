@@ -1,5 +1,6 @@
 package com.dirajarasyad.carthub.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dirajarasyad.carthub.CheckoutActivity;
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.CartAdapter;
 import com.dirajarasyad.carthub.manager.SessionManager;
@@ -56,6 +58,19 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyLis
         CartAdapter cartAdapter = new CartAdapter(cartList, this);
         cartItemRV.setLayoutManager(new LinearLayoutManager(requireContext()));
         cartItemRV.setAdapter(cartAdapter);
+
+        cartCheckoutBtn.setOnClickListener(this::onClick);
+    }
+
+    private void onClick(View view) {
+        Intent checkout = new Intent(requireActivity(), CheckoutActivity.class);
+        requireActivity().startActivity(checkout);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.onBind();
     }
 
     @Override

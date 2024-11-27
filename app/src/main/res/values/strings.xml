@@ -68,7 +68,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    Checkout Activity-->
-
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_total">Grand Total</string>
+    <string name="checkout_pay">Pay</string>
 
     <!--    History Activity-->
 
