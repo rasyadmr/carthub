@@ -19,7 +19,7 @@ import java.util.List;
 
 public class TopAdapter extends RecyclerView.Adapter<TopHolder> {
     private Context context;
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public TopAdapter(List<Item> itemList) {
         this.itemList = itemList;
@@ -45,6 +45,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopHolder> {
         holder.topNameTV.setText(name);
         holder.topPriceTV.setText(String.format("Rp %d", price));
         holder.topRatingTV.setText(rating);
+        holder.topImageIV.setImageDrawable(itemList.get(position).getImage());
         holder.topContainerLL.setOnClickListener(view -> {
             Intent itempage = new Intent(context, ItemActivity.class);
             itempage.putExtra("item_id", itemList.get(position).getId());

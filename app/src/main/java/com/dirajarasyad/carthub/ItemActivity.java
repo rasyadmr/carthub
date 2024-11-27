@@ -23,7 +23,7 @@ import com.dirajarasyad.carthub.model.Item;
 public class ItemActivity extends AppCompatActivity {
     private TextView itemNameTV, itemPriceTV, itemRatingTV, itemStockTV, itemSellerTV, itemCategoryTV, itemDescriptionTV, itemQuantityTV, itemPriceCheckoutTV;
     private Button itemCartBtn;
-    private ImageView itemMinusIV, itemPlusIV;
+    private ImageView itemImageIV, itemMinusIV, itemPlusIV;
     private Item item;
     private Integer quantity = 1;
 
@@ -56,6 +56,7 @@ public class ItemActivity extends AppCompatActivity {
         itemDescriptionTV = findViewById(R.id.itemDescriptionTV);
         itemPriceCheckoutTV = findViewById(R.id.itemPriceCheckoutTV);
 
+        itemImageIV = findViewById(R.id.itemImageIV);
         itemMinusIV = findViewById(R.id.itemMinusIV);
         itemPlusIV = findViewById(R.id.itemPlusIV);
 
@@ -70,8 +71,9 @@ public class ItemActivity extends AppCompatActivity {
         itemManager.close();
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     private void onBind() {
+        itemImageIV.setImageDrawable(item.getImage());
         itemNameTV.setText(item.getName());
         itemPriceTV.setText(String.format("Rp %d", item.getPrice()));
         itemRatingTV.setText(String.format("Rating: %d", item.getRating()));
@@ -84,7 +86,7 @@ public class ItemActivity extends AppCompatActivity {
         itemPriceCheckoutTV.setText(String.format("Rp %d", item.getPrice() * quantity));
     }
 
-    @SuppressLint("DefaultLocale")
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     private void onClick(View view) {
         if (view == itemMinusIV) {
             if (quantity > 1) {

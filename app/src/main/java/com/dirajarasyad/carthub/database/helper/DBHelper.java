@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "carthub";
 
     // TABLE USER
@@ -47,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_ITEM_PRICE = "price";
     public static final String FIELD_ITEM_STOCK = "stock";
     public static final String FIELD_ITEM_RATING = "rating";
+    public static final String FIELD_ITEM_IMAGE = "image";
     public static final String FIELD_ITEM_USER = "userId";
     public static final String FIELD_ITEM_CATEGORY = "categoryId";
     public static final String CREATE_TABLE_ITEM = "CREATE TABLE " + TABLE_ITEM + "("
@@ -56,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_ITEM_PRICE + " INTEGER NOT NULL,"
             + FIELD_ITEM_STOCK + " INTEGER NOT NULL,"
             + FIELD_ITEM_RATING + " INTEGER NOT NULL,"
+            + FIELD_ITEM_IMAGE + " BLOB NOT NULL,"
             + FIELD_ITEM_USER + " TEXT NOT NULL,"
             + FIELD_ITEM_CATEGORY + " TEXT NOT NULL,"
             + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"

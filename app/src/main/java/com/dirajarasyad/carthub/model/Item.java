@@ -1,20 +1,24 @@
 package com.dirajarasyad.carthub.model;
 
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 
 public class Item implements Serializable {
     private String id, name, description;
     private Integer price, stock, rating;
+    private Drawable image;
     private User user;
     private Category category;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, User user, Category category) {
+    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
         this.rating = rating;
+        this.image = image;
         this.user = user;
         this.category = category;
     }
@@ -65,6 +69,14 @@ public class Item implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Drawable getImage() {
+        return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
     }
 
     public User getUser() {
