@@ -147,14 +147,56 @@ public class DBItemManager {
         String ORDER = ascending? "ASC" : "DESC";
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
                 + " ORDER BY " + DBHelper.FIELD_ITEM_RATING + " " + ORDER
-                + " LIMIT " + top;
+                + " LIMIT ?";
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
         DBCategoryManager categoryManager = new DBCategoryManager(context);
         categoryManager.open();
 
-        Cursor cursor = database.rawQuery(rawQuery, null);
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{top.toString()});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String description = cursor.getString(2);
+                    Integer price = cursor.getInt(3);
+                    Integer stock = cursor.getInt(4);
+                    Integer rating = cursor.getInt(5);
+                    User user = userManager.getUserById(cursor.getString(6));
+                    Category category = categoryManager.getCategoryById(cursor.getString(7));
+
+                    itemList.add(new Item(id, name, description, price, stock, rating, user, category));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+
+        Log.i("DATABASE", "Fetched Top Item List by Rating");
+        return itemList;
+    }
+
+    public List<Item> getTopSeller(Integer top, Boolean ascending, String userId) {
+        List<Item> itemList = new ArrayList<>();
+        String ORDER = ascending? "ASC" : "DESC";
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
+                + " JOIN " + DBHelper.TABLE_USER + " ON "
+                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = "
+                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_USER
+                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = ?"
+                + " ORDER BY " + DBHelper.FIELD_ITEM_RATING + " " + ORDER
+                + " LIMIT ?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{userId, top.toString()});
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {

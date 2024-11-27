@@ -134,15 +134,14 @@ public class DBCartManager {
                 + " JOIN " + DBHelper.TABLE_USER
                 + " ON " + DBHelper.TABLE_CART + "." + DBHelper.FIELD_CART_USER + " = "
                 + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
-                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = '"
-                + user.getId() + "'";
+                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = ?";
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
         DBItemManager itemManager = new DBItemManager(context);
         itemManager.open();
 
-        Cursor cursor = database.rawQuery(rawQuery, null);
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{user.getId()});
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {

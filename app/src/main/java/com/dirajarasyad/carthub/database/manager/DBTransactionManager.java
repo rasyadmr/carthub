@@ -142,14 +142,14 @@ public class DBTransactionManager {
                 + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID + " = "
                 + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
                 + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
-                + " = '" + userId + "'";
+                + " = ?";
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
         DBItemManager itemManager = new DBItemManager(context);
         itemManager.open();
 
-        Cursor cursor = database.rawQuery(rawQuery, null);
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{userId});
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
