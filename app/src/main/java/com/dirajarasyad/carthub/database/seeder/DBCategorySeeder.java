@@ -6,11 +6,10 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
-import com.dirajarasyad.carthub.model.Category;
 
 public class DBCategorySeeder {
     private final DBCategoryManager categoryManager;
-    private Context context;
+    private final Context context;
 
     public DBCategorySeeder(Context context) {
         this.categoryManager = new DBCategoryManager(context);

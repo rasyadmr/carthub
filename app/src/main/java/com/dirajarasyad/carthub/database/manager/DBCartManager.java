@@ -127,4 +127,39 @@ public class DBCartManager {
         Log.i("DATABASE", "Fetched Cart by ID");
         return cart;
     }
+
+    public List<Cart> getAllCartsByUser(User user) {
+        List<Cart> cartList = new ArrayList<>();
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_CART
+                + " JOIN " + DBHelper.TABLE_USER
+                + " ON " + DBHelper.TABLE_CART + "." + DBHelper.FIELD_CART_USER + " = "
+                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
+                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = ?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{user.getId()});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    Item item = itemManager.getItemById(cursor.getString(2));
+                    Integer quantity = cursor.getInt(3);
+
+                    cartList.add(new Cart(id, user, item, quantity));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+        itemManager.close();
+
+        Log.i("DATABASE", "Fetched Cart List by User");
+        return cartList;
+    }
 }

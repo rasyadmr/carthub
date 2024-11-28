@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.adapter.HistoryAdapter;
-import com.dirajarasyad.carthub.auth.SessionManager;
+import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
+import com.dirajarasyad.carthub.model.User;
 
 public class HistoryFragment extends Fragment {
-    private TextView historyTitleTV, historyItemTV, historyPriceTV, historyStatusTV;
     private RecyclerView historyDataRV;
 
     @Override
@@ -26,21 +25,21 @@ public class HistoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
 
         this.initial(view);
+        this.onBind();
 
         return view;
     }
 
     private void initial(View view) {
-        historyTitleTV = view.findViewById(R.id.historyTitleTV);
-        historyItemTV = view.findViewById(R.id.historyItemTV);
-        historyPriceTV = view.findViewById(R.id.historyPriceTV);
-        historyStatusTV = view.findViewById(R.id.historyStatusTV);
         historyDataRV = view.findViewById(R.id.historyDataRV);
+    }
 
+    private void onBind() {
         SessionManager sessionManager = new SessionManager(requireContext());
+        User user = sessionManager.getUser();
         DBTransactionManager transactionManager = new DBTransactionManager(requireContext());
         transactionManager.open();
-        HistoryAdapter adapter = new HistoryAdapter(transactionManager.getUserTransactionList(sessionManager.getUser().getId()));
+        HistoryAdapter adapter = new HistoryAdapter(transactionManager.getUserTransactionList(user));
         transactionManager.close();
 
         historyDataRV.setLayoutManager(new LinearLayoutManager(requireContext()));

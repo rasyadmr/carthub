@@ -17,13 +17,17 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_USER_EMAIL = "email";
     public static final String FIELD_USER_PHONE = "phonenumber";
     public static final String FIELD_USER_ADDRESS = "address";
+    public static final String FIELD_USER_IMAGE = "image";
+    public static final String FIELD_USER_ROLE = "role";
     public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "("
             + FIELD_USER_ID + " TEXT PRIMARY KEY,"
             + FIELD_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
             + FIELD_USER_PASSWORD + " TEXT NOT NULL,"
             + FIELD_USER_EMAIL + " TEXT NOT NULL UNIQUE,"
             + FIELD_USER_PHONE + " TEXT NOT NULL,"
-            + FIELD_USER_ADDRESS + " TEXT NOT NULL)";
+            + FIELD_USER_ADDRESS + " TEXT NOT NULL,"
+            + FIELD_USER_IMAGE + " BLOB NOT NULL,"
+            + FIELD_USER_ROLE + " TEXT NOT NULL)";
 
     // TABLE CATEGORY
     public static final String TABLE_CATEGORY = "categories";
@@ -43,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_ITEM_PRICE = "price";
     public static final String FIELD_ITEM_STOCK = "stock";
     public static final String FIELD_ITEM_RATING = "rating";
+    public static final String FIELD_ITEM_IMAGE = "image";
     public static final String FIELD_ITEM_USER = "userId";
     public static final String FIELD_ITEM_CATEGORY = "categoryId";
     public static final String CREATE_TABLE_ITEM = "CREATE TABLE " + TABLE_ITEM + "("
@@ -52,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_ITEM_PRICE + " INTEGER NOT NULL,"
             + FIELD_ITEM_STOCK + " INTEGER NOT NULL,"
             + FIELD_ITEM_RATING + " INTEGER NOT NULL,"
+            + FIELD_ITEM_IMAGE + " BLOB NOT NULL,"
             + FIELD_ITEM_USER + " TEXT NOT NULL,"
             + FIELD_ITEM_CATEGORY + " TEXT NOT NULL,"
             + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"

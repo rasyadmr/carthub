@@ -4,16 +4,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.dirajarasyad.carthub.database.helper.DBHelper;
 import com.dirajarasyad.carthub.model.Category;
-import com.dirajarasyad.carthub.utilities.Image;
+import com.dirajarasyad.carthub.manager.ImageManager;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -39,7 +36,7 @@ public class DBCategoryManager {
 
     public void addCategory(String name, Drawable image) {
         String id = "CATE-" + UUID.randomUUID().toString();
-        Image img = new Image(image);
+        ImageManager img = new ImageManager(image);
         byte[] imageBytes = img.getByteArray();
 
         ContentValues values = new ContentValues();
@@ -62,7 +59,7 @@ public class DBCategoryManager {
                 do {
                     String id = cursor.getString(0);
                     String name = cursor.getString(1);
-                    Drawable image = new Image(cursor.getBlob(2), this.context).getImage();
+                    Drawable image = new ImageManager(cursor.getBlob(2), this.context).getImage();
 
                     categoryList.add(new Category(id, name, image));
                 } while (cursor.moveToNext());
@@ -78,7 +75,7 @@ public class DBCategoryManager {
     public boolean updateCategory(String id, String name, Drawable image) {
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_CATEGORY_NAME, name);
-        values.put(DBHelper.FIELD_CATEGORY_IMAGE, new Image(image).getByteArray());
+        values.put(DBHelper.FIELD_CATEGORY_IMAGE, new ImageManager(image).getByteArray());
 
         int updateCategory = database.update(DBHelper.TABLE_CATEGORY, values, DBHelper.FIELD_CATEGORY_ID + " = ?", new String[]{id});
 
@@ -102,7 +99,7 @@ public class DBCategoryManager {
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 String name = cursor.getString(1);
-                Drawable image = new Image(cursor.getBlob(2), this.context).getImage();
+                Drawable image = new ImageManager(cursor.getBlob(2), this.context).getImage();
 
                 category = new Category(id, name, image);
             }
@@ -123,7 +120,7 @@ public class DBCategoryManager {
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 String id = cursor.getString(0);
-                Drawable image = new Image(cursor.getBlob(2), this.context).getImage();
+                Drawable image = new ImageManager(cursor.getBlob(2), this.context).getImage();
 
                 category = new Category(id, name, image);
             }

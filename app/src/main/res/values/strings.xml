@@ -11,6 +11,8 @@
     <string name="auth_email">Email</string>
     <string name="auth_phonenumber">Phone Number</string>
     <string name="auth_address">Address</string>
+    <string name="auth_picture">Profile Picture</string>
+    <string name="auth_role">Account Role</string>
 
     <string name="auth_username_placeholder">username</string>
     <string name="auth_password_placeholder" translatable="false">••••••••</string>
@@ -36,8 +38,13 @@
     <string name="menu_cart">Cart</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_history">History</string>
+    <string name="menu_seller">Seller Panel</string>
+    <string name="menu_admin">Admin Panel</string>
 
     <!--  Home Fragment  -->
+    <string name="home_category">Categories</string>
+    <string name="home_top">Top Rated Items</string>
+    <string name="home_top_seller">Top Owned Rated Items</string>
 
     <!--  Cart Fragment  -->
     <string name="cart_checkout">Check Out</string>
@@ -46,19 +53,42 @@
     <string name="profile_edit">Edit Profile</string>
     <string name="profile_logout">Log Out</string>
 
+    <!--  Edit Profile Fragment  -->
+    <string name="auth_edit_confirm">Password doesn\'t match with current password!</string>
+    <string name="auth_edit_request">Request Seller Role</string>
+    <string name="auth_edit_save">Save changes</string>
+
     <!--  History Fragment  -->
     <string name="history_item">Item</string>
     <string name="history_status">Status</string>
     <string name="history_item_header">Item</string>
     <string name="history_price_header">Price</string>
     <string name="history_status_header">Status</string>
+    
+    <!--  History Detail Fragment  -->
+    <string name="history_detail_title">History Detail</string>
+    <string name="history_detail_item">Transaction Detail</string>
+    <string name="history_detail_transaction_id">Transaction ID</string>
+    <string name="history_detail_item_price">Item Price</string>
+    <string name="history_detail_transaction_quantity">Quantity</string>
+    <string name="history_detail_transaction_total">Total Price</string>
+    <string name="history_detail_transaction_status">Transaction Status</string>
+
+    <string name="history_detail_user">User Detail</string>
+    <string name="history_detail_user_username">Username</string>
+    <string name="history_detail_user_email">Email</string>
+    <string name="history_detail_user_phone">Phone Number</string>
+    <string name="history_detail_user_address">Address</string>
 
     <!--    Item Activity-->
-
+    <string name="item_rating">Rating: </string>
+    <string name="item_stock">Stock: </string>
+    <string name="item_add">Add to Cart</string>
 
     <!--    Checkout Activity-->
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_total">Grand Total</string>
+    <string name="checkout_pay">Pay</string>
 
-
-    <!--    History Activity-->
 
 </resources>

@@ -35,13 +35,12 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="0dp"
         app:backgroundTint="@color/backgroundColor"
         app:itemIconTint="@color/primaryColor"
+        app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemTextColor="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:itemTextAppearanceActiveBoldEnabled="true"
         app:menu="@menu/navbar_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,7 +63,7 @@ public class DBTransactionManager {
             if (cursor.moveToFirst()) {
                 do {
                     String id = cursor.getString(0);
-                    Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
+                    Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                     User user = userManager.getUserById(cursor.getString(2));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
@@ -115,7 +115,7 @@ public class DBTransactionManager {
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 String transactionId = cursor.getString(0);
-                Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
+                Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                 User user = userManager.getUserById(cursor.getString(2));
                 Item item = itemManager.getItemById(cursor.getString(3));
                 Integer quantity = cursor.getInt(4);
@@ -132,31 +132,29 @@ public class DBTransactionManager {
         return transaction;
     }
 
-    public List<Transaction> getUserTransactionList(String userId) {
+    public List<Transaction> getUserTransactionList(User user) {
         List<Transaction> transactionList = new ArrayList<>();
+        String userId = user.getId();
+
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_TRANSACTION
-                + " JOIN " + DBHelper.TABLE_ITEM + " ON "
-                + DBHelper.TABLE_TRANSACTION + "." + DBHelper.FIELD_TRANSACTION_ITEM + " = "
-                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID
                 + " JOIN " + DBHelper.TABLE_USER + " ON "
-                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID + " = "
+                + DBHelper.TABLE_TRANSACTION + "." + DBHelper.FIELD_TRANSACTION_USER + " = "
                 + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
                 + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
-                + " = '" + userId + "'";
+                + " = ?";
 
         DBUserManager userManager = new DBUserManager(context);
         userManager.open();
         DBItemManager itemManager = new DBItemManager(context);
         itemManager.open();
 
-        Cursor cursor = database.rawQuery(rawQuery, null);
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{userId});
 
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 do {
                     String id = cursor.getString(0);
-                    Transaction.Status status = Transaction.Status.valueOf(cursor.getString(1));
-                    User user = userManager.getUserById(cursor.getString(2));
+                    Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
 
@@ -170,6 +168,48 @@ public class DBTransactionManager {
         itemManager.close();
 
         Log.i("DATABASE", "Fetched Transaction by User");
+        return transactionList;
+    }
+
+    public List<Transaction> getSellerTransactionList(User user) {
+        List<Transaction> transactionList = new ArrayList<>();
+        String userId = user.getId();
+
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_TRANSACTION
+                + " JOIN " + DBHelper.TABLE_ITEM + " ON "
+                + DBHelper.TABLE_TRANSACTION + "." + DBHelper.FIELD_TRANSACTION_ITEM + " = "
+                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID
+                + " JOIN " + DBHelper.TABLE_USER + " ON "
+                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_ID + " = "
+                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
+                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID
+                + " = ?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{userId});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
+                    Item item = itemManager.getItemById(cursor.getString(3));
+                    Integer quantity = cursor.getInt(4);
+
+                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+        itemManager.close();
+
+        Log.i("DATABASE", "Fetched Transaction by User (Seller)");
         return transactionList;
     }
 }
