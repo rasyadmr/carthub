@@ -38,8 +38,13 @@
     <string name="menu_cart">Cart</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_history">History</string>
+    <string name="menu_seller">Seller Panel</string>
+    <string name="menu_admin">Admin Panel</string>
 
     <!--  Home Fragment  -->
+    <string name="home_category">Categories</string>
+    <string name="home_top">Top Rated Items</string>
+    <string name="home_top_seller">Top Owned Rated Items</string>
 
     <!--  Cart Fragment  -->
     <string name="cart_checkout">Check Out</string>
@@ -64,8 +69,6 @@
     <string name="item_rating">Rating: </string>
     <string name="item_stock">Stock: </string>
     <string name="item_add">Add to Cart</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--    Checkout Activity-->
     <string name="checkout_title">Checkout</string>

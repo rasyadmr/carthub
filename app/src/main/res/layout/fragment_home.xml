@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Category"
+                android:text="@string/home_category"
                 android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Top Rate Item"
+                android:text="@string/home_top"
                 android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView

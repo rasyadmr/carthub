@@ -19,4 +19,9 @@
         android:id="@+id/navProfile"
         android:icon="@drawable/baseline_person_24"
         android:title="@string/menu_profile" />
+
+    <item
+        android:id="@+id/navRole"
+        android:icon="@drawable/baseline_business_24"
+        android:title="@string/menu_seller" />
 </menu>

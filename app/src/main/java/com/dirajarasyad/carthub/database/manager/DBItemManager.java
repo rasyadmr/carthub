@@ -190,8 +190,10 @@ public class DBItemManager {
         return itemList;
     }
 
-    public List<Item> getTopSeller(Integer top, Boolean ascending, String userId) {
+    public List<Item> getTopSeller(Integer top, Boolean ascending, User user) {
         List<Item> itemList = new ArrayList<>();
+        String userId = user.getId();
+
         String ORDER = ascending? "ASC" : "DESC";
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
                 + " JOIN " + DBHelper.TABLE_USER + " ON "
@@ -218,7 +220,6 @@ public class DBItemManager {
                     Integer stock = cursor.getInt(4);
                     Integer rating = cursor.getInt(5);
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
-                    User user = userManager.getUserById(cursor.getString(7));
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
 
                     itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
