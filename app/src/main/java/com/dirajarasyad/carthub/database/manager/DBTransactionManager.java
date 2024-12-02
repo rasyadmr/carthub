@@ -212,4 +212,38 @@ public class DBTransactionManager {
         Log.i("DATABASE", "Fetched Transaction by User (Seller)");
         return transactionList;
     }
+
+    public List<Transaction> getAllTransactionsByItem(Item item) {
+        List<Transaction> transactionList = new ArrayList<>();
+        String itemId = item.getId();
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_TRANSACTION
+                + " WHERE " + DBHelper.FIELD_TRANSACTION_ITEM + " =?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBItemManager itemManager = new DBItemManager(context);
+        itemManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{itemId});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
+                    User user = userManager.getUserById(cursor.getString(2));
+                    Integer quantity = cursor.getInt(4);
+
+                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+        itemManager.close();
+
+        Log.i("DATABASE", "Fetched Transaction List by Item");
+        return transactionList;
+    }
 }

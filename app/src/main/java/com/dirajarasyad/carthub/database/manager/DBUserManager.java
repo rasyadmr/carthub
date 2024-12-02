@@ -99,8 +99,9 @@ public class DBUserManager {
         return updateUser > 0; // true -> Success, false -> Fail
     }
 
-    public boolean deleteUser(String id) {
-        int deleteUser = database.delete(DBHelper.TABLE_USER, DBHelper.FIELD_USER_ID + " = ?", new String[]{id});
+    public boolean deleteUser(User user) {
+        String userId = user.getId();
+        int deleteUser = database.delete(DBHelper.TABLE_USER, DBHelper.FIELD_USER_ID + " = ?", new String[]{userId});
 
         Log.i("DATABASE", "User Deleted");
         return deleteUser > 0;
@@ -156,5 +157,34 @@ public class DBUserManager {
 
         Log.i("DATABASE", "Fetched User by Username");
         return user;
+    }
+
+    public List<User> getAllUsersByRole(User.Role role) {
+        List<User> userList = new ArrayList<>();
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_USER
+                + " WHERE " + DBHelper.FIELD_USER_ROLE + " =?";
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{role.value()});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    String username = cursor.getString(1);
+                    String password = cursor.getString(2);
+                    String email = cursor.getString(3);
+                    String phone = cursor.getString(4);
+                    String address = cursor.getString(5);
+                    Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+
+                    userList.add(new User(id, username, password, email, phone, address, image, role));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+
+        Log.i("DATABASE", "Fetched User List by Role");
+        return userList;
     }
 }

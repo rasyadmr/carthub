@@ -60,8 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Name" />
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/profile_editUsernameErrorTV"
@@ -172,6 +171,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
                 android:gravity="bottom"
                 android:orientation="vertical">
 
@@ -179,8 +179,32 @@
                     android:id="@+id/profile_editRequestBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="8dp"
                     android:text="@string/auth_edit_request" />
+
+                <Button
+                    android:id="@+id/profile_editAcceptBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/success"
+                    android:text="@string/auth_edit_accept" />
+
+                <Button
+                    android:id="@+id/profile_editCancelBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/danger"
+                    android:text="@string/auth_edit_cancel" />
+
+                <Button
+                    android:id="@+id/profile_editDeleteBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/danger"
+                    android:text="@string/auth_edit_delete" />
 
                 <Button
                     android:id="@+id/profile_editSaveBtn"
@@ -188,6 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/auth_edit_save" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

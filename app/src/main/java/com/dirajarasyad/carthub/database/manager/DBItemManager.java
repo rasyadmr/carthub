@@ -110,8 +110,9 @@ public class DBItemManager {
         return updateItem > 0;
     }
 
-    public boolean deleteItem(String id) {
-        int deleteItem = database.delete(DBHelper.TABLE_ITEM, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{id});
+    public boolean deleteItem(Item item) {
+        String itemId = item.getId();
+        int deleteItem = database.delete(DBHelper.TABLE_ITEM, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{itemId});
 
         Log.i("DATABASE", "Item Deleted");
         return deleteItem > 0;

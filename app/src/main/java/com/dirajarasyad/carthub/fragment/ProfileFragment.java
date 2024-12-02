@@ -30,7 +30,7 @@ public class ProfileFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
         this.initial(view);
-        this.applyData();
+        this.onBind();
 
         profileEditBtn.setOnClickListener(this::onClick);
         profileLogoutBtn.setOnClickListener(this::onClick);
@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         sessionManager = new SessionManager(requireContext());
     }
 
-    private void applyData() {
+    private void onBind() {
         User user = sessionManager.getUser();
 
         profilePictureIV.setImageDrawable(sessionManager.getUser().getImage());
@@ -65,8 +65,14 @@ public class ProfileFragment extends Fragment {
 
     private void onClick(View view) {
         if (view == profileEditBtn) {
+            Bundle bundle = new Bundle();
+            bundle.putString("user_id", sessionManager.getUser().getId());
+
+            ProfileEditFragment profileEdit = new ProfileEditFragment();
+            profileEdit.setArguments(bundle);
+
             FragmentManager fragmentManager = getParentFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.homeContainerFL, new ProfileEditFragment())
+            fragmentManager.beginTransaction().replace(R.id.homeContainerFL, profileEdit)
                     .addToBackStack(null)
                     .commit();
         } else if (view == profileLogoutBtn) {

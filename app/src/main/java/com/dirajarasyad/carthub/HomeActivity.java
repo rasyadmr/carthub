@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 
+import com.dirajarasyad.carthub.fragment.AdminFragment;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.fragment.CartFragment;
 import com.dirajarasyad.carthub.fragment.HistoryFragment;
@@ -94,8 +95,7 @@ public class HomeActivity extends AppCompatActivity {
                 // TODO Seller Panel
                 Toast.makeText(this, "Seller Panel Clicked!", Toast.LENGTH_SHORT).show();
             } else if ((itemId == R.id.navRole) & (user.getRole() == User.Role.ADMIN)) {
-                // TODO Admin Panel
-                Toast.makeText(this, "Admin Panel Clicked!", Toast.LENGTH_SHORT).show();
+                selectedFragment = new AdminFragment();
             } else {
                 return false;
             }

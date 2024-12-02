@@ -73,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerAddressErrorTV = findViewById(R.id.registerAddressErrorTV);
 
         registerImageIV = findViewById(R.id.registerImageIV);
+        registerImageIV.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.baseline_person_100));
         registerSubmitBtn = findViewById(R.id.registerSubmitBtn);
 
         pickLauncher = registerForActivityResult(
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
             Drawable image;
 
             if (uri == null) {
-                image = AppCompatResources.getDrawable(this, R.drawable.baseline_person_24);
+                image = AppCompatResources.getDrawable(this, R.drawable.baseline_person_100);
             } else {
                 image = new ImageManager(this.uri, this).getImage();
             }

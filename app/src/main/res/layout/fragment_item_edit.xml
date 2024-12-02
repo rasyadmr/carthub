@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ItemEditFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/item_editButtonLL"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/item_editImageIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/item_editNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_name" />
+
+            <EditText
+                android:id="@+id/item_editNameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/item_editNameErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_editPriceTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_price" />
+
+            <EditText
+                android:id="@+id/item_editPriceET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/item_editPriceErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_editRatingTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_rating" />
+
+            <EditText
+                android:id="@+id/item_editRatingET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/item_editStockTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_stock" />
+
+            <EditText
+                android:id="@+id/item_editStockET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/item_editStockErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_editSellerTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_seller" />
+
+            <EditText
+                android:id="@+id/item_editSellerET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:enabled="false"
+                android:focusable="false"
+                android:inputType="text"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/item_editCategoryTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_category" />
+
+            <Spinner
+                android:id="@+id/item_editCategorySpn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_editCategoryErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/item_editDescriptionTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_description" />
+
+            <EditText
+                android:id="@+id/item_editDescriptionET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/item_editButtonLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/item_editSaveBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="@string/auth_edit_save" />
+
+        <ImageView
+            android:id="@+id/item_editDeleteIV"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:src="@drawable/baseline_delete_forever_24" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
