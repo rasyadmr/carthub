@@ -2,6 +2,7 @@ package com.dirajarasyad.carthub.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.R;
+import com.dirajarasyad.carthub.fragment.CategoryFragment;
 import com.dirajarasyad.carthub.holder.CategoryHolder;
 import com.dirajarasyad.carthub.model.Category;
 
@@ -46,8 +50,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder>{
         holder.homeCategoryTV.setText(name);
 
         holder.homeCategoryCardView.setOnClickListener(v -> {
-            // TODO Category Detail Activity
-            Toast.makeText(context, "Berhasil", Toast.LENGTH_SHORT).show();
+            Bundle bundle = new Bundle();
+            bundle.putString("category_id", categoryList.get(position).getId());
+
+            CategoryFragment categoryFragment = new CategoryFragment();
+            categoryFragment.setArguments(bundle);
+
+            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, categoryFragment).addToBackStack(null).commit();
         });
     }
 

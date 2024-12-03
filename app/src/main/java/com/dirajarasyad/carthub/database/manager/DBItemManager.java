@@ -234,4 +234,42 @@ public class DBItemManager {
         Log.i("DATABASE", "Fetched Top Item List by Rating");
         return itemList;
     }
+
+    public List<Item> getAllItemsByCategory(Category category) {
+        List<Item> itemList = new ArrayList<>();
+        String categoryId = category.getId();
+
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
+                + " WHERE " + DBHelper.FIELD_ITEM_CATEGORY + " =?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{categoryId});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String description = cursor.getString(2);
+                    Integer price = cursor.getInt(3);
+                    Integer stock = cursor.getInt(4);
+                    Integer rating = cursor.getInt(5);
+                    Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+                    User user = userManager.getUserById(cursor.getString(7));
+
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+
+        Log.i("DATABASE", "Fetched Item List by Category");
+        return itemList;
+    }
 }

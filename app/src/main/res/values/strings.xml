@@ -118,8 +118,8 @@
     <string name="item_category_error">Please select the category!</string>
 
     <!--    Item Activity-->
-<!--    <string name="item_rating_display">Rating: </string>-->
-<!--    <string name="item_stock_display">Stock: </string>-->
+    <!--    <string name="item_rating_display">Rating: </string>-->
+    <!--    <string name="item_stock_display">Stock: </string>-->
     <string name="item_add">Add to Cart</string>
 
     <!--    Checkout Activity-->
