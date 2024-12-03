@@ -86,7 +86,7 @@
     <string name="history_detail_user_address">Address</string>
 
     <!--  Admin Fragment  -->
-    <string name="admin_stat">Data Count</string>
+    <string name="admin_stat">Application Data Count</string>
     <string name="admin_user">Total User</string>
     <string name="admin_seller">Total Seller</string>
     <string name="admin_request">Total Request</string>
@@ -102,6 +102,10 @@
 
     <!--  Admin Item Fragment  -->
     <string name="admin_item_title">Admin Item Data</string>
+
+    <!--  Seller Fragment  -->
+
+
 
     <!--  Item Fragment  -->
     <string name="item_name">Item Name</string>

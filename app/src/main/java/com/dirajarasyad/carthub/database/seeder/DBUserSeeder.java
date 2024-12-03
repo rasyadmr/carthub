@@ -22,7 +22,7 @@ public class DBUserSeeder {
         userManager.open();
 
         // Admin
-        userManager.addUser("rasyadmr", "admin123", "rasyadmr@carthub.com", "081234567890", "\n" +
+        userManager.addUser("rasyadmr", "admin123", "rasyadmr@carthub.com", "081234567890",
                 "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum maiores impedit delectus harum nesciunt dolorum, eum iure possimus saepe nemo sit nam quibusdam dignissimos nobis ad corporis? Doloribus omnis suscipit asperiores, ut dicta inventore eius laudantium amet rerum expedita quo aut quasi ab. Iure, voluptatum! Voluptatum quasi amet vel obcaecati quod incidunt illum consequuntur deleniti consectetur quisquam magnam, aut debitis repellendus tempora necessitatibus perspiciatis exercitationem ut doloribus corporis magni numquam. Labore, nemo? Consectetur voluptas temporibus sapiente consequatur id architecto sit non eaque possimus omnis porro expedita, esse delectus in quaerat. Quisquam, consequatur explicabo eius nulla saepe iure ratione veritatis? Repellat!", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.ADMIN);
         userManager.addUser("diraja", "admin123", "diraja@carthub.com", "080987654321", "Tanah Abang", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.ADMIN);
 
