@@ -87,11 +87,6 @@
 
     <!--  Admin Fragment  -->
     <string name="admin_stat">Application Data Count</string>
-    <string name="admin_user">Total User</string>
-    <string name="admin_seller">Total Seller</string>
-    <string name="admin_request">Total Request</string>
-    <string name="admin_item">Total Item</string>
-    <string name="admin_transaction">Total Transaction</string>
     <string name="admin_menu">Admin Menu</string>
 
     <!--  Admin User Fragment  -->
@@ -104,8 +99,20 @@
     <string name="admin_item_title">Admin Item Data</string>
 
     <!--  Seller Fragment  -->
+    <string name="seller_stat">Seller Data Count</string>
+    <string name="seller_menu">Seller Menu</string>
 
+    <!--  Seller Item Fragment  -->
+    <string name="seller_item_title">Seller Item Data</string>
 
+    <!--  Seller Pending Fragment  -->
+    <string name="seller_pending_title">Seller Pending Transactions</string>
+
+    <!--  Seller On Progress Fragment  -->
+    <string name="seller_onprogress_title">Seller On Progress Transactions</string>
+
+    <!--  Seller Completed Fragment  -->
+    <string name="seller_completed_title">Seller Completed Transactions</string>
 
     <!--  Item Fragment  -->
     <string name="item_name">Item Name</string>
@@ -134,4 +141,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="no_data">No data available!</string>
+    <string name="no_input">Please fill this field!</string>
 </resources>

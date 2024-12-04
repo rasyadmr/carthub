@@ -197,10 +197,7 @@ public class DBItemManager {
 
         String ORDER = ascending? "ASC" : "DESC";
         String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
-                + " JOIN " + DBHelper.TABLE_USER + " ON "
-                + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = "
-                + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_USER
-                + " WHERE " + DBHelper.TABLE_USER + "." + DBHelper.FIELD_USER_ID + " = ?"
+                + " WHERE " + DBHelper.FIELD_ITEM_USER + " = ?"
                 + " ORDER BY " + DBHelper.FIELD_ITEM_RATING + " " + ORDER
                 + " LIMIT ?";
 
@@ -270,6 +267,44 @@ public class DBItemManager {
         userManager.close();
 
         Log.i("DATABASE", "Fetched Item List by Category");
+        return itemList;
+    }
+
+    public List<Item> getAllItemsBySeller(User user) {
+        List<Item> itemList = new ArrayList<>();
+        String userId = user.getId();
+
+        String rawQuery = "SELECT * FROM " + DBHelper.TABLE_ITEM
+                + " WHERE " + DBHelper.TABLE_ITEM + "." + DBHelper.FIELD_ITEM_USER + " =?";
+
+        DBUserManager userManager = new DBUserManager(context);
+        userManager.open();
+        DBCategoryManager categoryManager = new DBCategoryManager(context);
+        categoryManager.open();
+
+        Cursor cursor = database.rawQuery(rawQuery, new String[]{userId});
+
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    String id = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String description = cursor.getString(2);
+                    Integer price = cursor.getInt(3);
+                    Integer stock = cursor.getInt(4);
+                    Integer rating = cursor.getInt(5);
+                    Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
+                    Category category = categoryManager.getCategoryById(cursor.getString(8));
+
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                } while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+        userManager.close();
+
+        Log.i("DATABASE", "Fetched All Item List by User");
         return itemList;
     }
 }
