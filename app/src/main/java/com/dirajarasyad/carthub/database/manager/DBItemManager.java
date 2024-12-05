@@ -110,6 +110,25 @@ public class DBItemManager {
         return updateItem > 0;
     }
 
+    public boolean updateStock(Item item, Integer stock) {
+        ImageManager imageManager = new ImageManager(item.getImage());
+
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.FIELD_ITEM_NAME, item.getName());
+        values.put(DBHelper.FIELD_ITEM_DESCRIPTION, item.getDescription());
+        values.put(DBHelper.FIELD_ITEM_PRICE, item.getPrice());
+        values.put(DBHelper.FIELD_ITEM_STOCK, stock);
+        values.put(DBHelper.FIELD_ITEM_RATING, item.getRating());
+        values.put(DBHelper.FIELD_ITEM_IMAGE, imageManager.getByteArray());
+        values.put(DBHelper.FIELD_ITEM_USER, item.getUser().getId());
+        values.put(DBHelper.FIELD_ITEM_CATEGORY, item.getCategory().getId());
+
+        int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{item.getId()});
+
+        Log.i("DATABASE", "Item Stock Updated");
+        return updateItem > 0;
+    }
+
     public boolean deleteItem(Item item) {
         String itemId = item.getId();
         int deleteItem = database.delete(DBHelper.TABLE_ITEM, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{itemId});
