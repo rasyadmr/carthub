@@ -108,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (this.validateInput(username, password, email, phone)) {
                 DBUserManager userManager = new DBUserManager(this);
                 userManager.open();
-                userManager.addUser(username, password, email, phone, address, image, User.Role.NORMAL);
+                userManager.addUser(username, password, email, phone, address, image, User.Role.CUSTOMER);
                 User newUser = userManager.getUserByUsername(username);
                 userManager.close();
 

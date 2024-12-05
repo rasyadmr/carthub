@@ -86,9 +86,9 @@ public class HomeFragment extends Fragment {
         homeTopRV.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
 
         User user = sessionManager.getUser();
-        if (user.getRole() == User.Role.SELLER) {
+        if (user.getRole() == User.Role.MERCHANT) {
             homeTopRV.setAdapter(new TopAdapter(itemManager.getTopSeller(5, false, user)));
-            homeTopTV.setText(R.string.home_top_seller);
+            homeTopTV.setText(R.string.home_top_merchant);
         } else {
             homeTopRV.setAdapter(new TopAdapter(itemManager.getTop(5, false)));
         }

@@ -11,9 +11,9 @@ public class User implements Serializable {
 
     public enum Role {
         ADMIN("Admin"),
-        SELLER("Seller"),
-        REQUESTED("Request Seller"),
-        NORMAL("Normal");
+        MERCHANT("Merchant"),
+        REQUESTED("Request Merchant"),
+        CUSTOMER("Customer");
 
         private final String role;
 

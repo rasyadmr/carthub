@@ -10,7 +10,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,7 +127,7 @@ public class ProfileEditFragment extends Fragment {
             profile_editAcceptBtn.setVisibility(View.GONE);
             if (user.getRole() == User.Role.REQUESTED) {
                 profile_editRequestBtn.setVisibility(View.GONE);
-            } else if (user.getRole() != User.Role.NORMAL) {
+            } else if (user.getRole() != User.Role.CUSTOMER) {
                 profile_editRequestBtn.setVisibility(View.GONE);
                 profile_editCancelBtn.setVisibility(View.GONE);
             } else {
@@ -199,13 +198,13 @@ public class ProfileEditFragment extends Fragment {
             pickerManager.pickImageOnly();
         } else if (view == profile_editAcceptBtn) {
             userManager.open();
-            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.SELLER);
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.MERCHANT);
             userManager.close();
 
             requireActivity().getSupportFragmentManager().popBackStack();
         } else if (view == profile_editCancelBtn) {
             userManager.open();
-            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.NORMAL);
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.CUSTOMER);
             userManager.close();
 
             requireActivity().getSupportFragmentManager().popBackStack();

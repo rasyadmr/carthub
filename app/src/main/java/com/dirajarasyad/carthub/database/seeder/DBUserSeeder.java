@@ -27,13 +27,13 @@ public class DBUserSeeder {
         userManager.addUser("diraja", "admin123", "diraja@carthub.com", "080987654321", "Tanah Abang", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.ADMIN);
 
         // Seller
-        userManager.addUser("seller", "seller123", "seller@carthub.com", "081029384756", "Kebon Jeruk", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.SELLER);
+        userManager.addUser("seller", "seller123", "seller@carthub.com", "081029384756", "Kebon Jeruk", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.MERCHANT);
 
         // Requested
         userManager.addUser("request", "request123", "request@carthub.com", "082944728140", "Jalan K. H. Syahdan", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.REQUESTED);
 
         // Normal
-        userManager.addUser("guest", "guest123", "guest@carthub.com", "085647382910", "Syahdan", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.NORMAL);
+        userManager.addUser("guest", "guest123", "guest@carthub.com", "085647382910", "Syahdan", AppCompatResources.getDrawable(context, R.drawable.baseline_person_100), User.Role.CUSTOMER);
         userManager.close();
     }
 }

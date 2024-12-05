@@ -39,7 +39,7 @@ public class SellerOnprogressFragment extends Fragment {
         listEmptyTV = view.findViewById(R.id.listEmptyTV);
 
         TextView admin_listTitleTV = view.findViewById(R.id.listTitleTV);
-        admin_listTitleTV.setText(R.string.seller_onprogress_title);
+        admin_listTitleTV.setText(R.string.merchant_onprogress_title);
     }
 
     private void onBind() {
