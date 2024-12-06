@@ -3,11 +3,13 @@ package com.dirajarasyad.carthub.model;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class User implements Serializable {
     private String id, username, password, email, phone, address;
     private Drawable image;
     private Role role;
+    private LocalDateTime createdAt, updatedAt;
 
     public enum Role {
         ADMIN("Admin"),
@@ -35,7 +37,7 @@ public class User implements Serializable {
         }
     }
 
-    public User(String id, String username, String password, String email, String phone, String address, Drawable image, Role role) {
+    public User(String id, String username, String password, String email, String phone, String address, Drawable image, Role role, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -44,6 +46,8 @@ public class User implements Serializable {
         this.address = address;
         this.image = image;
         this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public String getId() {
@@ -108,5 +112,21 @@ public class User implements Serializable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

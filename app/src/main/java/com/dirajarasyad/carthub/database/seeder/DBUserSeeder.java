@@ -6,7 +6,10 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
+import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.model.User;
+
+import java.time.LocalDateTime;
 
 public class DBUserSeeder {
     private final DBUserManager userManager;

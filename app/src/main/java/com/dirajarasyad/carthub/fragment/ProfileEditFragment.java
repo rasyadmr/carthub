@@ -182,7 +182,7 @@ public class ProfileEditFragment extends Fragment {
 
             if (validateInput(username, password, email, phone, confirm)) {
                 userManager.open();
-                userManager.updateUser(user.getId(), username, password, email, phone, address, image, role);
+                userManager.updateUser(user.getId(), username, password, email, phone, address, image, role, user.getCreatedAt());
                 userManager.close();
 
                 requireActivity().getSupportFragmentManager().popBackStack();
@@ -198,13 +198,13 @@ public class ProfileEditFragment extends Fragment {
             pickerManager.pickImageOnly();
         } else if (view == profile_editAcceptBtn) {
             userManager.open();
-            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.MERCHANT);
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.MERCHANT, user.getCreatedAt());
             userManager.close();
 
             requireActivity().getSupportFragmentManager().popBackStack();
         } else if (view == profile_editCancelBtn) {
             userManager.open();
-            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.CUSTOMER);
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.CUSTOMER, user.getCreatedAt());
             userManager.close();
 
             requireActivity().getSupportFragmentManager().popBackStack();

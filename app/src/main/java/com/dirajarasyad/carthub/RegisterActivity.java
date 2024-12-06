@@ -20,12 +20,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
+import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {

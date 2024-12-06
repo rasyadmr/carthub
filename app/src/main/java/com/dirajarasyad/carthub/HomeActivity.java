@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottom_navigation;
     private FrameLayout homeContainerFL;
     private SessionManager sessionManager;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         homeContainerFL = findViewById(R.id.homeContainerFL);
 
         sessionManager = new SessionManager(this);
-        User user = sessionManager.getUser();
+        user = sessionManager.getUser();
 
         if (user == null) {
             sessionManager.destroySession();
@@ -59,8 +60,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void onBind() {
-        User user = sessionManager.getUser();
-
         bottom_navigation.getMenu().clear();
         bottom_navigation.getMenu().add(0, R.id.navHome, 0, getString(R.string.menu_home)).setIcon(R.drawable.baseline_home_24);
         bottom_navigation.getMenu().add(0, R.id.navCart, 1, getString(R.string.menu_cart)).setIcon(R.drawable.baseline_shopping_cart_24);
