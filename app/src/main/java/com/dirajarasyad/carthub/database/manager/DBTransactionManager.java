@@ -7,10 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.dirajarasyad.carthub.database.helper.DBHelper;
+import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.model.Item;
 import com.dirajarasyad.carthub.model.Transaction;
 import com.dirajarasyad.carthub.model.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -42,7 +44,9 @@ public class DBTransactionManager {
         values.put(DBHelper.FIELD_TRANSACTION_STATUS, status.value());
         values.put(DBHelper.FIELD_TRANSACTION_USER, user.getId());
         values.put(DBHelper.FIELD_TRANSACTION_ITEM, item.getId());
-        values.put(DBHelper.FIELD_CART_QUANTITY, quantity);
+        values.put(DBHelper.FIELD_TRANSACTION_QUANTITY, quantity);
+        values.put(DBHelper.FIELD_TRANSACTION_CREATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
+        values.put(DBHelper.FIELD_TRANSACTION_UPDATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
 
         database.insert(DBHelper.TABLE_TRANSACTION, null, values);
         Log.i("DATABASE", "Transaction Created");
@@ -67,8 +71,10 @@ public class DBTransactionManager {
                     User user = userManager.getUserById(cursor.getString(2));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -81,12 +87,14 @@ public class DBTransactionManager {
         return transactionList;
     }
 
-    public boolean updateTransaction(String id, Transaction.Status status, User user, Item item, Integer quantity) {
+    public boolean updateTransaction(String id, Transaction.Status status, User user, Item item, Integer quantity, LocalDateTime createdAt) {
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_TRANSACTION_STATUS, status.value());
         values.put(DBHelper.FIELD_TRANSACTION_USER, user.getId());
         values.put(DBHelper.FIELD_TRANSACTION_ITEM, item.getId());
         values.put(DBHelper.FIELD_TRANSACTION_QUANTITY, quantity);
+        values.put(DBHelper.FIELD_TRANSACTION_CREATED_AT, new DatetimeManager(createdAt).getDatetime());
+        values.put(DBHelper.FIELD_TRANSACTION_UPDATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
 
         int updateTransaction = database.update(DBHelper.TABLE_TRANSACTION, values, DBHelper.FIELD_TRANSACTION_ID + " = ?", new String[]{id});
 
@@ -119,8 +127,10 @@ public class DBTransactionManager {
                 User user = userManager.getUserById(cursor.getString(2));
                 Item item = itemManager.getItemById(cursor.getString(3));
                 Integer quantity = cursor.getInt(4);
+                LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                transaction = new Transaction(transactionId, status, user, item, quantity);
+                transaction = new Transaction(transactionId, status, user, item, quantity, created, updated);
             }
         }
 
@@ -157,8 +167,10 @@ public class DBTransactionManager {
                     Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -198,8 +210,10 @@ public class DBTransactionManager {
                     Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -232,8 +246,10 @@ public class DBTransactionManager {
                     Transaction.Status status = Transaction.Status.fromString(cursor.getString(1));
                     User user = userManager.getUserById(cursor.getString(2));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -268,8 +284,10 @@ public class DBTransactionManager {
                     String id = cursor.getString(0);
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -306,8 +324,10 @@ public class DBTransactionManager {
                     String id = cursor.getString(0);
                     Item item = itemManager.getItemById(cursor.getString(3));
                     Integer quantity = cursor.getInt(4);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(5)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(6)).getLDT();
 
-                    transactionList.add(new Transaction(id, status, user, item, quantity));
+                    transactionList.add(new Transaction(id, status, user, item, quantity, created, updated));
                 } while (cursor.moveToNext());
             }
         }

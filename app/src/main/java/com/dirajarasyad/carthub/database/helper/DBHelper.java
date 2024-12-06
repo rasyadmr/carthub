@@ -92,12 +92,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_TRANSACTION_USER = "userId";
     public static final String FIELD_TRANSACTION_ITEM = "item";
     public static final String FIELD_TRANSACTION_QUANTITY = "quantity";
+    public static final String FIELD_TRANSACTION_CREATED_AT = "created_at";
+    public static final String FIELD_TRANSACTION_UPDATED_AT = "updated_at";
     public static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE " + TABLE_TRANSACTION + "("
             + FIELD_TRANSACTION_ID + " TEXT PRIMARY KEY,"
             + FIELD_TRANSACTION_STATUS + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_USER + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_ITEM + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_QUANTITY + " INTEGER NOT NULL,"
+            + FIELD_TRANSACTION_CREATED_AT + " INTEGER NOT NULL,"
+            + FIELD_TRANSACTION_UPDATED_AT + " INTEGER NOT NULL,"
             + "FOREIGN KEY (" + FIELD_TRANSACTION_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"
             + "FOREIGN KEY (" + FIELD_TRANSACTION_ITEM + ") REFERENCES " + TABLE_ITEM + "(" + FIELD_ITEM_ID + "))";
 
