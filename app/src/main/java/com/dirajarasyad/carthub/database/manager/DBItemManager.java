@@ -36,7 +36,7 @@ public class DBItemManager {
         dbHelper.close();
     }
 
-    public void addItem(String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category) {
+    public void addItem(String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
         String id = "ITEM-" + UUID.randomUUID().toString();
         ImageManager imageManager = new ImageManager(image);
 
@@ -50,6 +50,7 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_IMAGE, imageManager.getByteArray());
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
+        values.put(DBHelper.FIELD_ITEM_ADDRESS, address);
 
         database.insert(DBHelper.TABLE_ITEM, null, values);
         Log.i("DATABASE", "Item Created");
@@ -78,8 +79,9 @@ public class DBItemManager {
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     User user = userManager.getUserById(cursor.getString(7));
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
+                    String address = cursor.getString(9);
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
                 } while (cursor.moveToNext());
             }
         }
@@ -91,7 +93,7 @@ public class DBItemManager {
         return itemList;
     }
 
-    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category) {
+    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
         ImageManager imageManager = new ImageManager(image);
 
         ContentValues values = new ContentValues();
@@ -103,6 +105,8 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_IMAGE, imageManager.getByteArray());
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
+        values.put(DBHelper.FIELD_ITEM_ADDRESS, address);
+
 
         int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{id});
 
@@ -140,8 +144,9 @@ public class DBItemManager {
                 Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                 User user = userManager.getUserById(cursor.getString(7));
                 Category category = categoryManager.getCategoryById(cursor.getString(8));
+                String address = cursor.getString(9);
 
-                item = new Item(itemId, name, description, price, stock, rating, image, user, category);
+                item = new Item(itemId, name, description, price, stock, rating, image, user, category, address);
             }
         }
 
@@ -178,8 +183,9 @@ public class DBItemManager {
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     User user = userManager.getUserById(cursor.getString(7));
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
+                    String address = cursor.getString(9);
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
                 } while (cursor.moveToNext());
             }
         }
@@ -219,8 +225,9 @@ public class DBItemManager {
                     Integer rating = cursor.getInt(5);
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
+                    String address = cursor.getString(9);
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
                 } while (cursor.moveToNext());
             }
         }
@@ -257,8 +264,9 @@ public class DBItemManager {
                     Integer rating = cursor.getInt(5);
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     User user = userManager.getUserById(cursor.getString(7));
+                    String address = cursor.getString(9);
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
                 } while (cursor.moveToNext());
             }
         }
@@ -295,8 +303,9 @@ public class DBItemManager {
                     Integer rating = cursor.getInt(5);
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
+                    String address = cursor.getString(9);
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
                 } while (cursor.moveToNext());
             }
         }

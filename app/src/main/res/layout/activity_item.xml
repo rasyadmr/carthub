@@ -75,6 +75,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
+
+            <TextView
+                android:id="@+id/itemAddressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"/>
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/itemMapView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                />
         </LinearLayout>
     </ScrollView>
 

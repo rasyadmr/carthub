@@ -2,6 +2,8 @@ package com.dirajarasyad.carthub;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,11 +22,24 @@ import com.dirajarasyad.carthub.database.manager.DBCartManager;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
 import com.dirajarasyad.carthub.model.Item;
 
+import org.osmdroid.api.IMapController;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 public class ItemActivity extends AppCompatActivity {
-    private TextView itemNameTV, itemPriceTV, itemRatingTV, itemStockTV, itemSellerTV, itemCategoryTV, itemDescriptionTV, itemQuantityTV, itemPriceCheckoutTV;
+    private TextView itemNameTV, itemPriceTV, itemRatingTV, itemStockTV, itemSellerTV, itemCategoryTV, itemDescriptionTV, itemQuantityTV, itemPriceCheckoutTV, itemAddressTV;
     private Button itemCartBtn;
     private ImageView itemImageIV, itemMinusIV, itemPlusIV;
+
     private Item item;
+
+    private MapView itemMapView;
     private Integer quantity = 1;
 
     @Override
@@ -44,6 +59,12 @@ public class ItemActivity extends AppCompatActivity {
         itemMinusIV.setOnClickListener(this::onClick);
         itemPlusIV.setOnClickListener(this::onClick);
         itemCartBtn.setOnClickListener(this::onClick);
+
+        // Initialize map
+        this.initializeMap();
+
+        // Convert address to coordinates
+        this.setMapLocation(item.getAddress());
     }
 
     private void initial() {
@@ -55,6 +76,7 @@ public class ItemActivity extends AppCompatActivity {
         itemCategoryTV = findViewById(R.id.itemCategoryTV);
         itemDescriptionTV = findViewById(R.id.itemDescriptionTV);
         itemPriceCheckoutTV = findViewById(R.id.itemPriceCheckoutTV);
+        itemAddressTV = findViewById(R.id.itemAddressTV);
 
         itemImageIV = findViewById(R.id.itemImageIV);
         itemMinusIV = findViewById(R.id.itemMinusIV);
@@ -84,6 +106,7 @@ public class ItemActivity extends AppCompatActivity {
 
         itemQuantityTV.setText(quantity.toString());
         itemPriceCheckoutTV.setText(String.format("Rp %d", item.getPrice() * quantity));
+        itemAddressTV.setText(item.getAddress());
     }
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
@@ -111,4 +134,46 @@ public class ItemActivity extends AppCompatActivity {
             finish();
         }
     }
+
+    private void initializeMap() {
+        itemMapView = findViewById(R.id.itemMapView);
+
+        itemMapView.setTileSource(TileSourceFactory.MAPNIK);
+        itemMapView.setBuiltInZoomControls(true);
+        itemMapView.setMultiTouchControls(true);
+
+    }
+
+    private void setMapLocation(String address) {
+        // Use Geocoder to convert address into latitude and longitude
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocationName(address, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                android.location.Address location = addresses.get(0);
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+
+                // Set the location on the map
+                GeoPoint geoPoint = new GeoPoint(latitude, longitude);
+                IMapController mapController = itemMapView.getController();
+                mapController.setZoom(15); // Zoom level
+                mapController.setCenter(geoPoint); // Center map at this location
+
+                // Add a marker to the map at the location
+                Marker marker = new Marker(itemMapView);
+                marker.setPosition(geoPoint);
+                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                marker.setTitle("Location");
+                itemMapView.getOverlays().add(marker);
+            } else {
+                Toast.makeText(this, "Address not found!", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error occurred while geocoding the address.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

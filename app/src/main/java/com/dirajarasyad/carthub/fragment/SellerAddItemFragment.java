@@ -38,8 +38,8 @@ import java.util.regex.Pattern;
 
 public class SellerAddItemFragment extends Fragment {
     private ImageView item_editImageIV, item_editDeleteIV;
-    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV;
-    private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET;
+    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
+    private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET, item_editAddressET;
     private Spinner item_editCategorySpn;
     private Button item_editSaveBtn;
     private Category categorySelected;
@@ -67,6 +67,7 @@ public class SellerAddItemFragment extends Fragment {
         item_editStockTV = view.findViewById(R.id.item_editStockTV);
         item_editCategoryTV = view.findViewById(R.id.item_editCategoryTV);
         item_editDescriptionTV = view.findViewById(R.id.item_editDescriptionTV);
+        item_editAddressTV = view.findViewById(R.id.item_editAddressTV);
 
         item_editNameET = view.findViewById(R.id.item_editNameET);
         item_editPriceET = view.findViewById(R.id.item_editPriceET);
@@ -74,11 +75,13 @@ public class SellerAddItemFragment extends Fragment {
         item_editStockET = view.findViewById(R.id.item_editStockET);
         item_editSellerET = view.findViewById(R.id.item_editSellerET);
         item_editDescriptionET = view.findViewById(R.id.item_editDescriptionET);
+        item_editAddressET = view.findViewById(R.id.item_editAddressET);
 
         item_editNameErrorTV = view.findViewById(R.id.item_editNameErrorTV);
         item_editPriceErrorTV = view.findViewById(R.id.item_editPriceErrorTV);
         item_editStockErrorTV = view.findViewById(R.id.item_editStockErrorTV);
         item_editCategoryErrorTV = view.findViewById(R.id.item_editCategoryErrorTV);
+
 
         item_editCategorySpn = view.findViewById(R.id.item_editCategorySpn);
         item_editSaveBtn = view.findViewById(R.id.item_editSaveBtn);
@@ -152,6 +155,7 @@ public class SellerAddItemFragment extends Fragment {
             String name = item_editNameET.getText().toString();
             String priceText = item_editPriceET.getText().toString();
             String stockText = item_editStockET.getText().toString();
+            String address = item_editAddressET.getText().toString();
             if (priceText.isEmpty() & stockText.isEmpty()) {
                 item_editPriceErrorTV.setText(R.string.no_input);
                 item_editStockErrorTV.setText(R.string.no_input);
@@ -162,11 +166,14 @@ public class SellerAddItemFragment extends Fragment {
             } else if (stockText.isEmpty()) {
                 item_editStockErrorTV.setText(R.string.no_input);
                 return;
+            } else if (address.isEmpty()) {
+                item_editAddressTV.setText("Address Cannot be Empty");
             }
 
             Integer price = Integer.parseInt(priceText);
             Integer stock = Integer.parseInt(stockText);
             String description = item_editDescriptionET.getText().toString();
+
             Drawable image;
 
             if (uri == null) {
@@ -178,7 +185,7 @@ public class SellerAddItemFragment extends Fragment {
             if (this.validateInput(name, price, stock)) {
                 DBItemManager itemManager = new DBItemManager(requireContext());
                 itemManager.open();
-                itemManager.addItem(name, description, price, stock, 0, image, sessionManager.getUser(), categorySelected);
+                itemManager.addItem(name, description, price, stock, 0, image, sessionManager.getUser(), categorySelected, address);
 
                 requireActivity().getSupportFragmentManager().popBackStack();
             }

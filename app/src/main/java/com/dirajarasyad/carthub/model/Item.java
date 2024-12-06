@@ -5,13 +5,13 @@ import android.graphics.drawable.Drawable;
 import java.io.Serializable;
 
 public class Item implements Serializable {
-    private String id, name, description;
+    private String id, name, description, address;
     private Integer price, stock, rating;
     private Drawable image;
     private User user;
     private Category category;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category) {
+    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -21,6 +21,15 @@ public class Item implements Serializable {
         this.image = image;
         this.user = user;
         this.category = category;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getId() {
