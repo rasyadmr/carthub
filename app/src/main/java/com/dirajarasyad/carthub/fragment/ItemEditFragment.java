@@ -175,7 +175,7 @@ public class ItemEditFragment extends Fragment {
             if (this.validateInput(name, price, stock)) {
                 DBItemManager itemManager = new DBItemManager(requireContext());
                 itemManager.open();
-                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected);
+                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected, item.getCreatedAt());
 
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
