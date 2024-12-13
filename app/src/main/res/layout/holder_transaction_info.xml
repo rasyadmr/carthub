@@ -36,6 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter_bold"
                     android:text="TextView" />
 
                 <Space
@@ -48,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter_light"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -61,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
@@ -68,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter_light"
                     android:text="TextView" />
 
                 <Space
@@ -87,6 +91,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
@@ -94,6 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
@@ -101,6 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/inter_bold"
                     android:text="TextView" />
             </LinearLayout>
 

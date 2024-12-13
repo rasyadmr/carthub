@@ -38,6 +38,7 @@
                     android:id="@+id/user_infoUsernameTitleTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
                     android:text="@string/auth_username"
                     android:textSize="18sp" />
 
@@ -46,12 +47,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/inter"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/user_infoEmailTitleTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
                     android:text="@string/auth_email"
                     android:textSize="18sp" />
 
@@ -60,12 +63,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/inter"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/user_infoPhoneTitleTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
                     android:text="@string/auth_phonenumber"
                     android:textSize="18sp" />
 
@@ -74,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/inter"
                     android:textSize="16sp" />
 
                 <TextView
@@ -81,6 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="@font/inter_bold"
                     android:gravity="bottom|end"
                     android:textSize="18sp"
                     android:textStyle="bold" />

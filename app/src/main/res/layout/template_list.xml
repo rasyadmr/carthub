@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/inter_bold"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -19,6 +20,7 @@
         android:id="@+id/listEmptyTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_light"
         android:gravity="center"
         android:text="@string/no_data" />
 
