@@ -20,12 +20,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
+import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -73,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerAddressErrorTV = findViewById(R.id.registerAddressErrorTV);
 
         registerImageIV = findViewById(R.id.registerImageIV);
+        registerImageIV.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.baseline_person_100));
         registerSubmitBtn = findViewById(R.id.registerSubmitBtn);
 
         pickLauncher = registerForActivityResult(
@@ -99,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
             Drawable image;
 
             if (uri == null) {
-                image = AppCompatResources.getDrawable(this, R.drawable.baseline_person_24);
+                image = AppCompatResources.getDrawable(this, R.drawable.baseline_person_100);
             } else {
                 image = new ImageManager(this.uri, this).getImage();
             }
@@ -107,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (this.validateInput(username, password, email, phone)) {
                 DBUserManager userManager = new DBUserManager(this);
                 userManager.open();
-                userManager.addUser(username, password, email, phone, address, image, User.Role.NORMAL);
+                userManager.addUser(username, password, email, phone, address, image, User.Role.CUSTOMER);
                 User newUser = userManager.getUserByUsername(username);
                 userManager.close();
 

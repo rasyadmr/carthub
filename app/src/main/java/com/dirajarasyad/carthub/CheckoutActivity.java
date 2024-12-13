@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.adapter.CheckoutAdapter;
 import com.dirajarasyad.carthub.database.manager.DBCartManager;
+import com.dirajarasyad.carthub.database.manager.DBItemManager;
 import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.Cart;
@@ -74,14 +75,21 @@ public class CheckoutActivity extends AppCompatActivity {
         checkoutGrandTotalTV.setText(String.format("Rp %d", total));
         checkoutPayBtn.setOnClickListener(view -> {
             DBTransactionManager transactionManager = new DBTransactionManager(this);
+            DBItemManager itemManager = new DBItemManager(this);
+
             transactionManager.open();
+            itemManager.open();
             cartManager.open();
+
             for (Cart c :
                     cartList) {
                 transactionManager.addTransaction(Transaction.Status.PENDING, user, c.getItem(), c.getQuantity());
+                itemManager.updateStock(c.getItem(), c.getItem().getStock() - c.getQuantity());
                 cartManager.deleteCart(c.getId());
             }
+
             transactionManager.close();
+            itemManager.close();
             cartManager.close();
             finish();
         });

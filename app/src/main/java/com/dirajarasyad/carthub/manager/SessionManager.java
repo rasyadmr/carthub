@@ -2,14 +2,15 @@ package com.dirajarasyad.carthub.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
 public class SessionManager {
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor preferenceEditor;
-    private Context context;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor preferenceEditor;
+    private final Context context;
 
     private static final String PREFERENCE_NAME = "auth_pref";
     private static final int PREFERENCE_MODE = Context.MODE_PRIVATE;
@@ -38,11 +39,15 @@ public class SessionManager {
     }
 
     public User getUser() {
-        String userId = sharedPreferences.getString(AUTH_USER_ID, null);
-        DBUserManager userManager = new DBUserManager(context);
-        userManager.open();
-        User user = userManager.getUserById(userId);
-        userManager.close();
-        return user;
+        String userId = sharedPreferences.getString(AUTH_USER_ID, "null");
+
+        if (!userId.equals("null")) {
+            DBUserManager userManager = new DBUserManager(context);
+            userManager.open();
+            User user = userManager.getUserById(userId);
+            userManager.close();
+            return user;
+        }
+        return null;
     }
 }

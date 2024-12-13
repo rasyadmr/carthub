@@ -2,6 +2,7 @@ package com.dirajarasyad.carthub.fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
 import com.dirajarasyad.carthub.adapter.TopAdapter;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
+import com.dirajarasyad.carthub.model.Category;
 import com.dirajarasyad.carthub.model.User;
 
 import java.util.ArrayList;
@@ -71,7 +73,9 @@ public class HomeFragment extends Fragment {
 
         DBCategoryManager categoryManager = new DBCategoryManager(requireContext());
         categoryManager.open();
-        CategoryAdapter adapter = new CategoryAdapter(categoryManager.getAllCategories());
+        List<Category> categoryList = categoryManager.getAllCategories();
+        categoryList.add(0, new Category(null, "All", AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_border_all_24)));
+        CategoryAdapter adapter = new CategoryAdapter(categoryList);
         categoryManager.close();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(requireContext(), 3);
         homeItemRV.setLayoutManager(gridLayoutManager);
@@ -82,9 +86,9 @@ public class HomeFragment extends Fragment {
         homeTopRV.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
 
         User user = sessionManager.getUser();
-        if (user.getRole() == User.Role.SELLER) {
+        if (user.getRole() == User.Role.MERCHANT) {
             homeTopRV.setAdapter(new TopAdapter(itemManager.getTopSeller(5, false, user)));
-            homeTopTV.setText(R.string.home_top_seller);
+            homeTopTV.setText(R.string.home_top_merchant);
         } else {
             homeTopRV.setAdapter(new TopAdapter(itemManager.getTop(5, false)));
         }

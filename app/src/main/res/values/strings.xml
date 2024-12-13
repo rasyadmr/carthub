@@ -38,13 +38,13 @@
     <string name="menu_cart">Cart</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_history">History</string>
-    <string name="menu_seller">Seller Panel</string>
+    <string name="menu_merchant">Merchant Panel</string>
     <string name="menu_admin">Admin Panel</string>
 
     <!--  Home Fragment  -->
     <string name="home_category">Categories</string>
     <string name="home_top">Top Rated Items</string>
-    <string name="home_top_seller">Top Owned Rated Items</string>
+    <string name="home_top_merchant">Top Owned Rated Items</string>
 
     <!--  Cart Fragment  -->
     <string name="cart_checkout">Check Out</string>
@@ -55,7 +55,12 @@
 
     <!--  Edit Profile Fragment  -->
     <string name="auth_edit_confirm">Password doesn\'t match with current password!</string>
-    <string name="auth_edit_request">Request Seller Role</string>
+    <string name="auth_edit_request">Request Merchant Role</string>
+    <string name="auth_edit_accept">Accept Request Merchant Role</string>
+    <string name="auth_edit_cancel">Cancel Request Merchant Role</string>
+    <string name="auth_edit_delete">Delete this account</string>
+
+    <!--  TODO Make it publicly use (Auth & Item)  -->
     <string name="auth_edit_save">Save changes</string>
 
     <!--  History Fragment  -->
@@ -64,7 +69,7 @@
     <string name="history_item_header">Item</string>
     <string name="history_price_header">Price</string>
     <string name="history_status_header">Status</string>
-    
+
     <!--  History Detail Fragment  -->
     <string name="history_detail_title">History Detail</string>
     <string name="history_detail_item">Transaction Detail</string>
@@ -80,15 +85,61 @@
     <string name="history_detail_user_phone">Phone Number</string>
     <string name="history_detail_user_address">Address</string>
 
+    <!--  Admin Fragment  -->
+    <string name="admin_stat">Application Data Count</string>
+    <string name="admin_menu">Admin Menu</string>
+
+    <!--  Admin User Fragment  -->
+    <string name="admin_user_title">Admin User Data</string>
+
+    <!--  Admin Request Fragment  -->
+    <string name="admin_request_title">Admin User Request Data</string>
+
+    <!--  Admin Item Fragment  -->
+    <string name="admin_item_title">Admin Item Data</string>
+
+    <!--  Merchant Fragment  -->
+    <string name="merchant_stat">Merchant Data Count</string>
+    <string name="merchant_menu">Merchant Menu</string>
+
+    <!--  Merchant Item Fragment  -->
+    <string name="merchant_item_title">Merchant Item Data</string>
+
+    <!--  Merchant Pending Fragment  -->
+    <string name="merchant_pending_title">Merchant Pending Transactions</string>
+
+    <!--  Merchant On Progress Fragment  -->
+    <string name="merchant_onprogress_title">Merchant On Progress Transactions</string>
+
+    <!--  Merchant Completed Fragment  -->
+    <string name="merchant_completed_title">Merchant Completed Transactions</string>
+
+    <!--  Item Fragment  -->
+    <string name="item_name">Item Name</string>
+    <string name="item_price">Item Price</string>
+    <string name="item_stock">Item Stock</string>
+    <string name="item_rating">Item Rating</string>
+    <string name="item_merchant">Item Merchant</string>
+    <string name="item_category">Item Category</string>
+    <string name="item_description">Item Description</string>
+
+    <string name="item_name_error">Item name only contains alphabeth, numbers, and spaces!</string>
+    <string name="item_price_error">Price cannot be less than Rp 100</string>
+    <string name="item_stock_error">Stock cannot be negative!</string>
+    <string name="item_category_error">Please select the category!</string>
+
     <!--    Item Activity-->
-    <string name="item_rating">Rating: </string>
-    <string name="item_stock">Stock: </string>
+    <!--    <string name="item_rating_display">Rating: </string>-->
+    <!--    <string name="item_stock_display">Stock: </string>-->
     <string name="item_add">Add to Cart</string>
 
     <!--    Checkout Activity-->
     <string name="checkout_title">Checkout</string>
     <string name="checkout_total">Grand Total</string>
     <string name="checkout_pay">Pay</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <string name="no_data">No data available!</string>
+    <string name="no_input">Please fill this field!</string>
 </resources>

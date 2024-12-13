@@ -29,11 +29,11 @@ import com.dirajarasyad.carthub.model.User;
 import java.util.regex.Pattern;
 
 public class ProfileEditFragment extends Fragment {
-    private TextView profile_editTitleTV, profile_editProfileTV, profile_editUsernameTV, profile_editPasswordTV, profile_editEmailTV, profile_editPhoneTV, profile_editAddressTV, profile_editConfirmTV, profile_editProfileErrorTV, profile_editUsernameErrorTV, profile_editPasswordErrorTV, profile_editEmailErrorTV, profile_editPhoneErrorTV, profile_editAddressErrorTV, profile_editConfirmErrorTV;
+    private TextView profile_editProfileTV, profile_editUsernameTV, profile_editPasswordTV, profile_editEmailTV, profile_editPhoneTV, profile_editAddressTV, profile_editConfirmTV, profile_editProfileErrorTV, profile_editUsernameErrorTV, profile_editPasswordErrorTV, profile_editEmailErrorTV, profile_editPhoneErrorTV, profile_editAddressErrorTV, profile_editConfirmErrorTV;
     private ImageView profile_editProfileIV;
     private EditText profile_editUsernameET, profile_editPasswordET, profile_editEmailET, profile_editPhoneET, profile_editAddressET, profile_editConfirmET;
-    private Button profile_editSaveBtn, profile_editRequestBtn;
-    private User user;
+    private Button profile_editSaveBtn, profile_editRequestBtn, profile_editAcceptBtn, profile_editCancelBtn, profile_editDeleteBtn;
+    private User user, session;
     private ActivityResultLauncher<PickVisualMediaRequest> pickLauncher;
     private Uri uri;
     private Boolean requested = false;
@@ -46,15 +46,10 @@ public class ProfileEditFragment extends Fragment {
         this.initial(view);
         this.onBind();
 
-        profile_editProfileIV.setOnClickListener(this::onClick);
-        profile_editRequestBtn.setOnClickListener(this::onClick);
-        profile_editSaveBtn.setOnClickListener(this::onClick);
-
         return view;
     }
 
     private void initial(View view) {
-        profile_editTitleTV = view.findViewById(R.id.profile_editTitleTV);
         profile_editProfileTV = view.findViewById(R.id.profile_editProfileTV);
         profile_editUsernameTV = view.findViewById(R.id.profile_editUsernameTV);
         profile_editPasswordTV = view.findViewById(R.id.profile_editPasswordTV);
@@ -81,10 +76,22 @@ public class ProfileEditFragment extends Fragment {
         profile_editProfileIV = view.findViewById(R.id.profile_editProfileIV);
 
         profile_editRequestBtn = view.findViewById(R.id.profile_editRequestBtn);
+        profile_editAcceptBtn = view.findViewById(R.id.profile_editAcceptBtn);
+        profile_editCancelBtn = view.findViewById(R.id.profile_editCancelBtn);
+        profile_editDeleteBtn = view.findViewById(R.id.profile_editDeleteBtn);
         profile_editSaveBtn = view.findViewById(R.id.profile_editSaveBtn);
 
-        SessionManager sessionManager = new SessionManager(requireContext());
-        user = sessionManager.getUser();
+        if (getArguments() != null) {
+            String userId = getArguments().getString("user_id");
+
+            DBUserManager userManager = new DBUserManager(requireContext());
+            userManager.open();
+            user = userManager.getUserById(userId);
+            userManager.close();
+        } else {
+            Toast.makeText(requireContext(), "Error acquired! ProfileEditFragment @initial", Toast.LENGTH_SHORT).show();
+            requireActivity().getSupportFragmentManager().popBackStack();
+        }
 
         pickLauncher = registerForActivityResult(
                 new ActivityResultContracts.PickVisualMedia(),
@@ -106,12 +113,54 @@ public class ProfileEditFragment extends Fragment {
         profile_editPhoneET.setText(user.getPhone());
         profile_editAddressET.setText(user.getAddress());
 
-        if (user.getRole() != User.Role.NORMAL) {
-            profile_editRequestBtn.setVisibility(View.INVISIBLE);
+        profile_editProfileIV.setOnClickListener(this::onClick);
+        profile_editRequestBtn.setOnClickListener(this::onClick);
+        profile_editAcceptBtn.setOnClickListener(this::onClick);
+        profile_editCancelBtn.setOnClickListener(this::onClick);
+        profile_editDeleteBtn.setOnClickListener(this::onClick);
+        profile_editSaveBtn.setOnClickListener(this::onClick);
+
+        SessionManager sessionManager = new SessionManager(requireContext());
+        session = sessionManager.getUser();
+
+        if (user.getId().equals(session.getId())) {
+            profile_editAcceptBtn.setVisibility(View.GONE);
+            if (user.getRole() == User.Role.REQUESTED) {
+                profile_editRequestBtn.setVisibility(View.GONE);
+            } else if (user.getRole() != User.Role.CUSTOMER) {
+                profile_editRequestBtn.setVisibility(View.GONE);
+                profile_editCancelBtn.setVisibility(View.GONE);
+            } else {
+                profile_editCancelBtn.setVisibility(View.GONE);
+            }
+        } else if (session.getRole() == User.Role.ADMIN) {
+            profile_editRequestBtn.setVisibility(View.GONE);
+            profile_editConfirmTV.setVisibility(View.GONE);
+            profile_editConfirmET.setVisibility(View.GONE);
+            profile_editConfirmErrorTV.setVisibility(View.GONE);
+
+            if (user.getRole() != User.Role.REQUESTED) {
+                profile_editAcceptBtn.setVisibility(View.GONE);
+                profile_editCancelBtn.setVisibility(View.GONE);
+            }
+        } else {
+            profile_editPasswordTV.setVisibility(View.GONE);
+            profile_editPasswordET.setVisibility(View.GONE);
+            profile_editPasswordErrorTV.setVisibility(View.GONE);
+            profile_editConfirmTV.setVisibility(View.GONE);
+            profile_editConfirmET.setVisibility(View.GONE);
+            profile_editConfirmErrorTV.setVisibility(View.GONE);
+            profile_editRequestBtn.setVisibility(View.GONE);
+            profile_editAcceptBtn.setVisibility(View.GONE);
+            profile_editCancelBtn.setVisibility(View.GONE);
+            profile_editSaveBtn.setVisibility(View.GONE);
+            profile_editDeleteBtn.setVisibility(View.GONE);
         }
     }
 
     private void onClick(View view) {
+        DBUserManager userManager = new DBUserManager(requireContext());
+
         if (view == profile_editSaveBtn) {
             this.clearError();
 
@@ -124,7 +173,7 @@ public class ProfileEditFragment extends Fragment {
             Drawable image;
 
             if (uri == null) {
-                image = AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_person_24);
+                image = AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_person_100);
             } else {
                 image = new ImageManager(this.uri, requireContext()).getImage();
             }
@@ -132,9 +181,8 @@ public class ProfileEditFragment extends Fragment {
             User.Role role = (requested) ? User.Role.REQUESTED : user.getRole();
 
             if (validateInput(username, password, email, phone, confirm)) {
-                DBUserManager userManager = new DBUserManager(requireContext());
                 userManager.open();
-                userManager.updateUser(user.getId(), username, password, email, phone, address, image, role);
+                userManager.updateUser(user.getId(), username, password, email, phone, address, image, role, user.getCreatedAt());
                 userManager.close();
 
                 requireActivity().getSupportFragmentManager().popBackStack();
@@ -148,6 +196,24 @@ public class ProfileEditFragment extends Fragment {
         } else if (view == profile_editProfileIV) {
             PickerManager pickerManager = new PickerManager(pickLauncher);
             pickerManager.pickImageOnly();
+        } else if (view == profile_editAcceptBtn) {
+            userManager.open();
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.MERCHANT, user.getCreatedAt());
+            userManager.close();
+
+            requireActivity().getSupportFragmentManager().popBackStack();
+        } else if (view == profile_editCancelBtn) {
+            userManager.open();
+            userManager.updateUser(user.getId(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAddress(), user.getImage(), User.Role.CUSTOMER, user.getCreatedAt());
+            userManager.close();
+
+            requireActivity().getSupportFragmentManager().popBackStack();
+        } else if (view == profile_editDeleteBtn) {
+            userManager.open();
+            userManager.deleteUser(user);
+            userManager.close();
+
+            requireActivity().getSupportFragmentManager().popBackStack();
         }
     }
 
@@ -195,7 +261,7 @@ public class ProfileEditFragment extends Fragment {
         }
 
         // Confirm Password
-        if (!confirmPassword.equals(user.getPassword())) {
+        if ((!confirmPassword.equals(user.getPassword())) & (session.getRole() != User.Role.ADMIN)) {
             profile_editConfirmErrorTV.setText(R.string.auth_credential_error);
             flag = false;
         }

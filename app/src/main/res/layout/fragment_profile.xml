@@ -6,124 +6,129 @@
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/profileTitleTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/menu_profile"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/profilePictureTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/auth_picture"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/profilePictureIV"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/profileUsernameTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_username"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/profileUsernameShowTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/profileEmailTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_email"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/profileEmailShowTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/profilePhoneTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_phonenumber"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/profilePhoneShowTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/profileAddressTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_address"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/profileAddressShowTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/profileRoleTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/auth_role"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/profileRoleShowTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/profileEditBtn"
+            <TextView
+                android:id="@+id/profileTitleTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/profile_edit" />
+                android:layout_marginBottom="16dp"
+                android:text="@string/menu_profile"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/profileLogoutBtn"
+            <TextView
+                android:id="@+id/profilePictureTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/auth_picture"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profilePictureIV"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/profileUsernameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/profile_logout" />
-        </LinearLayout>
+                android:text="@string/auth_username"
+                android:textSize="20sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/profileUsernameShowTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/profileEmailTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/auth_email"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/profileEmailShowTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/profilePhoneTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/auth_phonenumber"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/profilePhoneShowTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/profileAddressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/auth_address"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/profileAddressShowTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/profileRoleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/auth_role"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/profileRoleShowTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/profileEditBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/profile_edit" />
+
+                <Button
+                    android:id="@+id/profileLogoutBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/profile_logout" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>
