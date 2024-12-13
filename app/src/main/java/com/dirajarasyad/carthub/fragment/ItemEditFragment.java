@@ -38,8 +38,8 @@ import java.util.regex.Pattern;
 
 public class ItemEditFragment extends Fragment {
     private ImageView item_editImageIV, item_editDeleteIV;
-    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV;
-    private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET;
+    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
+    private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET, item_editAddressET;
     private Spinner item_editCategorySpn;
     private Button item_editSaveBtn;
     private Item item;
@@ -79,6 +79,7 @@ public class ItemEditFragment extends Fragment {
         item_editPriceErrorTV = view.findViewById(R.id.item_editPriceErrorTV);
         item_editStockErrorTV = view.findViewById(R.id.item_editStockErrorTV);
         item_editCategoryErrorTV = view.findViewById(R.id.item_editCategoryErrorTV);
+        item_editAddressET = view.findViewById(R.id.item_editAddressET);
 
         item_editCategorySpn = view.findViewById(R.id.item_editCategorySpn);
         item_editSaveBtn = view.findViewById(R.id.item_editSaveBtn);
@@ -171,12 +172,14 @@ public class ItemEditFragment extends Fragment {
             Integer price = Integer.parseInt(item_editPriceET.getText().toString());
             Integer stock = Integer.parseInt(item_editStockET.getText().toString());
             String description = item_editDescriptionET.getText().toString();
+            String address = item_editAddressET.getText().toString();
 
-            if (this.validateInput(name, price, stock)) {
+            if (this.validateInput(name, price, stock, address)) {
                 DBItemManager itemManager = new DBItemManager(requireContext());
                 itemManager.open();
-                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected, item.getCreatedAt());
-
+                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected, address, item.getCreatedAt());
+                itemManager.close();
+              
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         } else if (view == item_editDeleteIV) {
@@ -196,7 +199,7 @@ public class ItemEditFragment extends Fragment {
         item_editCategoryErrorTV.setText("");
     }
 
-    private boolean validateInput(String name, Integer price, Integer stock) {
+    private boolean validateInput(String name, Integer price, Integer stock, String address) {
         boolean flag = true;
 
         if (!Pattern.matches("^[a-zA-Z0-9 ]+$", name)) {
@@ -217,6 +220,11 @@ public class ItemEditFragment extends Fragment {
         if (categorySelected == null) {
             item_editCategoryErrorTV.setText(R.string.item_category_error);
             flag = false;
+        }
+
+        if(address.isEmpty()){
+            item_editAddressET.setText("Please enter a valid address");
+            flag=false;
         }
 
         return flag;

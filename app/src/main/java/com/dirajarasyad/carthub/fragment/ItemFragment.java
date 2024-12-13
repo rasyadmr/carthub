@@ -20,12 +20,16 @@ import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
 import com.dirajarasyad.carthub.model.Item;
 import com.dirajarasyad.carthub.model.Transaction;
 
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.views.MapView;
+
 import java.util.List;
 
 public class ItemFragment extends Fragment {
     private ImageView f_itemImageIV;
     private TextView f_itemNameTV, f_itemPriceTV, f_itemRatingTV, f_itemStockTV, f_itemSellerTV, f_itemCategoryTV, f_itemDescriptionTV;
     private Button f_itemDeleteBtn, f_itemEditBtn;
+
     private Item item;
 
     @Override
@@ -62,6 +66,8 @@ public class ItemFragment extends Fragment {
             Toast.makeText(requireContext(), "Error acquired! ItemFragment @initial", Toast.LENGTH_SHORT).show();
             requireActivity().getSupportFragmentManager().popBackStack();
         }
+
+
     }
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
@@ -95,4 +101,6 @@ public class ItemFragment extends Fragment {
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, itemEdit).addToBackStack(null).commit();
         }
     }
+
+
 }

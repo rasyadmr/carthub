@@ -6,14 +6,15 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Item implements Serializable {
-    private String id, name, description;
+    private String id, name, description, address;
     private Integer price, stock, rating;
     private Drawable image;
     private User user;
     private Category category;
     private LocalDateTime createdAt, updatedAt;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, LocalDateTime createdAt, LocalDateTime updatedAt) {
+
+    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -23,6 +24,7 @@ public class Item implements Serializable {
         this.image = image;
         this.user = user;
         this.category = category;
+        this.address = address;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -101,6 +103,14 @@ public class Item implements Serializable {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+  
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {

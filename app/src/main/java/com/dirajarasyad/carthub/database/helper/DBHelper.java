@@ -54,6 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_ITEM_IMAGE = "image";
     public static final String FIELD_ITEM_USER = "userId";
     public static final String FIELD_ITEM_CATEGORY = "categoryId";
+    public static final String FIELD_ITEM_ADDRESS = "address";
     public static final String FIELD_ITEM_CREATED_AT = "created_at";
     public static final String FIELD_ITEM_UPDATED_AT = "updated_at";
     public static final String CREATE_TABLE_ITEM = "CREATE TABLE " + TABLE_ITEM + "("
@@ -66,6 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_ITEM_IMAGE + " BLOB NOT NULL,"
             + FIELD_ITEM_USER + " TEXT NOT NULL,"
             + FIELD_ITEM_CATEGORY + " TEXT NOT NULL,"
+            + FIELD_ITEM_ADDRESS + " TEXT,"
             + FIELD_ITEM_CREATED_AT + " TEXT NOT NULL,"
             + FIELD_ITEM_UPDATED_AT + " TEXT NOT NULL,"
             + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"

@@ -17,12 +17,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/item_editImageIV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="103dp"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
@@ -53,7 +54,7 @@
                 android:id="@+id/item_editPriceET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="8"
                 android:inputType="number" />
 
             <TextView
@@ -71,7 +72,7 @@
                 android:id="@+id/item_editRatingET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="8"
                 android:enabled="false"
                 android:focusable="false"
                 android:inputType="number" />
@@ -86,7 +87,7 @@
                 android:id="@+id/item_editStockET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="8"
                 android:inputType="number" />
 
             <TextView
@@ -104,7 +105,7 @@
                 android:id="@+id/item_editSellerET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="8"
                 android:enabled="false"
                 android:focusable="false"
                 android:inputType="text" />
@@ -138,6 +139,18 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
+            <TextView
+                android:id="@+id/item_editAddressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shop Addres" />
+
+            <EditText
+                android:id="@+id/item_editAddressET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text" />
 
         </LinearLayout>
     </ScrollView>
