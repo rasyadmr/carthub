@@ -36,9 +36,8 @@
                 android:id="@+id/item_editNameET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="8"
-                android:inputType="text"
-                android:text="Name" />
+                android:ems="10"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/item_editNameErrorTV"
@@ -100,7 +99,7 @@
                 android:id="@+id/item_editSellerTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_seller" />
+                android:text="@string/item_merchant" />
 
             <EditText
                 android:id="@+id/item_editSellerET"
@@ -109,8 +108,7 @@
                 android:ems="8"
                 android:enabled="false"
                 android:focusable="false"
-                android:inputType="text"
-                android:text="Name" />
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/item_editCategoryTV"

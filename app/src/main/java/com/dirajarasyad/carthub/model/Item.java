@@ -3,6 +3,7 @@ package com.dirajarasyad.carthub.model;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Item implements Serializable {
     private String id, name, description, address;
@@ -10,8 +11,10 @@ public class Item implements Serializable {
     private Drawable image;
     private User user;
     private Category category;
+    private LocalDateTime createdAt, updatedAt;
 
-    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
+
+    public Item(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -22,14 +25,8 @@ public class Item implements Serializable {
         this.user = user;
         this.category = category;
         this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public String getId() {
@@ -102,5 +99,29 @@ public class Item implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+  
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

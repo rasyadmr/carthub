@@ -19,7 +19,6 @@ import com.dirajarasyad.carthub.adapter.AdminMenuAdapter;
 import com.dirajarasyad.carthub.adapter.StatAdapter;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
 import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
-import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.Menu;
 import com.dirajarasyad.carthub.model.Stat;
@@ -76,9 +75,9 @@ public class SellerFragment extends Fragment {
             itemSold += t.getQuantity();
         }
 
-        panelTitleTV.setText(R.string.menu_seller);
-        panelStatTV.setText(R.string.seller_stat);
-        panelMenuTV.setText(R.string.seller_menu);
+        panelTitleTV.setText(R.string.menu_merchant);
+        panelStatTV.setText(R.string.merchant_stat);
+        panelMenuTV.setText(R.string.merchant_menu);
 
         List<Stat> statList = new ArrayList<>();
         statList.add(new Stat("Total Item", String.format("%d item(s)", itemCount)));

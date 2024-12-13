@@ -8,11 +8,13 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.dirajarasyad.carthub.database.helper.DBHelper;
+import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.model.Category;
 import com.dirajarasyad.carthub.model.Item;
 import com.dirajarasyad.carthub.model.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -38,7 +40,6 @@ public class DBItemManager {
 
     public void addItem(String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
         String id = "ITEM-" + UUID.randomUUID().toString();
-        ImageManager imageManager = new ImageManager(image);
 
         ContentValues values = new ContentValues();
         values.put(DBHelper.FIELD_ITEM_ID, id);
@@ -47,10 +48,12 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_PRICE, price);
         values.put(DBHelper.FIELD_ITEM_STOCK, stock);
         values.put(DBHelper.FIELD_ITEM_RATING, rating);
-        values.put(DBHelper.FIELD_ITEM_IMAGE, imageManager.getByteArray());
+        values.put(DBHelper.FIELD_ITEM_IMAGE, new ImageManager(image).getByteArray());
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
         values.put(DBHelper.FIELD_ITEM_ADDRESS, address);
+        values.put(DBHelper.FIELD_ITEM_CREATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
+        values.put(DBHelper.FIELD_ITEM_UPDATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
 
         database.insert(DBHelper.TABLE_ITEM, null, values);
         Log.i("DATABASE", "Item Created");
@@ -80,8 +83,10 @@ public class DBItemManager {
                     User user = userManager.getUserById(cursor.getString(7));
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
                     String address = cursor.getString(9);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -93,7 +98,7 @@ public class DBItemManager {
         return itemList;
     }
 
-    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address) {
+    public boolean updateItem(String id, String name, String description, Integer price, Integer stock, Integer rating, Drawable image, User user, Category category, String address, LocalDateTime createdAt) {
         ImageManager imageManager = new ImageManager(image);
 
         ContentValues values = new ContentValues();
@@ -106,11 +111,33 @@ public class DBItemManager {
         values.put(DBHelper.FIELD_ITEM_USER, user.getId());
         values.put(DBHelper.FIELD_ITEM_CATEGORY, category.getId());
         values.put(DBHelper.FIELD_ITEM_ADDRESS, address);
-
+        values.put(DBHelper.FIELD_ITEM_CREATED_AT, new DatetimeManager(createdAt).getDatetime());
+        values.put(DBHelper.FIELD_ITEM_UPDATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
 
         int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{id});
 
         Log.i("DATABASE", "Item Updated");
+        return updateItem > 0;
+    }
+
+    public boolean updateStock(Item item, Integer stock) {
+        ImageManager imageManager = new ImageManager(item.getImage());
+
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.FIELD_ITEM_NAME, item.getName());
+        values.put(DBHelper.FIELD_ITEM_DESCRIPTION, item.getDescription());
+        values.put(DBHelper.FIELD_ITEM_PRICE, item.getPrice());
+        values.put(DBHelper.FIELD_ITEM_STOCK, stock);
+        values.put(DBHelper.FIELD_ITEM_RATING, item.getRating());
+        values.put(DBHelper.FIELD_ITEM_IMAGE, imageManager.getByteArray());
+        values.put(DBHelper.FIELD_ITEM_USER, item.getUser().getId());
+        values.put(DBHelper.FIELD_ITEM_CATEGORY, item.getCategory().getId());
+        values.put(DBHelper.FIELD_ITEM_CREATED_AT, new DatetimeManager(item.getCreatedAt()).getDatetime());
+        values.put(DBHelper.FIELD_ITEM_UPDATED_AT, new DatetimeManager(LocalDateTime.now()).getDatetime());
+
+        int updateItem = database.update(DBHelper.TABLE_ITEM, values, DBHelper.FIELD_ITEM_ID + " = ?", new String[]{item.getId()});
+
+        Log.i("DATABASE", "Item Stock Updated");
         return updateItem > 0;
     }
 
@@ -145,8 +172,10 @@ public class DBItemManager {
                 User user = userManager.getUserById(cursor.getString(7));
                 Category category = categoryManager.getCategoryById(cursor.getString(8));
                 String address = cursor.getString(9);
+                LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                item = new Item(itemId, name, description, price, stock, rating, image, user, category, address);
+                item = new Item(itemId, name, description, price, stock, rating, image, user, category, address, created, updated);
             }
         }
 
@@ -184,8 +213,10 @@ public class DBItemManager {
                     User user = userManager.getUserById(cursor.getString(7));
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
                     String address = cursor.getString(9);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -226,8 +257,10 @@ public class DBItemManager {
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
                     String address = cursor.getString(9);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -265,8 +298,10 @@ public class DBItemManager {
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     User user = userManager.getUserById(cursor.getString(7));
                     String address = cursor.getString(9);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address, created, updated));
                 } while (cursor.moveToNext());
             }
         }
@@ -304,8 +339,11 @@ public class DBItemManager {
                     Drawable image = new ImageManager(cursor.getBlob(6), this.context).getImage();
                     Category category = categoryManager.getCategoryById(cursor.getString(8));
                     String address = cursor.getString(9);
+                    LocalDateTime created = new DatetimeManager(cursor.getString(10)).getLDT();
+                    LocalDateTime updated = new DatetimeManager(cursor.getString(11)).getLDT();
 
-                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address));
+                    itemList.add(new Item(id, name, description, price, stock, rating, image, user, category, address, created, updated));
+
                 } while (cursor.moveToNext());
             }
         }

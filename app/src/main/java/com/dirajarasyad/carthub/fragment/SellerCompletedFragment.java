@@ -39,7 +39,7 @@ public class SellerCompletedFragment extends Fragment {
         listEmptyTV = view.findViewById(R.id.listEmptyTV);
 
         TextView admin_listTitleTV = view.findViewById(R.id.listTitleTV);
-        admin_listTitleTV.setText(R.string.seller_completed_title);
+        admin_listTitleTV.setText(R.string.merchant_completed_title);
     }
 
     private void onBind() {

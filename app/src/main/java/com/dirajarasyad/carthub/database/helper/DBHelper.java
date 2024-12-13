@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "carthub";
 
     // TABLE USER
@@ -19,6 +19,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_USER_ADDRESS = "address";
     public static final String FIELD_USER_IMAGE = "image";
     public static final String FIELD_USER_ROLE = "role";
+    public static final String FIELD_USER_CREATED_AT = "created_at";
+    public static final String FIELD_USER_UPDATED_AT = "updated_at";
     public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + "("
             + FIELD_USER_ID + " TEXT PRIMARY KEY,"
             + FIELD_USER_USERNAME + " TEXT NOT NULL UNIQUE,"
@@ -27,7 +29,9 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_USER_PHONE + " TEXT NOT NULL,"
             + FIELD_USER_ADDRESS + " TEXT NOT NULL,"
             + FIELD_USER_IMAGE + " BLOB NOT NULL,"
-            + FIELD_USER_ROLE + " TEXT NOT NULL)";
+            + FIELD_USER_ROLE + " TEXT NOT NULL,"
+            + FIELD_USER_CREATED_AT + " TEXT NOT NULL,"
+            + FIELD_USER_UPDATED_AT + " TEXT NOT NULL)";
 
     // TABLE CATEGORY
     public static final String TABLE_CATEGORY = "categories";
@@ -37,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + "("
             + FIELD_CATEGORY_ID + " TEXT PRIMARY KEY,"
             + FIELD_CATEGORY_NAME + " TEXT NOT NULL UNIQUE,"
-            + FIELD_CATEGORY_IMAGE + " BLOB)";
+            + FIELD_CATEGORY_IMAGE + " BLOB NOT NULL)";
 
     // TABLE ITEM
     public static final String TABLE_ITEM = "items";
@@ -51,6 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_ITEM_USER = "userId";
     public static final String FIELD_ITEM_CATEGORY = "categoryId";
     public static final String FIELD_ITEM_ADDRESS = "address";
+    public static final String FIELD_ITEM_CREATED_AT = "created_at";
+    public static final String FIELD_ITEM_UPDATED_AT = "updated_at";
     public static final String CREATE_TABLE_ITEM = "CREATE TABLE " + TABLE_ITEM + "("
             + FIELD_ITEM_ID + " TEXT PRIMARY KEY,"
             + FIELD_ITEM_NAME + " TEXT NOT NULL,"
@@ -62,6 +68,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + FIELD_ITEM_USER + " TEXT NOT NULL,"
             + FIELD_ITEM_CATEGORY + " TEXT NOT NULL,"
             + FIELD_ITEM_ADDRESS + " TEXT,"
+            + FIELD_ITEM_CREATED_AT + " TEXT NOT NULL,"
+            + FIELD_ITEM_UPDATED_AT + " TEXT NOT NULL,"
             + "FOREIGN KEY (" + FIELD_ITEM_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"
             + "FOREIGN KEY (" + FIELD_ITEM_CATEGORY + ") REFERENCES " + TABLE_CATEGORY + "(" + FIELD_CATEGORY_ID + "))";
 
@@ -86,12 +94,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String FIELD_TRANSACTION_USER = "userId";
     public static final String FIELD_TRANSACTION_ITEM = "item";
     public static final String FIELD_TRANSACTION_QUANTITY = "quantity";
+    public static final String FIELD_TRANSACTION_CREATED_AT = "created_at";
+    public static final String FIELD_TRANSACTION_UPDATED_AT = "updated_at";
     public static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE " + TABLE_TRANSACTION + "("
             + FIELD_TRANSACTION_ID + " TEXT PRIMARY KEY,"
             + FIELD_TRANSACTION_STATUS + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_USER + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_ITEM + " TEXT NOT NULL,"
             + FIELD_TRANSACTION_QUANTITY + " INTEGER NOT NULL,"
+            + FIELD_TRANSACTION_CREATED_AT + " INTEGER NOT NULL,"
+            + FIELD_TRANSACTION_UPDATED_AT + " INTEGER NOT NULL,"
             + "FOREIGN KEY (" + FIELD_TRANSACTION_USER + ") REFERENCES " + TABLE_USER + "(" + FIELD_USER_ID + "),"
             + "FOREIGN KEY (" + FIELD_TRANSACTION_ITEM + ") REFERENCES " + TABLE_ITEM + "(" + FIELD_ITEM_ID + "))";
 

@@ -1,6 +1,7 @@
 package com.dirajarasyad.carthub.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Transaction implements Serializable {
     private String id;
@@ -8,6 +9,7 @@ public class Transaction implements Serializable {
     private User user;
     private Item item;
     private Integer quantity;
+    private LocalDateTime createdAt, updatedAt;
 
     public enum Status {
         PENDING("Pending"),
@@ -35,12 +37,14 @@ public class Transaction implements Serializable {
         }
     }
 
-    public Transaction(String id, Status status, User user, Item item, Integer quantity) {
+    public Transaction(String id, Status status, User user, Item item, Integer quantity, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.status = status;
         this.user = user;
         this.item = item;
         this.quantity = quantity;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public Transaction(String id, User user, Item item, Integer quantity) {
@@ -93,5 +97,21 @@ public class Transaction implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

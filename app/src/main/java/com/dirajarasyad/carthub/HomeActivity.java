@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottom_navigation;
     private FrameLayout homeContainerFL;
     private SessionManager sessionManager;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         homeContainerFL = findViewById(R.id.homeContainerFL);
 
         sessionManager = new SessionManager(this);
-        User user = sessionManager.getUser();
+        user = sessionManager.getUser();
 
         if (user == null) {
             sessionManager.destroySession();
@@ -59,16 +60,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void onBind() {
-        User user = sessionManager.getUser();
-
         bottom_navigation.getMenu().clear();
         bottom_navigation.getMenu().add(0, R.id.navHome, 0, getString(R.string.menu_home)).setIcon(R.drawable.baseline_home_24);
         bottom_navigation.getMenu().add(0, R.id.navCart, 1, getString(R.string.menu_cart)).setIcon(R.drawable.baseline_shopping_cart_24);
         bottom_navigation.getMenu().add(0, R.id.navHistory, 2, getString(R.string.menu_history)).setIcon(R.drawable.baseline_article_24);
         bottom_navigation.getMenu().add(0, R.id.navProfile, 3, getString(R.string.menu_profile)).setIcon(R.drawable.baseline_person_24);
 
-        if (user.getRole() == User.Role.SELLER) {
-            bottom_navigation.getMenu().add(0, R.id.navRole, 4, getString(R.string.menu_seller)).setIcon(R.drawable.baseline_business_24);
+        if (user.getRole() == User.Role.MERCHANT) {
+            bottom_navigation.getMenu().add(0, R.id.navRole, 4, getString(R.string.menu_merchant)).setIcon(R.drawable.baseline_business_24);
         } else if (user.getRole() == User.Role.ADMIN) {
             bottom_navigation.getMenu().add(0, R.id.navRole, 4, getString(R.string.menu_admin)).setIcon(R.drawable.baseline_admin_panel_settings_24);
         }
@@ -86,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
                 selectedFragment = new HistoryFragment();
             } else if (itemId == R.id.navProfile) {
                 selectedFragment = new ProfileFragment();
-            } else if ((itemId == R.id.navRole) & (user.getRole() == User.Role.SELLER)) {
+            } else if ((itemId == R.id.navRole) & (user.getRole() == User.Role.MERCHANT)) {
                 selectedFragment = new SellerFragment();
             } else if ((itemId == R.id.navRole) & (user.getRole() == User.Role.ADMIN)) {
                 selectedFragment = new AdminFragment();

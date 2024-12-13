@@ -59,7 +59,7 @@ public class AdminFragment extends Fragment {
 
         userManager.open();
         Integer userCount = userManager.getAllUsers().size();
-        Integer sellerCount = userManager.getAllUsersByRole(User.Role.SELLER).size();
+        Integer sellerCount = userManager.getAllUsersByRole(User.Role.MERCHANT).size();
         Integer requestCount = userManager.getAllUsersByRole(User.Role.REQUESTED).size();
         userManager.close();
 

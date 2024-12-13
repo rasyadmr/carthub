@@ -177,8 +177,9 @@ public class ItemEditFragment extends Fragment {
             if (this.validateInput(name, price, stock, address)) {
                 DBItemManager itemManager = new DBItemManager(requireContext());
                 itemManager.open();
-                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected, address);
-
+                itemManager.updateItem(item.getId(), name, description, price, stock, item.getRating(), new ImageManager(uri, requireContext()).getImage(), item.getUser(), categorySelected, address, item.getCreatedAt());
+                itemManager.close();
+              
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         } else if (view == item_editDeleteIV) {
