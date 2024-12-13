@@ -20,6 +20,7 @@ import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
 import com.dirajarasyad.carthub.model.User;
+import com.dirajarasyad.carthub.service.NotificationService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -42,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
         this.initial();
         this.onBind();
 
+        NotificationService service = new NotificationService(this);
+        service.checkPermission(this);
+        service.sendNotification("TES", "Testing", "Testing 123");
     }
 
     private void initial() {

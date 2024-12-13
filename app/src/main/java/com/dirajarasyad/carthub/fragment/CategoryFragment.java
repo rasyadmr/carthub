@@ -77,7 +77,7 @@ public class CategoryFragment extends Fragment {
         if (!itemList.isEmpty()) {
             listEmptyTV.setVisibility(View.GONE);
 
-            ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(itemList);
+            ItemInfoAdapter itemInfoAdapter = new ItemInfoAdapter(itemList, true);
             listDataRV.setLayoutManager(new LinearLayoutManager(requireContext()));
             listDataRV.setAdapter(itemInfoAdapter);
         }

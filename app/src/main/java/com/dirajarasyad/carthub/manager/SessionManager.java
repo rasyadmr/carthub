@@ -40,14 +40,15 @@ public class SessionManager {
 
     public User getUser() {
         String userId = sharedPreferences.getString(AUTH_USER_ID, "null");
+        User user = null;
 
         if (!userId.equals("null")) {
             DBUserManager userManager = new DBUserManager(context);
             userManager.open();
-            User user = userManager.getUserById(userId);
+            user = userManager.getUserById(userId);
             userManager.close();
             return user;
         }
-        return null;
+        return user;
     }
 }

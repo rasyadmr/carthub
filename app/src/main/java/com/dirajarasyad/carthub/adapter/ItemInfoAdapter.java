@@ -2,6 +2,7 @@ package com.dirajarasyad.carthub.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dirajarasyad.carthub.ItemActivity;
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.fragment.ItemFragment;
 import com.dirajarasyad.carthub.holder.ItemInfoHolder;
@@ -21,9 +23,11 @@ import java.util.List;
 public class ItemInfoAdapter extends RecyclerView.Adapter<ItemInfoHolder> {
     private Context context;
     private final List<Item> itemList;
+    private final Boolean buypage;
 
-    public ItemInfoAdapter(List<Item> itemList) {
+    public ItemInfoAdapter(List<Item> itemList, Boolean buypage) {
         this.itemList = itemList;
+        this.buypage = buypage;
     }
 
     @NonNull
@@ -48,13 +52,20 @@ public class ItemInfoAdapter extends RecyclerView.Adapter<ItemInfoHolder> {
         holder.item_infoCategoryTV.setText(itemList.get(position).getCategory().getName());
 
         holder.item_infoContainerCV.setOnClickListener(view -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("item_id", itemList.get(position).getId());
+            if (!buypage) {
+                Bundle bundle = new Bundle();
+                bundle.putString("item_id", itemList.get(position).getId());
 
-            ItemFragment itemFragment = new ItemFragment();
-            itemFragment.setArguments(bundle);
-            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, itemFragment).addToBackStack(null).commit();
+                ItemFragment itemFragment = new ItemFragment();
+                itemFragment.setArguments(bundle);
+                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, itemFragment).addToBackStack(null).commit();
+            } else {
+                Intent buypage = new Intent(context, ItemActivity.class);
+                buypage.putExtra("item_id", itemList.get(position).getId());
+                context.startActivity(buypage);
+            }
         });
+
     }
 
     @Override
