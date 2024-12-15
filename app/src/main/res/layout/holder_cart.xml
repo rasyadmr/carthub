@@ -23,6 +23,7 @@
 
         <TextView
             android:id="@+id/cartNameTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
@@ -31,6 +32,7 @@
 
         <TextView
             android:id="@+id/cartQuantityTV"
+            style="@style/textThin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_light"
@@ -38,6 +40,7 @@
 
         <TextView
             android:id="@+id/cartPriceTV"
+            style="@style/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"

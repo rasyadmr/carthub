@@ -37,6 +37,7 @@
 
                 <TextView
                     android:id="@+id/checkoutNameTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
@@ -44,6 +45,7 @@
 
                 <TextView
                     android:id="@+id/checkoutSellerTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_light"
@@ -51,6 +53,7 @@
 
                 <TextView
                     android:id="@+id/checkoutPriceTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_light"
@@ -58,6 +61,7 @@
 
                 <TextView
                     android:id="@+id/checkoutQuantityTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_light"
@@ -65,6 +69,7 @@
 
                 <TextView
                     android:id="@+id/checkoutTotalTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"

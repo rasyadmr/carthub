@@ -19,6 +19,7 @@
 
             <TextView
                 android:id="@+id/profile_editTitleTV"
+                style="@style/h1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -28,32 +29,40 @@
 
             <TextView
                 android:id="@+id/profile_editProfileTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="@string/auth_picture"
-                android:textSize="20sp" />
+                android:text="@string/auth_picture" />
 
-            <ImageView
-                android:id="@+id/profile_editProfileIV"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:maxHeight="200dp"
-                android:minHeight="100dp"
-                tools:src="@drawable/baseline_person_24" />
+                android:layout_gravity="center"
+                android:elevation="12dp"
+                app:cardCornerRadius="100dp" >
+
+                <ImageView
+                    android:id="@+id/profile_editProfileIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    tools:src="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/profile_editProfileErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editUsernameTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="@string/auth_username"
-                android:textSize="20sp" />
+                android:text="@string/auth_username" />
 
             <EditText
                 android:id="@+id/profile_editUsernameET"
@@ -64,16 +73,17 @@
 
             <TextView
                 android:id="@+id/profile_editUsernameErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editPasswordTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="@string/auth_password"
-                android:textSize="20sp" />
+                android:text="@string/auth_password" />
 
             <EditText
                 android:id="@+id/profile_editPasswordET"
@@ -84,16 +94,17 @@
 
             <TextView
                 android:id="@+id/profile_editPasswordErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editEmailTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="@string/auth_email"
-                android:textSize="20sp" />
+                android:text="@string/auth_email" />
 
             <EditText
                 android:id="@+id/profile_editEmailET"
@@ -104,16 +115,17 @@
 
             <TextView
                 android:id="@+id/profile_editEmailErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editPhoneTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="@string/auth_phonenumber"
-                android:textSize="20sp" />
+                android:text="@string/auth_phonenumber" />
 
             <EditText
                 android:id="@+id/profile_editPhoneET"
@@ -124,16 +136,17 @@
 
             <TextView
                 android:id="@+id/profile_editPhoneErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editAddressTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="@string/auth_address"
-                android:textSize="20sp" />
+                android:text="@string/auth_address" />
 
             <EditText
                 android:id="@+id/profile_editAddressET"
@@ -145,16 +158,17 @@
 
             <TextView
                 android:id="@+id/profile_editAddressErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/profile_editConfirmTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
-                android:text="Old Password"
-                android:textSize="20sp" />
+                android:text="Old Password" />
 
             <EditText
                 android:id="@+id/profile_editConfirmET"
@@ -165,6 +179,7 @@
 
             <TextView
                 android:id="@+id/profile_editConfirmErrorTV"
+                style="@style/textError"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -177,6 +192,7 @@
 
                 <Button
                     android:id="@+id/profile_editRequestBtn"
+                    style="@style/btnPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -184,6 +200,7 @@
 
                 <Button
                     android:id="@+id/profile_editAcceptBtn"
+                    style="@style/btnSuccess"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -192,6 +209,7 @@
 
                 <Button
                     android:id="@+id/profile_editCancelBtn"
+                    style="@style/btnDanger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -200,6 +218,7 @@
 
                 <Button
                     android:id="@+id/profile_editDeleteBtn"
+                    style="@style/btnDanger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -208,6 +227,7 @@
 
                 <Button
                     android:id="@+id/profile_editSaveBtn"
+                    style="@style/btnPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

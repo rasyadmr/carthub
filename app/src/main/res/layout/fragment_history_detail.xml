@@ -19,6 +19,7 @@
 
             <TextView
                 android:id="@+id/history_detailTitleTV"
+                style="@style/h1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/history_detail_title"
@@ -33,6 +34,7 @@
 
                 <TextView
                     android:id="@+id/history_detailStatusTitleTV"
+                    style="@style/h2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -41,6 +43,7 @@
 
                 <TextView
                     android:id="@+id/history_detailStatusTV"
+                    style="@style/h2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -51,6 +54,7 @@
 
             <TextView
                 android:id="@+id/history_detailItemTV"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -85,10 +89,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        style="@style/h2" />
 
                     <TextView
                         android:id="@+id/history_detailSellerTV"
+                        style="@style/text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -105,6 +111,7 @@
 
                 <TextView
                     android:id="@+id/history_detailIdTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -113,12 +120,14 @@
 
                 <TextView
                     android:id="@+id/history_detailIdTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailPriceTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -127,12 +136,14 @@
 
                 <TextView
                     android:id="@+id/history_detailPriceTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailQuantityTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -141,12 +152,14 @@
 
                 <TextView
                     android:id="@+id/history_detailQuantityTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailTotalTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -155,6 +168,7 @@
 
                 <TextView
                     android:id="@+id/history_detailTotalTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
@@ -163,6 +177,7 @@
 
             <TextView
                 android:id="@+id/history_detailUserTV"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -176,6 +191,7 @@
 
                 <TextView
                     android:id="@+id/history_detailUsernameTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -184,12 +200,14 @@
 
                 <TextView
                     android:id="@+id/history_detailUsernameTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailEmailTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -198,12 +216,14 @@
 
                 <TextView
                     android:id="@+id/history_detailEmailTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailPhoneTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -212,12 +232,14 @@
 
                 <TextView
                     android:id="@+id/history_detailPhoneTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/history_detailAddressTitleTV"
+                    style="@style/h2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -226,6 +248,7 @@
 
                 <TextView
                     android:id="@+id/history_detailAddressTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />

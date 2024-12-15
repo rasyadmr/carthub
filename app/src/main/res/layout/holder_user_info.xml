@@ -36,61 +36,53 @@
 
                 <TextView
                     android:id="@+id/user_infoUsernameTitleTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="@string/auth_username"
-                    android:textSize="18sp" />
+                    android:text="@string/auth_username" />
 
                 <TextView
                     android:id="@+id/user_infoUsernameTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/inter"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/user_infoEmailTitleTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="@string/auth_email"
-                    android:textSize="18sp" />
+                    android:text="@string/auth_email" />
 
                 <TextView
                     android:id="@+id/user_infoEmailTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/inter"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/user_infoPhoneTitleTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="@string/auth_phonenumber"
-                    android:textSize="18sp" />
+                    android:text="@string/auth_phonenumber" />
 
                 <TextView
                     android:id="@+id/user_infoPhoneTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/inter"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/user_infoRoleTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_bold"
-                    android:gravity="bottom|end"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:gravity="bottom|end" />
             </LinearLayout>
 
         </LinearLayout>
