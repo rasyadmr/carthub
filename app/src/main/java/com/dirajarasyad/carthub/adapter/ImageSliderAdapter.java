@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.R;
-import com.dirajarasyad.carthub.holder.CategoryHolder;
 import com.dirajarasyad.carthub.holder.ImageSliderHolder;
-import com.dirajarasyad.carthub.model.Category;
 
 import java.util.List;
 

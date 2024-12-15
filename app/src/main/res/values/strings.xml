@@ -115,6 +115,7 @@
     <string name="merchant_completed_title">Merchant Completed Transactions</string>
 
     <!--  Item Fragment  -->
+    <string name="item_image">Item Image</string>
     <string name="item_name">Item Name</string>
     <string name="item_price">Item Price</string>
     <string name="item_stock">Item Stock</string>
@@ -122,6 +123,8 @@
     <string name="item_merchant">Item Merchant</string>
     <string name="item_category">Item Category</string>
     <string name="item_description">Item Description</string>
+    <string name="item_delete">Delete Item</string>
+    <string name="item_edit">Edit Item</string>
 
     <string name="item_name_error">Item name only contains alphabeth, numbers, and spaces!</string>
     <string name="item_price_error">Price cannot be less than Rp 100</string>
@@ -129,8 +132,6 @@
     <string name="item_category_error">Please select the category!</string>
 
     <!--    Item Activity-->
-    <!--    <string name="item_rating_display">Rating: </string>-->
-    <!--    <string name="item_stock_display">Stock: </string>-->
     <string name="item_add">Add to Cart</string>
 
     <!--    Checkout Activity-->

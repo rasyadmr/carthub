@@ -36,9 +36,7 @@ public class ItemActivity extends AppCompatActivity {
     private TextView itemNameTV, itemPriceTV, itemRatingTV, itemStockTV, itemSellerTV, itemCategoryTV, itemDescriptionTV, itemQuantityTV, itemPriceCheckoutTV, itemAddressTV;
     private Button itemCartBtn;
     private ImageView itemImageIV, itemMinusIV, itemPlusIV;
-
     private Item item;
-
     private MapView itemMapView;
     private Integer quantity = 1;
 

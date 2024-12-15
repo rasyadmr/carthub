@@ -1,13 +1,11 @@
 package com.dirajarasyad.carthub.manager;
 
-import android.content.Context;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 
 public class PickerManager {
-    private ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
+    private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
 
     public PickerManager(ActivityResultLauncher<PickVisualMediaRequest> pickMedia) {
         this.pickMedia = pickMedia;

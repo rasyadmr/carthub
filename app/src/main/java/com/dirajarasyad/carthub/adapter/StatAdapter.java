@@ -15,8 +15,7 @@ import com.dirajarasyad.carthub.model.Stat;
 import java.util.List;
 
 public class StatAdapter extends RecyclerView.Adapter<StatHolder> {
-    private List<Stat> statList;
-    private Context context;
+    private final List<Stat> statList;
 
     public StatAdapter(List<Stat> statList) {
         this.statList = statList;
@@ -25,7 +24,7 @@ public class StatAdapter extends RecyclerView.Adapter<StatHolder> {
     @NonNull
     @Override
     public StatHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
+        Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.holder_stat, parent, false);
 

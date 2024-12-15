@@ -31,7 +31,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottom_navigation;
     private FrameLayout homeContainerFL;
-    private SessionManager sessionManager;
     private User user;
 
     @Override
@@ -56,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         bottom_navigation = findViewById(R.id.bottom_navigation);
         homeContainerFL = findViewById(R.id.homeContainerFL);
 
-        sessionManager = new SessionManager(this);
+        SessionManager sessionManager = new SessionManager(this);
         user = sessionManager.getUser();
 
         if (user == null) {

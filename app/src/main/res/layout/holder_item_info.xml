@@ -34,79 +34,66 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/item_infoNameTitleTV"
-                    style="@style/h3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <TextView
                     android:id="@+id/item_infoNameTV"
-                    style="@style/text"
+                    style="@style/h2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="TextView" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/item_infoPriceTitleTV"
                     style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/item_price" />
 
                 <TextView
                     android:id="@+id/item_infoPriceTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="TextView" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/item_infoStockTitleTV"
                     style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/item_stock" />
 
                 <TextView
                     android:id="@+id/item_infoStockTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="TextView" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/item_infoRatingTitleTV"
                     style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/item_rating" />
 
                 <TextView
                     android:id="@+id/item_infoRatingTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="TextView" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/item_infoSellerTitleTV"
                     style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="@string/item_merchant" />
 
                 <TextView
                     android:id="@+id/item_infoSellerTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:text="TextView" />
+                    android:layout_marginBottom="4dp" />
 
                 <TextView
                     android:id="@+id/item_infoCategoryTV"
@@ -115,8 +102,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/inter_bold"
-                    android:gravity="bottom|end"
-                    android:text="TextView" />
+                    android:gravity="bottom|end" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

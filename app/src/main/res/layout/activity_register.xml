@@ -30,6 +30,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_username" />
 
             <EditText
@@ -51,6 +52,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_password" />
 
             <EditText
@@ -72,6 +74,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_email" />
 
             <EditText
@@ -93,6 +96,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_phonenumber" />
 
             <EditText
@@ -114,6 +118,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_address" />
 
             <EditText
@@ -136,6 +141,7 @@
                 style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="@string/auth_picture" />
 
             <androidx.cardview.widget.CardView
@@ -157,7 +163,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
