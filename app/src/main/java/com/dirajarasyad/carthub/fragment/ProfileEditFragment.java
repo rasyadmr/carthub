@@ -188,11 +188,9 @@ public class ProfileEditFragment extends Fragment {
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         } else if (view == profile_editRequestBtn) {
-            if (this.requested) {
-                Toast.makeText(requireContext(), "Already requested, please save changes!", Toast.LENGTH_SHORT).show();
-            } else {
-                this.requested = true;
-            }
+            this.requested = true;
+            Toast.makeText(requireContext(), "Request will be saved once you save changes!", Toast.LENGTH_SHORT).show();
+            profile_editRequestBtn.setEnabled(false);
         } else if (view == profile_editProfileIV) {
             PickerManager pickerManager = new PickerManager(pickLauncher);
             pickerManager.pickImageOnly();
@@ -223,45 +221,62 @@ public class ProfileEditFragment extends Fragment {
         userManager.open();
         boolean flag = true;
 
-        // TODO color red when error
         // Username
         if (username.length() < 4 || username.length() > 20) {
+            profile_editUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editUsernameErrorTV.setVisibility(View.VISIBLE);
             profile_editUsernameErrorTV.setText(R.string.auth_username_error_length);
             flag = false;
         } else if ((userManager.getUserByUsername(username) != null) && (!user.getUsername().equals(username))) {
+            profile_editUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editUsernameErrorTV.setVisibility(View.VISIBLE);
             profile_editUsernameErrorTV.setText(R.string.auth_username_error_unique);
             flag = false;
         } else if (!Pattern.matches("^[a-zA-Z0-9]+$", username)) {
+            profile_editUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editUsernameErrorTV.setVisibility(View.VISIBLE);
             profile_editUsernameErrorTV.setText(R.string.auth_username_error_regex);
             flag = false;
         }
 
         // Password
         if (password.length() < 8 || password.length() > 50) {
+            profile_editPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editPasswordErrorTV.setVisibility(View.VISIBLE);
             profile_editPasswordErrorTV.setText(R.string.auth_password_error_length);
             flag = false;
         } else if (!Pattern.matches("^[a-zA-Z0-9]+$", password)) {
+            profile_editPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editPasswordErrorTV.setVisibility(View.VISIBLE);
             profile_editPasswordErrorTV.setText(R.string.auth_password_error_regex);
             flag = false;
         }
 
         // Email
         if (!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)) {
+            profile_editEmailTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editEmailErrorTV.setVisibility(View.VISIBLE);
             profile_editEmailErrorTV.setText(R.string.auth_email_error_regex);
             flag = false;
         }
 
         // Phone
         if (!phone.startsWith("0")) {
+            profile_editPhoneTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editPhoneErrorTV.setVisibility(View.VISIBLE);
             profile_editPhoneErrorTV.setText(R.string.auth_phone_error_start);
             flag = false;
         } else if (phone.length() < 10 || phone.length() > 13) {
+            profile_editPhoneTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editPhoneErrorTV.setVisibility(View.VISIBLE);
             profile_editPhoneErrorTV.setText(R.string.auth_phone_error_length);
             flag = false;
         }
 
         // Confirm Password
         if ((!confirmPassword.equals(user.getPassword())) & (session.getRole() != User.Role.ADMIN)) {
+            profile_editConfirmTV.setTextColor(getResources().getColor(R.color.danger, null));
+            profile_editPasswordErrorTV.setVisibility(View.VISIBLE);
             profile_editConfirmErrorTV.setText(R.string.auth_credential_error);
             flag = false;
         }
@@ -271,6 +286,22 @@ public class ProfileEditFragment extends Fragment {
     }
 
     private void clearError() {
+        profile_editProfileTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editUsernameTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editPasswordTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editEmailTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editPhoneTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editAddressTV.setTextColor(getResources().getColor(R.color.black, null));
+        profile_editConfirmTV.setTextColor(getResources().getColor(R.color.black, null));
+
+        profile_editProfileErrorTV.setVisibility(View.GONE);
+        profile_editUsernameErrorTV.setVisibility(View.GONE);
+        profile_editPasswordErrorTV.setVisibility(View.GONE);
+        profile_editEmailErrorTV.setVisibility(View.GONE);
+        profile_editPhoneErrorTV.setVisibility(View.GONE);
+        profile_editAddressErrorTV.setVisibility(View.GONE);
+        profile_editConfirmErrorTV.setVisibility(View.GONE);
+
         profile_editProfileErrorTV.setText("");
         profile_editUsernameErrorTV.setText("");
         profile_editPasswordErrorTV.setText("");
