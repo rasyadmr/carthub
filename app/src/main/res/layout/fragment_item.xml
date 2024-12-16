@@ -33,42 +33,49 @@
                     android:id="@+id/f_itemNameTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemPriceTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemRatingTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemStockTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemSellerTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemCategoryTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
                 <TextView
                     android:id="@+id/f_itemDescriptionTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter"
                     android:text="TextView" />
 
             </LinearLayout>

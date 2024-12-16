@@ -29,6 +29,7 @@
                 android:id="@+id/registerUsernameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_username" />
 
             <EditText
@@ -48,6 +49,7 @@
                 android:id="@+id/registerPasswordTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_password" />
 
             <EditText
@@ -67,6 +69,7 @@
                 android:id="@+id/registerEmailTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_email" />
 
             <EditText
@@ -86,6 +89,7 @@
                 android:id="@+id/registerPhoneTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_phonenumber" />
 
             <EditText
@@ -105,6 +109,7 @@
                 android:id="@+id/registerAddressTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_address" />
 
             <EditText
@@ -125,6 +130,7 @@
                 android:id="@+id/registerImageTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="@string/auth_picture" />
 
             <ImageView
@@ -147,6 +153,7 @@
                     android:id="@+id/registerSubmitBtn"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
                     android:text="@string/register_submit" />
             </LinearLayout>
         </LinearLayout>

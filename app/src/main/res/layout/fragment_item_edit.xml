@@ -30,7 +30,9 @@
                 android:id="@+id/item_editNameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_name" />
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/item_name"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/item_editNameET"
@@ -42,13 +44,17 @@
             <TextView
                 android:id="@+id/item_editNameErrorTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/item_editPriceTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_price" />
+                android:text="@string/item_price"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/item_editPriceET"
@@ -66,7 +72,8 @@
                 android:id="@+id/item_editRatingTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_rating" />
+                android:text="@string/item_rating"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/item_editRatingET"
@@ -81,7 +88,8 @@
                 android:id="@+id/item_editStockTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_stock" />
+                android:text="@string/item_stock"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/item_editStockET"
@@ -99,7 +107,8 @@
                 android:id="@+id/item_editSellerTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_merchant" />
+                android:text="@string/item_merchant"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/item_editSellerET"
@@ -108,13 +117,15 @@
                 android:ems="8"
                 android:enabled="false"
                 android:focusable="false"
+                android:fontFamily="@font/inter"
                 android:inputType="text" />
 
             <TextView
                 android:id="@+id/item_editCategoryTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/item_category" />
+                android:text="@string/item_category"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/item_editCategorySpn"
@@ -124,7 +135,9 @@
             <TextView
                 android:id="@+id/item_editCategoryErrorTV"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/item_editDescriptionTV"

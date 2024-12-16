@@ -36,6 +36,7 @@
                 android:id="@+id/itemNameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -44,43 +45,50 @@
                 android:id="@+id/itemPriceTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemRatingTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemStockTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemSellerTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemCategoryTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemDescriptionTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/itemAddressTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"/>
+                android:fontFamily="@font/inter"
+                android:text="TextView" />
 
             <org.osmdroid.views.MapView
                 android:id="@+id/itemMapView"

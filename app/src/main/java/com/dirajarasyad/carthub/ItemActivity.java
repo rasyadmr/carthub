@@ -27,10 +27,12 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.config.Configuration;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
 
 public class ItemActivity extends AppCompatActivity {
     private TextView itemNameTV, itemPriceTV, itemRatingTV, itemStockTV, itemSellerTV, itemCategoryTV, itemDescriptionTV, itemQuantityTV, itemPriceCheckoutTV, itemAddressTV;
@@ -45,6 +47,8 @@ public class ItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Configuration.getInstance().setUserAgentValue("CartHub/1.0");
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_item);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

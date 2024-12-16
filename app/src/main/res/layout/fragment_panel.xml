@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/inter_bold"
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -20,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/inter"
         android:text="TextView"
         android:textSize="20sp" />
 
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/inter"
         android:text="TextView"
         android:textSize="20sp" />
 
