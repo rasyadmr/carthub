@@ -19,7 +19,7 @@ import com.dirajarasyad.carthub.model.Item;
 
 public class ItemFragment extends Fragment {
     private ImageView f_itemImageIV;
-    private TextView f_itemNameTV, f_itemPriceTV, f_itemRatingTV, f_itemSellerTV, f_itemCategoryTV, f_itemDescriptionTV;
+    private TextView f_itemNameTV, f_itemStockTV, f_itemPriceTV, f_itemRatingTV, f_itemSellerTV, f_itemCategoryTV, f_itemDescriptionTV;
     private Button f_itemDeleteBtn, f_itemEditBtn;
 
     private Item item;
@@ -38,6 +38,7 @@ public class ItemFragment extends Fragment {
     private void initial(View view) {
         f_itemImageIV = view.findViewById(R.id.f_itemImageIV);
         f_itemNameTV = view.findViewById(R.id.f_itemNameTV);
+        f_itemStockTV = view.findViewById(R.id.f_itemStockTV);
         f_itemPriceTV = view.findViewById(R.id.f_itemPriceTV);
         f_itemRatingTV = view.findViewById(R.id.f_itemRatingTV);
         f_itemSellerTV = view.findViewById(R.id.f_itemSellerTV);
@@ -65,6 +66,7 @@ public class ItemFragment extends Fragment {
     private void onBind() {
         f_itemImageIV.setImageDrawable(item.getImage());
         f_itemNameTV.setText(item.getName());
+        f_itemStockTV.setText(item.getStock());
         f_itemPriceTV.setText(String.format("Rp %d", item.getPrice()));
         f_itemRatingTV.setText(item.getRating().toString());
         f_itemSellerTV.setText(item.getUser().getUsername());

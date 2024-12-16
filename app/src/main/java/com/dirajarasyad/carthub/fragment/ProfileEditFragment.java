@@ -1,5 +1,6 @@
 package com.dirajarasyad.carthub.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dirajarasyad.carthub.MainActivity;
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.manager.ImageManager;
@@ -211,7 +213,9 @@ public class ProfileEditFragment extends Fragment {
             userManager.deleteUser(user);
             userManager.close();
 
-            requireActivity().getSupportFragmentManager().popBackStack();
+            Intent main = new Intent(requireActivity(), MainActivity.class);
+            requireActivity().startActivity(main);
+            requireActivity().finishAffinity();
         }
     }
 

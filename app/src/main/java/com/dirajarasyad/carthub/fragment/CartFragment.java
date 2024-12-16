@@ -82,6 +82,8 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyLis
     @Override
     public void onCartEmpty(boolean isEmpty) {
         cartCheckoutBtn.setEnabled(!isEmpty);
-        cartEmptyTV.setVisibility(View.VISIBLE);
+        if (isEmpty) {
+            cartEmptyTV.setVisibility(View.VISIBLE);
+        }
     }
 }
