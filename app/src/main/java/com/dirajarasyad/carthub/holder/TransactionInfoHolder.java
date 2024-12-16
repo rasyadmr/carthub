@@ -1,6 +1,7 @@
 package com.dirajarasyad.carthub.holder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,12 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dirajarasyad.carthub.R;
 
 public class TransactionInfoHolder extends RecyclerView.ViewHolder {
+    public ImageView transaction_infoDeclineIV, transaction_infoAcceptIV;
     public CardView transaction_infoContainerCV;
     public TextView transaction_infoItemNameTV, transaction_infoItemPriceTV, transaction_infoSellerUsernameTV, transaction_infoTimeTV, transaction_infoQuantityTV, transaction_infoTotalTV, transaction_infoStatusTV;
 
     public TransactionInfoHolder(@NonNull View itemView) {
         super(itemView);
 
+        this.transaction_infoDeclineIV = itemView.findViewById(R.id.transaction_infoDeclineIV);
+        this.transaction_infoAcceptIV = itemView.findViewById(R.id.transaction_infoAcceptIV);
         this.transaction_infoContainerCV = itemView.findViewById(R.id.transaction_infoContainerCV);
         this.transaction_infoItemNameTV = itemView.findViewById(R.id.transaction_infoItemNameTV);
         this.transaction_infoItemPriceTV = itemView.findViewById(R.id.transaction_infoItemPriceTV);

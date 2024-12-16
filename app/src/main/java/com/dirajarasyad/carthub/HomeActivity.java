@@ -61,8 +61,8 @@ public class HomeActivity extends AppCompatActivity {
         if (user == null) {
             sessionManager.destroySession();
             Intent main = new Intent(this, MainActivity.class);
-            startActivity(main);
-            finish();
+            this.startActivity(main);
+            this.finish();
         }
 
         this.generateToken();

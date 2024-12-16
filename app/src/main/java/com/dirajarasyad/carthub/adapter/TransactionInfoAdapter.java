@@ -5,12 +5,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.R;
+import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
 import com.dirajarasyad.carthub.holder.TransactionInfoHolder;
 import com.dirajarasyad.carthub.model.Transaction;
 
@@ -52,8 +52,47 @@ public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfo
         holder.transaction_infoTotalTV.setText(total);
         holder.transaction_infoTimeTV.setText(date);
         holder.transaction_infoStatusTV.setText(status);
-        holder.transaction_infoContainerCV.setOnClickListener(view -> {
-            Toast.makeText(context, transactionList.get(position).getId(), Toast.LENGTH_SHORT).show();
+
+        if (transactionList.get(position).getStatus() == Transaction.Status.COMPLETED | transactionList.get(position).getStatus() == Transaction.Status.CANCELLED) {
+            holder.transaction_infoDeclineIV.setVisibility(View.GONE);
+            holder.transaction_infoAcceptIV.setVisibility(View.GONE);
+        }
+
+        holder.transaction_infoDeclineIV.setOnClickListener(v -> {
+            DBTransactionManager transactionManager = new DBTransactionManager(context);
+            transactionManager.open();
+            transactionManager.updateTransaction(transactionList.get(position).getId(),
+                    Transaction.Status.CANCELLED,
+                    transactionList.get(position).getUser(),
+                    transactionList.get(position).getItem(),
+                    transactionList.get(position).getQuantity(),
+                    transactionList.get(position).getCreatedAt());
+            transactionManager.close();
+
+            transactionList.remove(position);
+            notifyItemRemoved(position);
+        });
+
+        holder.transaction_infoAcceptIV.setOnClickListener(v -> {
+            Transaction.Status newStatus = Transaction.Status.PENDING;
+            if (transactionList.get(position).getStatus() == Transaction.Status.PENDING) {
+                newStatus = Transaction.Status.ON_PROGRESS;
+            } else if (transactionList.get(position).getStatus() == Transaction.Status.ON_PROGRESS) {
+                newStatus = Transaction.Status.COMPLETED;
+            }
+
+            DBTransactionManager transactionManager = new DBTransactionManager(context);
+            transactionManager.open();
+            transactionManager.updateTransaction(transactionList.get(position).getId(),
+                    newStatus,
+                    transactionList.get(position).getUser(),
+                    transactionList.get(position).getItem(),
+                    transactionList.get(position).getQuantity(),
+                    transactionList.get(position).getCreatedAt());
+            transactionManager.close();
+
+            transactionList.remove(position);
+            notifyItemRemoved(position);
         });
     }
 

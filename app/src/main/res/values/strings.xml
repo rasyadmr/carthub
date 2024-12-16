@@ -134,6 +134,10 @@
     <!--    Item Activity-->
     <string name="item_add">Add to Cart</string>
 
+    <!--  Item Fragment  -->
+    <string name="item_fragment_delete">Delete Item</string>
+    <string name="item_fragment_edit">Edit Item</string>
+
     <!--    Checkout Activity-->
     <string name="checkout_title">Checkout</string>
     <string name="checkout_total">Grand Total</string>

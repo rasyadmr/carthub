@@ -25,8 +25,9 @@
 
                 <ImageView
                     android:id="@+id/f_itemImageIV"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -34,56 +35,97 @@
                     style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_price" />
 
                 <TextView
                     android:id="@+id/f_itemPriceTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_rating" />
 
                 <TextView
                     android:id="@+id/f_itemRatingTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_stock" />
 
                 <TextView
                     android:id="@+id/f_itemStockTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_merchant" />
 
                 <TextView
                     android:id="@+id/f_itemSellerTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_category" />
 
                 <TextView
                     android:id="@+id/f_itemCategoryTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/item_description" />
 
                 <TextView
                     android:id="@+id/f_itemDescriptionTV"
                     style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter" />
 
             </LinearLayout>
 
@@ -106,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
-            android:text="Button" />
+            android:text="@string/item_fragment_delete" />
 
         <Button
             android:id="@+id/f_itemEditBtn"
@@ -115,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
-            android:text="Button" />
+            android:text="@string/item_fragment_edit" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

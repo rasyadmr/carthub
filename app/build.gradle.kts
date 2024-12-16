@@ -42,5 +42,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(libs.osmdroid)
-    implementation("com.google.firebase:firebase-messaging:24.1.0")
+    implementation(libs.firebase.messaging)
 }

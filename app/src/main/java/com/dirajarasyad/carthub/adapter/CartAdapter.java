@@ -51,6 +51,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartHolder> {
         String quantity = String.format("Quantity: %d", cartList.get(position).getQuantity());
         String price = String.format("Total: Rp %d", cartList.get(position).getItem().getPrice() * cartList.get(position).getQuantity());
 
+        holder.cartImageIV.setImageDrawable(cartList.get(position).getItem().getImage());
         holder.cartNameTV.setText(name);
         holder.cartQuantityTV.setText(quantity);
         holder.cartPriceTV.setText(price);
