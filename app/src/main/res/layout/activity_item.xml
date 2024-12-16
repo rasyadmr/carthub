@@ -38,6 +38,7 @@
                 style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView"
                 android:textStyle="bold" />
 
@@ -46,6 +47,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
@@ -53,6 +55,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
@@ -60,6 +63,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
@@ -67,6 +71,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
@@ -74,6 +79,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
@@ -81,6 +87,7 @@
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <TextView
