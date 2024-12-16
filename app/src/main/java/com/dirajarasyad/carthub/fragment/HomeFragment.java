@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    private TextView homeTitleTV, homeCategoryTV, homeTopTV;
+    private TextView homeTopTV;
     private RecyclerView homeItemRV, homeImgsliderRV, homeTopRV;
     private SessionManager sessionManager;
     private ImageSliderAdapter SliderAdapter;
@@ -49,10 +49,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void initial(View view) {
-        homeTitleTV = view.findViewById(R.id.homeTitleTV);
         homeItemRV = view.findViewById(R.id.homeItemRV);
         homeTopRV = view.findViewById(R.id.homeTopRV);
-        homeCategoryTV = view.findViewById(R.id.homeCategoryTV);
         homeImgsliderRV = view.findViewById(R.id.homeImgsliderRV);
         homeTopTV = view.findViewById(R.id.homeTopTV);
 

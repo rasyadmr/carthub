@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dirajarasyad.carthub.R;
-import com.dirajarasyad.carthub.fragment.HistoryDetailFragment;
 import com.dirajarasyad.carthub.holder.AdminMenuHolder;
 import com.dirajarasyad.carthub.model.Menu;
 
@@ -39,7 +38,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<AdminMenuHolder> {
     public void onBindViewHolder(@NonNull AdminMenuHolder holder, int position) {
         holder.admin_menuTitleTV.setText(menuList.get(position).getTitle());
         holder.admin_menuIconIV.setImageDrawable(menuList.get(position).getImage());
-        holder.admin_menuContainerCL.setOnClickListener(view -> {
+        holder.admin_menuContainerCV.setOnClickListener(view -> {
             Fragment fragment = menuList.get(position).getFragment();
             ((FragmentActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, fragment).addToBackStack(null).commit();
         });

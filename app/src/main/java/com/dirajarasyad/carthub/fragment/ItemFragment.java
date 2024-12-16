@@ -14,20 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dirajarasyad.carthub.R;
-import com.dirajarasyad.carthub.database.manager.DBCartManager;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
-import com.dirajarasyad.carthub.database.manager.DBTransactionManager;
 import com.dirajarasyad.carthub.model.Item;
-import com.dirajarasyad.carthub.model.Transaction;
-
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.views.MapView;
-
-import java.util.List;
 
 public class ItemFragment extends Fragment {
     private ImageView f_itemImageIV;
-    private TextView f_itemNameTV, f_itemPriceTV, f_itemRatingTV, f_itemStockTV, f_itemSellerTV, f_itemCategoryTV, f_itemDescriptionTV;
+    private TextView f_itemNameTV, f_itemPriceTV, f_itemRatingTV, f_itemSellerTV, f_itemCategoryTV, f_itemDescriptionTV;
     private Button f_itemDeleteBtn, f_itemEditBtn;
 
     private Item item;
@@ -48,7 +40,6 @@ public class ItemFragment extends Fragment {
         f_itemNameTV = view.findViewById(R.id.f_itemNameTV);
         f_itemPriceTV = view.findViewById(R.id.f_itemPriceTV);
         f_itemRatingTV = view.findViewById(R.id.f_itemRatingTV);
-        f_itemStockTV = view.findViewById(R.id.f_itemStockTV);
         f_itemSellerTV = view.findViewById(R.id.f_itemSellerTV);
         f_itemCategoryTV = view.findViewById(R.id.f_itemCategoryTV);
         f_itemDescriptionTV = view.findViewById(R.id.f_itemDescriptionTV);
@@ -101,6 +92,4 @@ public class ItemFragment extends Fragment {
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.homeContainerFL, itemEdit).addToBackStack(null).commit();
         }
     }
-
-
 }

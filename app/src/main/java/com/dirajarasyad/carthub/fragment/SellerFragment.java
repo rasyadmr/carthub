@@ -91,7 +91,6 @@ public class SellerFragment extends Fragment {
         panelStatRV.setAdapter(statAdapter);
 
         List<Menu> menuList = new ArrayList<>();
-        // TODO: Continue
         menuList.add(new Menu("Add Item", AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_add_circle_100), new SellerAddItemFragment()));
         menuList.add(new Menu("My Item", AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_edit_document_100), new SellerItemFragment()));
         menuList.add(new Menu("Pending Transactions", AppCompatResources.getDrawable(requireContext(), R.drawable.baseline_pending_actions_100), new SellerPendingFragment()));

@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/historyTitleTV"
+        style="@style/h1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -22,6 +23,7 @@
 
         <TextView
             android:id="@+id/historyItemTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -32,6 +34,7 @@
 
         <TextView
             android:id="@+id/historyPriceTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -43,6 +46,7 @@
 
         <TextView
             android:id="@+id/historyStatusTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"

@@ -35,20 +35,19 @@
 
             <TextView
                 android:id="@+id/topNameTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:text="TextView"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/inter_bold" />
 
             <TextView
                 android:id="@+id/topPriceTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:text="TextView"
-                android:textSize="16sp" />
+                android:fontFamily="@font/inter" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,10 +63,11 @@
 
                 <TextView
                     android:id="@+id/topRatingTV"
+                    style="@style/textThin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="left|center_vertical"
-                    android:text="TextView" />
+                    android:fontFamily="@font/inter_light"
+                    android:gravity="left|center_vertical" />
             </LinearLayout>
 
         </LinearLayout>

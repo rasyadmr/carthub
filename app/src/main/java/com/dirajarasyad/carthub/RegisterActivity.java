@@ -20,14 +20,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.dirajarasyad.carthub.manager.DatetimeManager;
 import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.database.manager.DBUserManager;
 import com.dirajarasyad.carthub.model.User;
 
-import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -75,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerAddressErrorTV = findViewById(R.id.registerAddressErrorTV);
 
         registerImageIV = findViewById(R.id.registerImageIV);
-        registerImageIV.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.baseline_person_100));
+        registerImageIV.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.baseline_add_photo_alternate_100));
         registerSubmitBtn = findViewById(R.id.registerSubmitBtn);
 
         pickLauncher = registerForActivityResult(
@@ -130,39 +128,54 @@ public class RegisterActivity extends AppCompatActivity {
         userManager.open();
         boolean flag = true;
 
-        // TODO color red when error
         // Username
         if (username.length() < 4 || username.length() > 20) {
+            registerUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerUsernameErrorTV.setVisibility(View.VISIBLE);
             registerUsernameErrorTV.setText(R.string.auth_username_error_length);
             flag = false;
         } else if (userManager.getUserByUsername(username) != null) {
+            registerUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerUsernameErrorTV.setVisibility(View.VISIBLE);
             registerUsernameErrorTV.setText(R.string.auth_username_error_unique);
             flag = false;
         } else if (!Pattern.matches("^[a-zA-Z0-9]+$", username)) {
+            registerUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerUsernameErrorTV.setVisibility(View.VISIBLE);
             registerUsernameErrorTV.setText(R.string.auth_username_error_regex);
             flag = false;
         }
 
         // Password
         if (password.length() < 8 || password.length() > 50) {
+            registerPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerPasswordErrorTV.setVisibility(View.VISIBLE);
             registerPasswordErrorTV.setText(R.string.auth_password_error_length);
             flag = false;
         } else if (!Pattern.matches("^[a-zA-Z0-9]+$", password)) {
+            registerPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerPasswordErrorTV.setVisibility(View.VISIBLE);
             registerPasswordErrorTV.setText(R.string.auth_password_error_regex);
             flag = false;
         }
 
         // Email
         if (!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)) {
+            registerEmailTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerEmailErrorTV.setVisibility(View.VISIBLE);
             registerEmailErrorTV.setText(R.string.auth_email_error_regex);
             flag = false;
         }
 
         // Phone
         if (!phone.startsWith("0")) {
+            registerPhoneTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerPhoneErrorTV.setVisibility(View.VISIBLE);
             registerPhoneErrorTV.setText(R.string.auth_phone_error_start);
             flag = false;
         } else if (phone.length() < 10 || phone.length() > 13) {
+            registerPhoneTV.setTextColor(getResources().getColor(R.color.danger, null));
+            registerPhoneErrorTV.setVisibility(View.VISIBLE);
             registerPhoneErrorTV.setText(R.string.auth_phone_error_length);
             flag = false;
         }
@@ -172,6 +185,18 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void clearError() {
+        registerUsernameTV.setTextColor(getResources().getColor(R.color.black, null));
+        registerPasswordTV.setTextColor(getResources().getColor(R.color.black, null));
+        registerEmailTV.setTextColor(getResources().getColor(R.color.black, null));
+        registerPhoneTV.setTextColor(getResources().getColor(R.color.black, null));
+        registerAddressTV.setTextColor(getResources().getColor(R.color.black, null));
+
+        registerUsernameErrorTV.setVisibility(View.GONE);
+        registerPasswordErrorTV.setVisibility(View.GONE);
+        registerEmailErrorTV.setVisibility(View.GONE);
+        registerPhoneErrorTV.setVisibility(View.GONE);
+        registerAddressErrorTV.setVisibility(View.GONE);
+
         registerUsernameErrorTV.setText("");
         registerPasswordErrorTV.setText("");
         registerEmailErrorTV.setText("");

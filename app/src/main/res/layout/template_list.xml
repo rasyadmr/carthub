@@ -6,17 +6,17 @@
     android:orientation="vertical"
     tools:context=".fragment.AdminItemFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/listTitleTV"
+        style="@style/h1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/inter_bold" />
 
     <TextView
         android:id="@+id/listEmptyTV"
+        style="@style/textThin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

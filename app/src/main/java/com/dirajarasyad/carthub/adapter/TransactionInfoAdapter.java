@@ -17,7 +17,7 @@ import com.dirajarasyad.carthub.model.Transaction;
 import java.util.List;
 
 public class TransactionInfoAdapter extends RecyclerView.Adapter<TransactionInfoHolder> {
-    private List<Transaction> transactionList;
+    private final List<Transaction> transactionList;
     private Context context;
 
     public TransactionInfoAdapter(List<Transaction> transactionList) {
