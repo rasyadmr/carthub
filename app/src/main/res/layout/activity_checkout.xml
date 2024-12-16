@@ -23,13 +23,22 @@
 
         <TextView
             android:id="@+id/checkoutTitleTV"
+            style="@style/h1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/inter_bold"
+            android:breakStrategy="high_quality"
             android:text="@string/checkout_title"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textCursorDrawable="?android:attr/textCursorDrawable"
+            android:textEditNoPasteWindowLayout="?android:attr/textEditNoPasteWindowLayout"
+            android:textEditPasteWindowLayout="?android:attr/textEditPasteWindowLayout"
+            android:textEditSideNoPasteWindowLayout="?android:attr/textEditSideNoPasteWindowLayout"
+            android:textEditSidePasteWindowLayout="?android:attr/textEditSidePasteWindowLayout"
+            android:textEditSuggestionItemLayout="?android:attr/textEditSuggestionItemLayout"
+            android:textSelectHandle="?android:attr/textSelectHandle"
+            android:textSelectHandleLeft="?android:attr/textSelectHandleLeft"
+            android:textSelectHandleRight="?android:attr/textSelectHandleRight" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/checkoutDataRV"
@@ -37,6 +46,7 @@
             android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +61,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="8dp"
             android:layout_weight="1"
@@ -59,6 +69,7 @@
 
             <TextView
                 android:id="@+id/checkoutGTTV"
+                style="@style/textThin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -68,6 +79,7 @@
 
             <TextView
                 android:id="@+id/checkoutGrandTotalTV"
+                style="@style/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/backgroundColor"
@@ -77,6 +89,7 @@
 
         <Button
             android:id="@+id/checkoutPayBtn"
+            style="@style/btnOutline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"

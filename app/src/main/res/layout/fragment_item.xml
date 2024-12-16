@@ -31,6 +31,7 @@
 
                 <TextView
                     android:id="@+id/f_itemNameTV"
+                    style="@style/h3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -38,6 +39,7 @@
 
                 <TextView
                     android:id="@+id/f_itemPriceTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -45,6 +47,7 @@
 
                 <TextView
                     android:id="@+id/f_itemRatingTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -52,6 +55,7 @@
 
                 <TextView
                     android:id="@+id/f_itemStockTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -59,6 +63,7 @@
 
                 <TextView
                     android:id="@+id/f_itemSellerTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -66,6 +71,7 @@
 
                 <TextView
                     android:id="@+id/f_itemCategoryTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -73,6 +79,7 @@
 
                 <TextView
                     android:id="@+id/f_itemDescriptionTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter"
@@ -94,6 +101,7 @@
 
         <Button
             android:id="@+id/f_itemDeleteBtn"
+            style="@style/btnDanger"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -102,6 +110,7 @@
 
         <Button
             android:id="@+id/f_itemEditBtn"
+            style="@style/btnPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

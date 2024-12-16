@@ -28,6 +28,7 @@
 
             <TextView
                 android:id="@+id/item_editNameTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
@@ -51,6 +52,7 @@
 
             <TextView
                 android:id="@+id/item_editPriceTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_price"
@@ -70,6 +72,7 @@
 
             <TextView
                 android:id="@+id/item_editRatingTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_rating"
@@ -86,6 +89,7 @@
 
             <TextView
                 android:id="@+id/item_editStockTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_stock"
@@ -105,6 +109,7 @@
 
             <TextView
                 android:id="@+id/item_editSellerTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_merchant"
@@ -122,6 +127,7 @@
 
             <TextView
                 android:id="@+id/item_editCategoryTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_category"
@@ -141,6 +147,7 @@
 
             <TextView
                 android:id="@+id/item_editDescriptionTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/item_description" />
@@ -152,8 +159,10 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
+
             <TextView
                 android:id="@+id/item_editAddressTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Shop Addres" />
@@ -177,6 +186,7 @@
 
         <Button
             android:id="@+id/item_editSaveBtn"
+            style="@style/btnPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"

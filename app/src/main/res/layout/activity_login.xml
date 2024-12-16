@@ -23,6 +23,7 @@
 
         <TextView
             android:id="@+id/loginUsernameTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
@@ -38,6 +39,7 @@
 
         <TextView
             android:id="@+id/loginPasswordTV"
+            style="@style/h3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter"
@@ -53,6 +55,7 @@
 
         <TextView
             android:id="@+id/loginErrorTV"
+            style="@style/textError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -60,6 +63,7 @@
 
     <Button
         android:id="@+id/loginSubmitBtn"
+        style="@style/btnPrimary"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

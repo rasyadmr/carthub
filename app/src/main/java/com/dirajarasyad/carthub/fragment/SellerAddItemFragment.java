@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBCategoryManager;
@@ -30,7 +29,6 @@ import com.dirajarasyad.carthub.manager.ImageManager;
 import com.dirajarasyad.carthub.manager.PickerManager;
 import com.dirajarasyad.carthub.manager.SessionManager;
 import com.dirajarasyad.carthub.model.Category;
-import com.dirajarasyad.carthub.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +36,7 @@ import java.util.regex.Pattern;
 
 public class SellerAddItemFragment extends Fragment {
     private ImageView item_editImageIV, item_editDeleteIV;
-    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
+    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
     private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET, item_editAddressET;
     private Spinner item_editCategorySpn;
     private Button item_editSaveBtn;
@@ -66,7 +64,6 @@ public class SellerAddItemFragment extends Fragment {
         item_editPriceTV = view.findViewById(R.id.item_editPriceTV);
         item_editStockTV = view.findViewById(R.id.item_editStockTV);
         item_editCategoryTV = view.findViewById(R.id.item_editCategoryTV);
-        item_editDescriptionTV = view.findViewById(R.id.item_editDescriptionTV);
         item_editAddressTV = view.findViewById(R.id.item_editAddressTV);
 
         item_editNameET = view.findViewById(R.id.item_editNameET);
@@ -156,17 +153,28 @@ public class SellerAddItemFragment extends Fragment {
             String priceText = item_editPriceET.getText().toString();
             String stockText = item_editStockET.getText().toString();
             String address = item_editAddressET.getText().toString();
+
             if (priceText.isEmpty() & stockText.isEmpty()) {
+                item_editPriceTV.setTextColor(getResources().getColor(R.color.danger, null));
+                item_editPriceErrorTV.setVisibility(View.VISIBLE);
                 item_editPriceErrorTV.setText(R.string.no_input);
+
+                item_editStockTV.setTextColor(getResources().getColor(R.color.danger, null));
+                item_editStockErrorTV.setVisibility(View.VISIBLE);
                 item_editStockErrorTV.setText(R.string.no_input);
                 return;
             } else if (priceText.isEmpty()) {
+                item_editPriceTV.setTextColor(getResources().getColor(R.color.danger, null));
+                item_editPriceErrorTV.setVisibility(View.VISIBLE);
                 item_editPriceErrorTV.setText(R.string.no_input);
                 return;
             } else if (stockText.isEmpty()) {
+                item_editStockTV.setTextColor(getResources().getColor(R.color.danger, null));
+                item_editStockErrorTV.setVisibility(View.VISIBLE);
                 item_editStockErrorTV.setText(R.string.no_input);
                 return;
             } else if (address.isEmpty()) {
+                // TODO Address
                 item_editAddressTV.setText("Address Cannot be Empty");
             }
 
@@ -193,6 +201,16 @@ public class SellerAddItemFragment extends Fragment {
     }
 
     private void clearError() {
+        item_editNameTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editPriceTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editStockTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editCategoryTV.setTextColor(getResources().getColor(R.color.black, null));
+
+        item_editNameErrorTV.setVisibility(View.GONE);
+        item_editPriceErrorTV.setVisibility(View.GONE);
+        item_editStockErrorTV.setVisibility(View.GONE);
+        item_editCategoryErrorTV.setVisibility(View.GONE);
+
         item_editNameErrorTV.setText("");
         item_editPriceErrorTV.setText("");
         item_editStockErrorTV.setText("");
@@ -203,21 +221,29 @@ public class SellerAddItemFragment extends Fragment {
         boolean flag = true;
 
         if (!Pattern.matches("^[a-zA-Z0-9 ]+$", name)) {
+            item_editNameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editNameErrorTV.setVisibility(View.VISIBLE);
             item_editNameErrorTV.setText(R.string.item_name_error);
             flag = false;
         }
 
         if (price < 100) {
+            item_editPriceTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editPriceErrorTV.setVisibility(View.VISIBLE);
             item_editPriceErrorTV.setText(R.string.item_price_error);
             flag = false;
         }
 
         if (stock < 0) {
+            item_editStockTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editStockErrorTV.setVisibility(View.VISIBLE);
             item_editStockErrorTV.setText(R.string.item_stock_error);
             flag = false;
         }
 
         if (categorySelected == null) {
+            item_editCategoryTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editCategoryErrorTV.setVisibility(View.VISIBLE);
             item_editCategoryErrorTV.setText(R.string.item_category_error);
             flag = false;
         }

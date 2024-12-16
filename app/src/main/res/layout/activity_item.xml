@@ -14,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:scrollbarSize="0dp"
         app:layout_constraintBottom_toTopOf="@id/itemCheckoutLL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,15 +35,16 @@
 
             <TextView
                 android:id="@+id/itemNameTV"
+                style="@style/h2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:text="TextView"
-                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemPriceTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -50,6 +52,7 @@
 
             <TextView
                 android:id="@+id/itemRatingTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -57,6 +60,7 @@
 
             <TextView
                 android:id="@+id/itemStockTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -64,6 +68,7 @@
 
             <TextView
                 android:id="@+id/itemSellerTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -71,6 +76,7 @@
 
             <TextView
                 android:id="@+id/itemCategoryTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -78,6 +84,7 @@
 
             <TextView
                 android:id="@+id/itemDescriptionTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
@@ -85,16 +92,15 @@
 
             <TextView
                 android:id="@+id/itemAddressTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
                 android:text="TextView" />
 
             <org.osmdroid.views.MapView
                 android:id="@+id/itemMapView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                />
+                android:layout_height="250dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -133,6 +139,7 @@
 
                 <TextView
                     android:id="@+id/itemQuantityTV"
+                    style="@style/text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -152,6 +159,7 @@
 
             <TextView
                 android:id="@+id/itemPriceCheckoutTV"
+                style="@style/h3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -164,6 +172,7 @@
 
         <Button
             android:id="@+id/itemCartBtn"
+            style="@style/btnOutline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"

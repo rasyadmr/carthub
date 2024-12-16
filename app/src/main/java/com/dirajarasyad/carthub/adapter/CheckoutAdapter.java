@@ -18,7 +18,6 @@ import java.util.List;
 
 public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutHolder> {
     private final List<Cart> cartList;
-    private Context context;
 
     public CheckoutAdapter(List<Cart> cartList) {
         this.cartList = cartList;
@@ -27,7 +26,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutHolder> {
     @NonNull
     @Override
     public CheckoutHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
+        Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.holder_checkout, parent, false);
 

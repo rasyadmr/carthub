@@ -23,7 +23,7 @@ import com.dirajarasyad.carthub.model.Cart;
 import java.util.List;
 
 public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyListener {
-    private TextView cartTitleTV;
+    private TextView cartEmptyTV;
     private RecyclerView cartItemRV;
     private Button cartCheckoutBtn;
 
@@ -39,7 +39,7 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyLis
     }
 
     private void initial(View view) {
-        cartTitleTV = view.findViewById(R.id.cartTitleTV);
+        cartEmptyTV = view.findViewById(R.id.cartEmptyTV);
         cartItemRV = view.findViewById(R.id.cartItemRV);
         cartCheckoutBtn = view.findViewById(R.id.cartCheckoutBtn);
     }
@@ -53,6 +53,12 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyLis
 
         if (cartList.isEmpty()) {
             cartCheckoutBtn.setEnabled(false);
+
+            cartItemRV.setVisibility(View.GONE);
+            cartEmptyTV.setVisibility(View.VISIBLE);
+        } else {
+            cartItemRV.setVisibility(View.VISIBLE);
+            cartEmptyTV.setVisibility(View.GONE);
         }
 
         CartAdapter cartAdapter = new CartAdapter(cartList, this);
@@ -76,5 +82,6 @@ public class CartFragment extends Fragment implements CartAdapter.OnCartEmptyLis
     @Override
     public void onCartEmpty(boolean isEmpty) {
         cartCheckoutBtn.setEnabled(!isEmpty);
+        cartEmptyTV.setVisibility(View.VISIBLE);
     }
 }

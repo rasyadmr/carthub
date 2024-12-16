@@ -40,6 +40,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartHolder> {
         return new CartHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull CartHolder holder, int position) {
         if (position >= this.getItemCount()) {
@@ -47,8 +48,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartHolder> {
         }
 
         String name = cartList.get(position).getItem().getName();
-        String quantity = cartList.get(position).getQuantity().toString();
-        @SuppressLint("DefaultLocale") String price = String.format("Rp %d", cartList.get(position).getItem().getPrice() * cartList.get(position).getQuantity());
+        String quantity = String.format("Quantity: %d", cartList.get(position).getQuantity());
+        String price = String.format("Total: Rp %d", cartList.get(position).getItem().getPrice() * cartList.get(position).getQuantity());
 
         holder.cartNameTV.setText(name);
         holder.cartQuantityTV.setText(quantity);

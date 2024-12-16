@@ -7,11 +7,8 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +35,7 @@ import java.util.regex.Pattern;
 
 public class ItemEditFragment extends Fragment {
     private ImageView item_editImageIV, item_editDeleteIV;
-    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editDescriptionTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
+    private TextView item_editNameTV, item_editPriceTV, item_editStockTV, item_editCategoryTV, item_editNameErrorTV, item_editPriceErrorTV, item_editStockErrorTV, item_editCategoryErrorTV, item_editAddressTV;
     private EditText item_editNameET, item_editPriceET, item_editRatingET, item_editStockET, item_editSellerET, item_editDescriptionET, item_editAddressET;
     private Spinner item_editCategorySpn;
     private Button item_editSaveBtn;
@@ -66,7 +63,6 @@ public class ItemEditFragment extends Fragment {
         item_editPriceTV = view.findViewById(R.id.item_editPriceTV);
         item_editStockTV = view.findViewById(R.id.item_editStockTV);
         item_editCategoryTV = view.findViewById(R.id.item_editCategoryTV);
-        item_editDescriptionTV = view.findViewById(R.id.item_editDescriptionTV);
 
         item_editNameET = view.findViewById(R.id.item_editNameET);
         item_editPriceET = view.findViewById(R.id.item_editPriceET);
@@ -192,7 +188,18 @@ public class ItemEditFragment extends Fragment {
         }
     }
 
+    // TODO: Error color
     private void clearError() {
+        item_editNameTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editPriceTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editStockTV.setTextColor(getResources().getColor(R.color.black, null));
+        item_editCategoryTV.setTextColor(getResources().getColor(R.color.black, null));
+
+        item_editNameErrorTV.setVisibility(View.GONE);
+        item_editPriceErrorTV.setVisibility(View.GONE);
+        item_editStockErrorTV.setVisibility(View.GONE);
+        item_editCategoryErrorTV.setVisibility(View.GONE);
+
         item_editNameErrorTV.setText("");
         item_editPriceErrorTV.setText("");
         item_editStockErrorTV.setText("");
@@ -203,25 +210,34 @@ public class ItemEditFragment extends Fragment {
         boolean flag = true;
 
         if (!Pattern.matches("^[a-zA-Z0-9 ]+$", name)) {
+            item_editNameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editNameErrorTV.setVisibility(View.VISIBLE);
             item_editNameErrorTV.setText(R.string.item_name_error);
             flag = false;
         }
 
         if (price < 100) {
+            item_editPriceTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editPriceErrorTV.setVisibility(View.VISIBLE);
             item_editPriceErrorTV.setText(R.string.item_price_error);
             flag = false;
         }
 
         if (stock < 0) {
+            item_editStockTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editStockErrorTV.setVisibility(View.VISIBLE);
             item_editStockErrorTV.setText(R.string.item_stock_error);
             flag = false;
         }
 
         if (categorySelected == null) {
+            item_editCategoryTV.setTextColor(getResources().getColor(R.color.danger, null));
+            item_editCategoryErrorTV.setVisibility(View.VISIBLE);
             item_editCategoryErrorTV.setText(R.string.item_category_error);
             flag = false;
         }
 
+        // TODO Address
         if(address.isEmpty()){
             item_editAddressET.setText("Please enter a valid address");
             flag=false;

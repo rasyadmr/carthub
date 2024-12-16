@@ -54,7 +54,7 @@ public class SellerItemFragment extends Fragment {
         if (!itemList.isEmpty()) {
             listEmptyTV.setVisibility(View.GONE);
 
-            ItemInfoAdapter infoAdapter = new ItemInfoAdapter(itemList);
+            ItemInfoAdapter infoAdapter = new ItemInfoAdapter(itemList, false);
             listDataRV.setLayoutManager(new LinearLayoutManager(requireContext()));
             listDataRV.setAdapter(infoAdapter);
         }

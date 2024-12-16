@@ -2,9 +2,11 @@ package com.dirajarasyad.carthub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,12 +22,15 @@ import com.dirajarasyad.carthub.fragment.HistoryFragment;
 import com.dirajarasyad.carthub.fragment.HomeFragment;
 import com.dirajarasyad.carthub.fragment.ProfileFragment;
 import com.dirajarasyad.carthub.model.User;
+import com.dirajarasyad.carthub.service.NotificationService;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottom_navigation;
     private FrameLayout homeContainerFL;
-    private SessionManager sessionManager;
     private User user;
 
     @Override
@@ -42,13 +47,15 @@ public class HomeActivity extends AppCompatActivity {
         this.initial();
         this.onBind();
 
+        NotificationService service = new NotificationService(this);
+        service.checkPermission(this);
     }
 
     private void initial() {
         bottom_navigation = findViewById(R.id.bottom_navigation);
         homeContainerFL = findViewById(R.id.homeContainerFL);
 
-        sessionManager = new SessionManager(this);
+        SessionManager sessionManager = new SessionManager(this);
         user = sessionManager.getUser();
 
         if (user == null) {
@@ -57,6 +64,8 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(main);
             finish();
         }
+
+        this.generateToken();
     }
 
     private void onBind() {
@@ -95,6 +104,18 @@ public class HomeActivity extends AppCompatActivity {
 
             getSupportFragmentManager().beginTransaction().replace(homeContainerFL.getId(), selectedFragment).commit();
             return true;
+        });
+    }
+
+    private void generateToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (task.isSuccessful()) {
+                    String token = task.getResult();
+                    Log.d("FCM", "FCM Token: " + token);
+                }
+            }
         });
     }
 }

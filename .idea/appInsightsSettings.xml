@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.dirajarasyad.carthub" />
+                  <option name="mobileSdkAppId" value="1:858557254190:android:0c9be89d95bfc9ccd06dbf" />
+                  <option name="projectId" value="carthub-5de9a" />
+                  <option name="projectNumber" value="858557254190" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

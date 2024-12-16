@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Button  -->
+    <style name="btnPrimary" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/primaryColor</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="btnSuccess" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/success</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="btnDanger" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/danger</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="btnOutline" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    <!--  Text  -->
+    <style name="defaultText" parent="Widget.AppCompat.TextView">
+    </style>
+
+    <style name="h1" parent="defaultText">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="h2" parent="defaultText">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="h3" parent="defaultText">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text" parent="defaultText">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textThin" parent="defaultText">
+        <item name="android:fontFamily">@font/inter_light</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textSecondary" parent="defaultText">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textError" parent="defaultText">
+        <item name="android:fontFamily">@font/inter_light</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/danger</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!--  Card View  -->
+    <style name="avatar" parent="CardView">
+        <item name="android:radius">100dp</item>
+        <item name="android:elevation">12dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+</resources>

@@ -34,12 +34,11 @@
 
             <TextView
                 android:id="@+id/homeCategoryTV"
+                style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="Catogory Name"
-                android:textSize="10sp" />
+                android:gravity="center" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

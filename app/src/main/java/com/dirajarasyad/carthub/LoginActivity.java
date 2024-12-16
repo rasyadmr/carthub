@@ -58,8 +58,14 @@ public class LoginActivity extends AppCompatActivity {
         userManager.close();
 
         if (user == null) {
+            loginUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            loginPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            loginErrorTV.setVisibility(View.VISIBLE);
             loginErrorTV.setText(R.string.auth_credential_error);
         } else if (!password.equals(user.getPassword())) {
+            loginUsernameTV.setTextColor(getResources().getColor(R.color.danger, null));
+            loginPasswordTV.setTextColor(getResources().getColor(R.color.danger, null));
+            loginErrorTV.setVisibility(View.VISIBLE);
             loginErrorTV.setText(R.string.auth_credential_error);
         } else {
             SessionManager sessionManager = new SessionManager(this);
