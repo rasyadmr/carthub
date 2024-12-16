@@ -123,6 +123,7 @@
     <string name="item_merchant">Item Merchant</string>
     <string name="item_category">Item Category</string>
     <string name="item_description">Item Description</string>
+    <string name="item_address">Item Store Address</string>
     <string name="item_delete">Delete Item</string>
     <string name="item_edit">Edit Item</string>
 
