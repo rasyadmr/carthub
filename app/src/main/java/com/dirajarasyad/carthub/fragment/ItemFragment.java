@@ -2,9 +2,7 @@ package com.dirajarasyad.carthub.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.dirajarasyad.carthub.R;
 import com.dirajarasyad.carthub.database.manager.DBItemManager;
@@ -64,9 +64,10 @@ public class ItemFragment extends Fragment {
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
     private void onBind() {
+        Log.d("ID", item.getId());
         f_itemImageIV.setImageDrawable(item.getImage());
         f_itemNameTV.setText(item.getName());
-        f_itemStockTV.setText(item.getStock());
+        f_itemStockTV.setText(String.format("Stock: %d", item.getStock()));
         f_itemPriceTV.setText(String.format("Rp %d", item.getPrice()));
         f_itemRatingTV.setText(item.getRating().toString());
         f_itemSellerTV.setText(item.getUser().getUsername());

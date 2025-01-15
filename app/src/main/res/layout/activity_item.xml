@@ -39,63 +39,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
-                android:text="TextView"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_price" />
 
             <TextView
                 android:id="@+id/itemPriceTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_rating" />
 
             <TextView
                 android:id="@+id/itemRatingTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_stock" />
 
             <TextView
                 android:id="@+id/itemStockTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_merchant" />
 
             <TextView
                 android:id="@+id/itemSellerTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView11"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_category" />
 
             <TextView
                 android:id="@+id/itemCategoryTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView12"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_description" />
 
             <TextView
                 android:id="@+id/itemDescriptionTV"
                 style="@style/text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/inter"
-                android:text="TextView" />
+                android:fontFamily="@font/inter" />
+
+            <TextView
+                android:id="@+id/textView13"
+                style="@style/h3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/item_address" />
 
             <TextView
                 android:id="@+id/itemAddressTV"
                 style="@style/text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <org.osmdroid.views.MapView
                 android:id="@+id/itemMapView"
@@ -144,7 +185,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textColor="@color/backgroundColor"
                     android:textSize="16sp" />
 
@@ -164,7 +204,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|left"
-                android:text="TextView"
                 android:textColor="@color/backgroundColor"
                 android:textSize="18sp"
                 android:textStyle="bold" />
